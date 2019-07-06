@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Consume OpenWeather REST Api in Dynamics Nav</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>By: cikiriz</title>
+		<link>./../index.html#comment-108</link>
+		<dc:creator><![CDATA[cikiriz]]></dc:creator>
+		<pubDate>Wed, 07 Feb 2018 13:00:33 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=69#comment-108</guid>
+		<description><![CDATA[Hi, 
+
+I follow all your steps to send request and receive json file from api, but when I try to show value from translatedText node (MESSAGE(FORMAT(Result.translatedText))) , get empty string. It looks like I didn&#039;t set value to this property on custom dll&#039;s. Do you have any tips what I missed? 
+This is how my json looks
+{
+  &quot;data&quot;: {
+    &quot;translations&quot;: [
+      {
+        &quot;translatedText&quot;: &quot;Some text&quot;,
+        &quot;detectedSourceLanguage&quot;: &quot;en&quot;
+      }
+    ]
+  }
+}]]></description>
+		<content:encoded><![CDATA[<p>Hi, </p>
+<p>I follow all your steps to send request and receive json file from api, but when I try to show value from translatedText node (MESSAGE(FORMAT(Result.translatedText))) , get empty string. It looks like I didn&#8217;t set value to this property on custom dll&#8217;s. Do you have any tips what I missed?<br />
+This is how my json looks<br />
+{<br />
+  &#8220;data&#8221;: {<br />
+    &#8220;translations&#8221;: [<br />
+      {<br />
+        &#8220;translatedText&#8221;: &#8220;Some text&#8221;,<br />
+        &#8220;detectedSourceLanguage&#8221;: &#8220;en&#8221;<br />
+      }<br />
+    ]<br />
+  }<br />
+}</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Donah</title>
+		<link>./../index.html#comment-107</link>
+		<dc:creator><![CDATA[Donah]]></dc:creator>
+		<pubDate>Thu, 25 Jan 2018 14:12:36 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=69#comment-107</guid>
+		<description><![CDATA[Issue resolved. 
+Thanks]]></description>
+		<content:encoded><![CDATA[<p>Issue resolved.<br />
+Thanks</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Donah</title>
+		<link>./../index.html#comment-106</link>
+		<dc:creator><![CDATA[Donah]]></dc:creator>
+		<pubDate>Wed, 24 Jan 2018 21:48:03 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=69#comment-106</guid>
+		<description><![CDATA[Hi 
+I am following up on ur blog, it&#039;s very helpful. 
+i am getting this error while calling the custom dll, i don&#039;t know what else to do, i have done all required steps. 
+&quot;Cannot create an instance of the following .NET framework objects: Assembly Main, Version=1.0.0.0.&quot;
+
+I am getting this error at the line no 
+result := result.Main;
+
+Thanks]]></description>
+		<content:encoded><![CDATA[<p>Hi<br />
+I am following up on ur blog, it&#8217;s very helpful.<br />
+i am getting this error while calling the custom dll, i don&#8217;t know what else to do, i have done all required steps.<br />
+&#8220;Cannot create an instance of the following .NET framework objects: Assembly Main, Version=1.0.0.0.&#8221;</p>
+<p>I am getting this error at the line no<br />
+result := result.Main;</p>
+<p>Thanks</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Post to a rest api in Dynamics NAV &#8211; Jaspreet Singh</title>
+		<link>./../index.html#comment-4</link>
+		<dc:creator><![CDATA[Post to a rest api in Dynamics NAV &#8211; Jaspreet Singh]]></dc:creator>
+		<pubDate>Mon, 29 May 2017 04:25:00 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=69#comment-4</guid>
+		<description><![CDATA[[&#8230;] to  https://ctrlshiftf4.com/2017/05/17/consume-openweather-rest-api-in-dynamics-nav/ as i have explained how to parse data from Rest Api there in [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] to  https://ctrlshiftf4.com/2017/05/17/consume-openweather-rest-api-in-dynamics-nav/ as i have explained how to parse data from Rest Api there in [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ajay kumar</title>
+		<link>./../index.html#comment-2</link>
+		<dc:creator><![CDATA[Ajay kumar]]></dc:creator>
+		<pubDate>Fri, 19 May 2017 04:15:21 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=69#comment-2</guid>
+		<description><![CDATA[helpful...]]></description>
+		<content:encoded><![CDATA[<p>helpful&#8230;</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

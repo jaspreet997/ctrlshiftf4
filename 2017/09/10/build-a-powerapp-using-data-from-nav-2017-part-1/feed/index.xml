@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Build a PowerApp &#8211; Data from Nav 2017 Part1</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>By: Anil Kumar Anisetty</title>
+		<link>./../index.html#comment-122</link>
+		<dc:creator><![CDATA[Anil Kumar Anisetty]]></dc:creator>
+		<pubDate>Mon, 02 Jul 2018 08:49:37 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=184#comment-122</guid>
+		<description><![CDATA[Hello Jasprit,
+
+I am not able to make dynamics nav connection it says below. I have given the right url because when i open the same in browser it works. Please see if you can help me on this.
+
+The URL &#039;&#039; is not a valid Microsoft Dynamics NAV OData feed URL. The OData feed URL can be found on the &#039;Web Services&#039; page in Microsoft Dynamics NAV. clientRequestId: 97dd8e54-4ebc-4109-b0c2-9b66c8bc91c2]]></description>
+		<content:encoded><![CDATA[<p>Hello Jasprit,</p>
+<p>I am not able to make dynamics nav connection it says below. I have given the right url because when i open the same in browser it works. Please see if you can help me on this.</p>
+<p>The URL &#8221; is not a valid Microsoft Dynamics NAV OData feed URL. The OData feed URL can be found on the &#8216;Web Services&#8217; page in Microsoft Dynamics NAV. clientRequestId: 97dd8e54-4ebc-4109-b0c2-9b66c8bc91c2</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Build a PowerApp – Add Images Part2 &#8211; Jaspreet Singh</title>
+		<link>./../index.html#comment-14</link>
+		<dc:creator><![CDATA[Build a PowerApp – Add Images Part2 &#8211; Jaspreet Singh]]></dc:creator>
+		<pubDate>Mon, 11 Sep 2017 03:52:13 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=184#comment-14</guid>
+		<description><![CDATA[[&#8230;] a PowerApp. In the last blog, I explained how you can create a simple app from a Odata connection. Link to Part [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] a PowerApp. In the last blog, I explained how you can create a simple app from a Odata connection. Link to Part [&#8230;]</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

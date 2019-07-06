@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Visual Studio Code &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>Visual Studio Code &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Custom Workflows in AL &#8211; Part 1 &#8216;Events&#8217;</title>
+		<link>./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html</link>
+		<comments>./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html#respond</comments>
+		<pubDate>Sat, 11 Nov 2017 06:10:28 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[AL]]></category>
+		<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Visual Studio Code]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Events]]></category>
+		<category><![CDATA[Response]]></category>
+		<category><![CDATA[VSCODE]]></category>
+		<category><![CDATA[Workflows]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=254</guid>
+		<description><![CDATA[The Goal of this blog post is to demonstrate the power of workflows and how they can be incorporated into customizations we do going forward. Workflows are more than just replacement for old Approvals. I think of them as wrapper]]></description>
+				<content:encoded><![CDATA[<p>The Goal of this blog post is to demonstrate the power of workflows and how they can be incorporated into customizations we do going forward. Workflows are more than just replacement for old Approvals. I think of them as wrapper to the new Eventing Model but with extra steps where user can tweak the execution flow according to their specific needs.</p>
+<p>Microsoft has included lots of pre-built templates for Workflows. Here I am only interested in custom ones. So, let’s create a scenario we can follow to create our own Workflow.</p>
+<p><strong>Scenario:</strong> Email Validation<strong>.</strong> Use an external API and send our Emails there to check If the Server exist. This way we can avoid lots of fake / dummy emails.</p>
+<p>Now Email is entered in lots of locations in NAV such as User Card, Customer, Approval Setup etc. We would like our Workflow to work in all those areas with as much shared code as possible.</p>
+<p>Secondly, Since Workflows can be customized by the user, lets add an option where the user can choose if they want to either just warn the user when the email is invalid or completely Stop the user from entering an invalid email by throwing an error.</p>
+<p>The goal here is to not touch the base NAV code. That means we can’t edit any standard code unit, page or table so the custom code can remain standalone. Luckily using AL we have the ability to extend base pages and tables without doing any change in the base objects.</p>
+<p>Finally write the custom code in AL language using Visual Studio code and generate an extension for this functionality.</p>
+<p><strong>Steps:</strong></p>
+<p><strong>Create the Events.</strong></p>
+<ol>
+<li>We will follow the pattern laid out by Microsoft for custom events. In a new code unit, create new Functions called ‘ApiCustomerEmailValidationCode’ and ‘ApiUserEmailValidationCode’. Both contain no code except one single line returning the name of the functions in Uppercase as shown below.<img class="aligncenter size-full wp-image-255" src="./../../../wp-content/uploads/2017/11/1evw1.png" alt="" width="637" height="195" srcset="./../../../wp-content/uploads/2017/11/1evw1.png 637w, ./../../../wp-content/uploads/2017/11/1evw1-300x92.png 300w" sizes="(max-width: 637px) 100vw, 637px" /></li>
+<li>Next, we need to add these events to library. This step basically creates the entry in Workflow Events table so that users can see your events when they try to create a new workflow. Create a new subscriber function. Add the following code. For the example we are creating two events each for Customer Card and User Card email fields.<img class="aligncenter size-full wp-image-256" src="./../../../wp-content/uploads/2017/11/1evw2.png" alt="" width="1194" height="210" srcset="./../../../wp-content/uploads/2017/11/1evw2.png 1194w, ./../../../wp-content/uploads/2017/11/1evw2-300x53.png 300w, ./../../../wp-content/uploads/2017/11/1evw2-768x135.png 768w, ./../../../wp-content/uploads/2017/11/1evw2-1024x180.png 1024w" sizes="(max-width: 1194px) 100vw, 1194px" /></li>
+<li>Up until this point we added our Event to Library but we haven’t created a trigger through which system knows that our Event has occurred, and it should start the workflow and execute the response.</li>
+</ol>
+<p>To do the above, I created two subscriber functions and using the Eventing model (Don’t confuse the Eventing model with Workflow Events) I basically created a hook to the OnBeforeValidate Events of the Emails fields on these tables.<img class="aligncenter size-full wp-image-257" src="./../../../wp-content/uploads/2017/11/1evw3.png" alt="" width="1240" height="337" srcset="./../../../wp-content/uploads/2017/11/1evw3.png 1240w, ./../../../wp-content/uploads/2017/11/1evw3-300x82.png 300w, ./../../../wp-content/uploads/2017/11/1evw3-768x209.png 768w, ./../../../wp-content/uploads/2017/11/1evw3-1024x278.png 1024w" sizes="(max-width: 1240px) 100vw, 1240px" /></p>
+<p>&nbsp;</p>
+<ol start="4">
+<li>Now we have created the Events required for this use case. Let’s try them out before we go further.</li>
+</ol>
+<ul>
+<li>Build the extension and open Dynamics NAV (You can also try in the webclient). Search for workflows and open workflow page.</li>
+<li>Click on New to create a new Workflow.<img class="aligncenter wp-image-258 size-full" src="./../../../wp-content/uploads/2017/11/1evw4-e1510380572757.png" alt="" width="805" height="402" srcset="./../../../wp-content/uploads/2017/11/1evw4-e1510380572757.png 805w, ./../../../wp-content/uploads/2017/11/1evw4-e1510380572757-300x150.png 300w, ./../../../wp-content/uploads/2017/11/1evw4-e1510380572757-768x384.png 768w" sizes="(max-width: 805px) 100vw, 805px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Enter the details like below.<img class="aligncenter size-full wp-image-259" src="./../../../wp-content/uploads/2017/11/1evw5.png" alt="" width="776" height="434" srcset="./../../../wp-content/uploads/2017/11/1evw5.png 776w, ./../../../wp-content/uploads/2017/11/1evw5-300x168.png 300w, ./../../../wp-content/uploads/2017/11/1evw5-768x430.png 768w" sizes="(max-width: 776px) 100vw, 776px" /></li>
+<li>In the ‘When Event’ drop down, Select the Event we just created i.e. ‘Customer email field is changed’<img class="aligncenter size-full wp-image-260" src="./../../../wp-content/uploads/2017/11/1evw6.png" alt="" width="584" height="551" srcset="./../../../wp-content/uploads/2017/11/1evw6.png 584w, ./../../../wp-content/uploads/2017/11/1evw6-300x283.png 300w" sizes="(max-width: 584px) 100vw, 584px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Now you should have something like below.<img class="aligncenter size-full wp-image-261" src="./../../../wp-content/uploads/2017/11/1evw7.png" alt="" width="795" height="174" srcset="./../../../wp-content/uploads/2017/11/1evw7.png 795w, ./../../../wp-content/uploads/2017/11/1evw7-300x66.png 300w, ./../../../wp-content/uploads/2017/11/1evw7-768x168.png 768w" sizes="(max-width: 795px) 100vw, 795px" /></li>
+<li>In the select response, select ‘Show Message %1’.<img class="aligncenter size-full wp-image-262" src="./../../../wp-content/uploads/2017/11/1evw8.png" alt="" width="584" height="543" srcset="./../../../wp-content/uploads/2017/11/1evw8.png 584w, ./../../../wp-content/uploads/2017/11/1evw8-300x279.png 300w" sizes="(max-width: 584px) 100vw, 584px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Now Enter a message like shown below and Press OK.<img class="aligncenter size-full wp-image-263" src="./../../../wp-content/uploads/2017/11/1evw9.png" alt="" width="692" height="246" srcset="./../../../wp-content/uploads/2017/11/1evw9.png 692w, ./../../../wp-content/uploads/2017/11/1evw9-300x107.png 300w" sizes="(max-width: 692px) 100vw, 692px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Select the Enabled field.<img class="aligncenter size-full wp-image-264" src="./../../../wp-content/uploads/2017/11/1evw10.png" alt="" width="782" height="304" srcset="./../../../wp-content/uploads/2017/11/1evw10.png 782w, ./../../../wp-content/uploads/2017/11/1evw10-300x117.png 300w, ./../../../wp-content/uploads/2017/11/1evw10-768x299.png 768w" sizes="(max-width: 782px) 100vw, 782px" /></li>
+<li>Workflow Created. To check it, go to customer card and try changing the value of email. You will get a Prompt like this.<img class="aligncenter size-full wp-image-265" src="./../../../wp-content/uploads/2017/11/1evw11.png" alt="" width="816" height="374" srcset="./../../../wp-content/uploads/2017/11/1evw11.png 816w, ./../../../wp-content/uploads/2017/11/1evw11-300x138.png 300w, ./../../../wp-content/uploads/2017/11/1evw11-768x352.png 768w" sizes="(max-width: 816px) 100vw, 816px" /></li>
+</ul>
+<p>We have completed the first part of the blog post, we have created a custom event and tested it by triggering a Standard Response. In Next part, we will see how to create our own custom Responses.</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/11/11/custom-workflows-in-al-part-1-events/feed/index.html</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Extensions &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>Extensions &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Custom Workflows in AL &#8211; Part 2 Response</title>
+		<link>./../../../2017/12/09/custom-workflows-in-al-part-2-response/index.html</link>
+		<comments>./../../../2017/12/09/custom-workflows-in-al-part-2-response/index.html#comments</comments>
+		<pubDate>Sat, 09 Dec 2017 11:56:15 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[AL]]></category>
+		<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics NAV 2018]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Events]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[Response]]></category>
+		<category><![CDATA[VSCODE]]></category>
+		<category><![CDATA[Webclient]]></category>
+		<category><![CDATA[Workflows]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=281</guid>
+		<description><![CDATA[In the previous blog, we talked about how we can raise a custom Workflow Event in NAV using AL. Let’s see how to create custom Reponses for Workflows in the new AL environment. Steps: Create a new code unit. (in]]></description>
+				<content:encoded><![CDATA[<p>In the <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">previous</a> blog, we talked about how we can raise a custom Workflow Event in NAV using AL. Let’s see how to create custom Reponses for Workflows in the new AL environment.</p>
+<p>Steps:</p>
+<ol>
+<li>Create a new code unit. (in VSCode with Al Extension enabled, typing tcodeunit + ENTER key trigger a code snippet and creates a basic layout of a code unit)</li>
+<li>Create a new Procedure ‘ApiEmailValidationResponseCode’ with return type code.<img class="aligncenter size-full wp-image-282" src="./../../../wp-content/uploads/2017/12/2evw1.png" alt="" width="597" height="280" srcset="./../../../wp-content/uploads/2017/12/2evw1.png 597w, ./../../../wp-content/uploads/2017/12/2evw1-300x141.png 300w" sizes="(max-width: 597px) 100vw, 597px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="3">
+<li>Create a new Event subscriber for Codeunit Workflow Response handling , Event OnAddworkflowReponsetoLibrary<img class="aligncenter size-full wp-image-283" src="./../../../wp-content/uploads/2017/12/2evw2.png" alt="" width="1239" height="181" srcset="./../../../wp-content/uploads/2017/12/2evw2.png 1239w, ./../../../wp-content/uploads/2017/12/2evw2-300x44.png 300w, ./../../../wp-content/uploads/2017/12/2evw2-768x112.png 768w, ./../../../wp-content/uploads/2017/12/2evw2-1024x150.png 1024w" sizes="(max-width: 1239px) 100vw, 1239px" /></li>
+</ol>
+<p>Declare a variable of Workflow Response Handling codeunit in the procedure and call the    function AddResponsetoLibrary as shown above.</p>
+<p>For the Response option group Parameter, pass Group 50100. Response option group lets you add some user input that the user can choose when they select our Response. To do this follow the steps below.</p>
+<ol start="4">
+<li>We need to add a new custom field in a standard table “Workflow Step Argument”</li>
+</ol>
+<p>Since we are not touching base code, We can meet this requirement using the new type of objects introduced called TableExtension and PageExtension.</p>
+<p>Create a new object of type tableextension as shown below. The snippet to quickly create the layout is ‘ttableext’.<img class="aligncenter size-full wp-image-284" src="./../../../wp-content/uploads/2017/12/2evw3.png" alt="" width="729" height="312" srcset="./../../../wp-content/uploads/2017/12/2evw3.png 729w, ./../../../wp-content/uploads/2017/12/2evw3-300x128.png 300w" sizes="(max-width: 729px) 100vw, 729px" /></p>
+<ol start="5">
+<li>Similarly create a new page extension. This will allow you to add the newly created field from the table extension to the base page “Workflow Response Options”.<img class="aligncenter size-full wp-image-285" src="./../../../wp-content/uploads/2017/12/2evw4.png" alt="" width="748" height="558" srcset="./../../../wp-content/uploads/2017/12/2evw4.png 748w, ./../../../wp-content/uploads/2017/12/2evw4-300x224.png 300w" sizes="(max-width: 748px) 100vw, 748px" /></li>
+</ol>
+<p>This field also needs a Visible=&#8221;Response Option Group&#8221; = &#8216;GROUP 50100&#8217;; This property will make sure that our custom Response options will only be visible when the user selects our response from the available list.</p>
+<ol start="6">
+<li>Return to the Response Codeunit that we created in the beginning of this post.</li>
+<li>Create a new subscriber of codeunit &#8220;Workflow Response Handling&#8221;, Event &#8216;OnExecuteWorkflowResponse&#8217;.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-286" src="./../../../wp-content/uploads/2017/12/2evw5.png" alt="" width="1246" height="283" srcset="./../../../wp-content/uploads/2017/12/2evw5.png 1246w, ./../../../wp-content/uploads/2017/12/2evw5-300x68.png 300w, ./../../../wp-content/uploads/2017/12/2evw5-768x174.png 768w, ./../../../wp-content/uploads/2017/12/2evw5-1024x233.png 1024w" sizes="(max-width: 1246px) 100vw, 1246px" /></p>
+<p>As you can see, This pattern will remain the same for all your responses. The only change would be the Case ‘ApiEmailValidationResponseCode’. Everytime systems detects that your response is being triggered , it will run the function ‘ActualApiEmailValidationWFResponse’ function and pass the parameters to it.</p>
+<ol start="8">
+<li>Create a new procedure called ‘ActualApiEmailValidationWFResponse’. This is the one where you write your actual logic that you want to run every time your response is executed.<img class="aligncenter size-full wp-image-294" src="./../../../wp-content/uploads/2017/12/actualevw.png" alt="" width="1279" height="616" srcset="./../../../wp-content/uploads/2017/12/actualevw.png 1279w, ./../../../wp-content/uploads/2017/12/actualevw-300x144.png 300w, ./../../../wp-content/uploads/2017/12/actualevw-768x370.png 768w, ./../../../wp-content/uploads/2017/12/actualevw-1024x493.png 1024w" sizes="(max-width: 1279px) 100vw, 1279px" /></li>
+</ol>
+<p>This function basically checks the Variant Parameter and detects if the Variant is a customer RecRef or User RecRef. Depending on the what the Variant is , It will trigger the email validation api which I have created in a separate codeunit.</p>
+<ol start="9">
+<li>Create a new codeunit. Also create a new procedure within that called InitializeApi.</li>
+</ol>
+<p>Declare the variables as shown below. AL language now include native httpclient support and we do not need to declare dotnet variable anymore. It also comes packed with native Json support to read and write data to JSON.<img class="aligncenter size-full wp-image-288" src="./../../../wp-content/uploads/2017/12/2evw7.png" alt="" width="853" height="665" srcset="./../../../wp-content/uploads/2017/12/2evw7.png 853w, ./../../../wp-content/uploads/2017/12/2evw7-300x234.png 300w, ./../../../wp-content/uploads/2017/12/2evw7-768x599.png 768w" sizes="(max-width: 853px) 100vw, 853px" /></p>
+<p>I am using a free api to validate emails from <a href="https://mailboxlayer.com/">https://mailboxlayer.com/</a>. It supports receiving the email to check in the query of the URL. Please replace &lt;youraccesskey&gt; with what your own key which you will receive after registering for the free Api.</p>
+<p>The Api returns the result in JSON format. We are only interested in the smtp_check key since that is the one which checks if the Mail server belonging to the user provided email address actually exist on internet.</p>
+<p>&nbsp;</p>
+<p>Sample JSON Result:</p>
+<ol start="10">
+<li>
+<pre class="prettyprint lang-json" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">{
+
+ "email": "support@apilayer.com",
+
+ "did_you_mean": "",
+
+ "format_valid": true,
+
+ "mx_found": true,
+
+ "smtp_check": true,
+
+ "catch_all": false,
+
+ "role": true,
+
+ "disposable": false,
+
+ "free": false,
+
+ "score": 0.8
+
+}</pre>
+<p>And finally lets create the ShowResult Procedure which shows the output to the user based on the ValidationOption that user selects in the Response.<img class="aligncenter size-full wp-image-289" src="./../../../wp-content/uploads/2017/12/2evw8.png" alt="" width="775" height="349" srcset="./../../../wp-content/uploads/2017/12/2evw8.png 775w, ./../../../wp-content/uploads/2017/12/2evw8-300x135.png 300w, ./../../../wp-content/uploads/2017/12/2evw8-768x346.png 768w" sizes="(max-width: 775px) 100vw, 775px" /></li>
+</ol>
+<p>So, if in the ResponseOption, the Workflow creator selects ‘Error’ then user will be shown an error and won’t be allowed to enter a invalid email. But if the user selects warning then only a warning notification is shown.</p>
+<p>Press Ctrl+f5 to package all code in an extension and deploy to Application Server.</p>
+<p>Let’s see how it all works together with the custom Events we created in <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Part 1</a>.</p>
+<p>Demo:</p>
+<p>Create a new workflow as shown below. For the Event select the custom event we created in part 1 ’User Card Email field is changed’.<img class="aligncenter size-full wp-image-290" src="./../../../wp-content/uploads/2017/12/2evw9.png" alt="" width="1002" height="534" srcset="./../../../wp-content/uploads/2017/12/2evw9.png 1002w, ./../../../wp-content/uploads/2017/12/2evw9-300x160.png 300w, ./../../../wp-content/uploads/2017/12/2evw9-768x409.png 768w" sizes="(max-width: 1002px) 100vw, 1002px" /></p>
+<p>On the Response side , Select the custom response we created(‘Check if the format is valid and server actually exist’) and select the EVW_ValidationOption as ‘Error’ in the drop down.<img class="aligncenter size-full wp-image-291" src="./../../../wp-content/uploads/2017/12/2evw10.png" alt="" width="579" height="421" srcset="./../../../wp-content/uploads/2017/12/2evw10.png 579w, ./../../../wp-content/uploads/2017/12/2evw10-300x218.png 300w" sizes="(max-width: 579px) 100vw, 579px" /></p>
+<p>&nbsp;</p>
+<p>Press Ok and Click on the Enabled check box to enable the workflow. Workflow is created.</p>
+<p>Now Open User card and try to enter an invalid email address. You will receive an Error as shown below.</p>
+<p><img class="aligncenter wp-image-292 size-full" src="./../../../wp-content/uploads/2017/12/2evw11-e1512820711165.png" alt="" width="734" height="361" srcset="./../../../wp-content/uploads/2017/12/2evw11-e1512820711165.png 734w, ./../../../wp-content/uploads/2017/12/2evw11-e1512820711165-300x148.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></p>
+<p>In Case the email is fine User receives a success notification.</p>
+<p><img class="aligncenter size-full wp-image-293" src="./../../../wp-content/uploads/2017/12/2evw12.png" alt="" width="613" height="104" srcset="./../../../wp-content/uploads/2017/12/2evw12.png 613w, ./../../../wp-content/uploads/2017/12/2evw12-300x51.png 300w" sizes="(max-width: 613px) 100vw, 613px" /></p>
+<p>&nbsp;</p>
+<p>That’s it, we have created a custom event and custom response with user selectable response options in AL and created an Extension for the customization.</p>
+<p>Link to <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Part 1</a></p>
+<p>Download code <a href="https://drive.google.com/open?id=1_9UBhLKuJ2ruRHg84M51FGttnKbiztmn">GoogleDrive</a></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/12/09/custom-workflows-in-al-part-2-response/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Custom Workflows in AL &#8211; Part 1 &#8216;Events&#8217;</title>
+		<link>./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html</link>
+		<comments>./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html#respond</comments>
+		<pubDate>Sat, 11 Nov 2017 06:10:28 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[AL]]></category>
+		<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Visual Studio Code]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Events]]></category>
+		<category><![CDATA[Response]]></category>
+		<category><![CDATA[VSCODE]]></category>
+		<category><![CDATA[Workflows]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=254</guid>
+		<description><![CDATA[The Goal of this blog post is to demonstrate the power of workflows and how they can be incorporated into customizations we do going forward. Workflows are more than just replacement for old Approvals. I think of them as wrapper]]></description>
+				<content:encoded><![CDATA[<p>The Goal of this blog post is to demonstrate the power of workflows and how they can be incorporated into customizations we do going forward. Workflows are more than just replacement for old Approvals. I think of them as wrapper to the new Eventing Model but with extra steps where user can tweak the execution flow according to their specific needs.</p>
+<p>Microsoft has included lots of pre-built templates for Workflows. Here I am only interested in custom ones. So, let’s create a scenario we can follow to create our own Workflow.</p>
+<p><strong>Scenario:</strong> Email Validation<strong>.</strong> Use an external API and send our Emails there to check If the Server exist. This way we can avoid lots of fake / dummy emails.</p>
+<p>Now Email is entered in lots of locations in NAV such as User Card, Customer, Approval Setup etc. We would like our Workflow to work in all those areas with as much shared code as possible.</p>
+<p>Secondly, Since Workflows can be customized by the user, lets add an option where the user can choose if they want to either just warn the user when the email is invalid or completely Stop the user from entering an invalid email by throwing an error.</p>
+<p>The goal here is to not touch the base NAV code. That means we can’t edit any standard code unit, page or table so the custom code can remain standalone. Luckily using AL we have the ability to extend base pages and tables without doing any change in the base objects.</p>
+<p>Finally write the custom code in AL language using Visual Studio code and generate an extension for this functionality.</p>
+<p><strong>Steps:</strong></p>
+<p><strong>Create the Events.</strong></p>
+<ol>
+<li>We will follow the pattern laid out by Microsoft for custom events. In a new code unit, create new Functions called ‘ApiCustomerEmailValidationCode’ and ‘ApiUserEmailValidationCode’. Both contain no code except one single line returning the name of the functions in Uppercase as shown below.<img class="aligncenter size-full wp-image-255" src="./../../../wp-content/uploads/2017/11/1evw1.png" alt="" width="637" height="195" srcset="./../../../wp-content/uploads/2017/11/1evw1.png 637w, ./../../../wp-content/uploads/2017/11/1evw1-300x92.png 300w" sizes="(max-width: 637px) 100vw, 637px" /></li>
+<li>Next, we need to add these events to library. This step basically creates the entry in Workflow Events table so that users can see your events when they try to create a new workflow. Create a new subscriber function. Add the following code. For the example we are creating two events each for Customer Card and User Card email fields.<img class="aligncenter size-full wp-image-256" src="./../../../wp-content/uploads/2017/11/1evw2.png" alt="" width="1194" height="210" srcset="./../../../wp-content/uploads/2017/11/1evw2.png 1194w, ./../../../wp-content/uploads/2017/11/1evw2-300x53.png 300w, ./../../../wp-content/uploads/2017/11/1evw2-768x135.png 768w, ./../../../wp-content/uploads/2017/11/1evw2-1024x180.png 1024w" sizes="(max-width: 1194px) 100vw, 1194px" /></li>
+<li>Up until this point we added our Event to Library but we haven’t created a trigger through which system knows that our Event has occurred, and it should start the workflow and execute the response.</li>
+</ol>
+<p>To do the above, I created two subscriber functions and using the Eventing model (Don’t confuse the Eventing model with Workflow Events) I basically created a hook to the OnBeforeValidate Events of the Emails fields on these tables.<img class="aligncenter size-full wp-image-257" src="./../../../wp-content/uploads/2017/11/1evw3.png" alt="" width="1240" height="337" srcset="./../../../wp-content/uploads/2017/11/1evw3.png 1240w, ./../../../wp-content/uploads/2017/11/1evw3-300x82.png 300w, ./../../../wp-content/uploads/2017/11/1evw3-768x209.png 768w, ./../../../wp-content/uploads/2017/11/1evw3-1024x278.png 1024w" sizes="(max-width: 1240px) 100vw, 1240px" /></p>
+<p>&nbsp;</p>
+<ol start="4">
+<li>Now we have created the Events required for this use case. Let’s try them out before we go further.</li>
+</ol>
+<ul>
+<li>Build the extension and open Dynamics NAV (You can also try in the webclient). Search for workflows and open workflow page.</li>
+<li>Click on New to create a new Workflow.<img class="aligncenter wp-image-258 size-full" src="./../../../wp-content/uploads/2017/11/1evw4-e1510380572757.png" alt="" width="805" height="402" srcset="./../../../wp-content/uploads/2017/11/1evw4-e1510380572757.png 805w, ./../../../wp-content/uploads/2017/11/1evw4-e1510380572757-300x150.png 300w, ./../../../wp-content/uploads/2017/11/1evw4-e1510380572757-768x384.png 768w" sizes="(max-width: 805px) 100vw, 805px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Enter the details like below.<img class="aligncenter size-full wp-image-259" src="./../../../wp-content/uploads/2017/11/1evw5.png" alt="" width="776" height="434" srcset="./../../../wp-content/uploads/2017/11/1evw5.png 776w, ./../../../wp-content/uploads/2017/11/1evw5-300x168.png 300w, ./../../../wp-content/uploads/2017/11/1evw5-768x430.png 768w" sizes="(max-width: 776px) 100vw, 776px" /></li>
+<li>In the ‘When Event’ drop down, Select the Event we just created i.e. ‘Customer email field is changed’<img class="aligncenter size-full wp-image-260" src="./../../../wp-content/uploads/2017/11/1evw6.png" alt="" width="584" height="551" srcset="./../../../wp-content/uploads/2017/11/1evw6.png 584w, ./../../../wp-content/uploads/2017/11/1evw6-300x283.png 300w" sizes="(max-width: 584px) 100vw, 584px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Now you should have something like below.<img class="aligncenter size-full wp-image-261" src="./../../../wp-content/uploads/2017/11/1evw7.png" alt="" width="795" height="174" srcset="./../../../wp-content/uploads/2017/11/1evw7.png 795w, ./../../../wp-content/uploads/2017/11/1evw7-300x66.png 300w, ./../../../wp-content/uploads/2017/11/1evw7-768x168.png 768w" sizes="(max-width: 795px) 100vw, 795px" /></li>
+<li>In the select response, select ‘Show Message %1’.<img class="aligncenter size-full wp-image-262" src="./../../../wp-content/uploads/2017/11/1evw8.png" alt="" width="584" height="543" srcset="./../../../wp-content/uploads/2017/11/1evw8.png 584w, ./../../../wp-content/uploads/2017/11/1evw8-300x279.png 300w" sizes="(max-width: 584px) 100vw, 584px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Now Enter a message like shown below and Press OK.<img class="aligncenter size-full wp-image-263" src="./../../../wp-content/uploads/2017/11/1evw9.png" alt="" width="692" height="246" srcset="./../../../wp-content/uploads/2017/11/1evw9.png 692w, ./../../../wp-content/uploads/2017/11/1evw9-300x107.png 300w" sizes="(max-width: 692px) 100vw, 692px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Select the Enabled field.<img class="aligncenter size-full wp-image-264" src="./../../../wp-content/uploads/2017/11/1evw10.png" alt="" width="782" height="304" srcset="./../../../wp-content/uploads/2017/11/1evw10.png 782w, ./../../../wp-content/uploads/2017/11/1evw10-300x117.png 300w, ./../../../wp-content/uploads/2017/11/1evw10-768x299.png 768w" sizes="(max-width: 782px) 100vw, 782px" /></li>
+<li>Workflow Created. To check it, go to customer card and try changing the value of email. You will get a Prompt like this.<img class="aligncenter size-full wp-image-265" src="./../../../wp-content/uploads/2017/11/1evw11.png" alt="" width="816" height="374" srcset="./../../../wp-content/uploads/2017/11/1evw11.png 816w, ./../../../wp-content/uploads/2017/11/1evw11-300x138.png 300w, ./../../../wp-content/uploads/2017/11/1evw11-768x352.png 768w" sizes="(max-width: 816px) 100vw, 816px" /></li>
+</ul>
+<p>We have completed the first part of the blog post, we have created a custom event and tested it by triggering a Standard Response. In Next part, we will see how to create our own custom Responses.</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/11/11/custom-workflows-in-al-part-1-events/feed/index.html</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Build a PowerApp – Add Images Part2</title>
+		<link>./../../../2017/09/10/build-a-powerapp-add-images-part2/index.html</link>
+		<comments>./../../../2017/09/10/build-a-powerapp-add-images-part2/index.html#comments</comments>
+		<pubDate>Sun, 10 Sep 2017 17:16:44 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[powerapps]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=207</guid>
+		<description><![CDATA[This is the second part of the Build a PowerApp. In the last blog, I explained how you can create a simple app from a Odata connection. Link to Part 1 This part will focus on how we can sync]]></description>
+				<content:encoded><![CDATA[<p>This is the second part of the Build a PowerApp. In the last blog, I explained how you can create a simple app from a Odata connection. <a href="./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html">Link</a> to Part 1</p>
+<p>This part will focus on how we can sync Item Pictures from NAV to the PowerApps.</p>
+<p><strong>Limitation:</strong> Since NAV stores images in MediaSet/Media type we cannot pass them through Odata webservices (which is what the Dynamics NAV Connector uses).</p>
+<p><strong>Workaround:</strong> Convert NAV images to base64 and send them to image storage service. Capture the direct link of the images and store them in a field on Item table. Pass that field to PowerApp through Odata. PowerApp will then recognize the image URL and display the images.</p>
+<p><strong>Note:</strong> I have added a field in Item table and Item list page. You can avoid that by creating a new table and page with 1-1 relation with Item. Then either create a query combining both tables and expose as webservice or simply add another data source in PowerApp and handle the relation logic in there</p>
+<p>To do this I used Imgur API to store images from NAV. You need to register at imgur and create a new Application ID <a href="https://api.imgur.com/oauth2/addclient">here</a>. To know more about how to use the upload API, please refer to the docs <a href="https://api.imgur.com/">here</a>.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Create a new field in Item Table to capture Direct URLs of Images.<img class="aligncenter wp-image-242 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b.png" alt="" width="562" height="671" srcset="./../../../wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b.png 562w, ./../../../wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b-251x300.png 251w" sizes="(max-width: 562px) 100vw, 562px" /></li>
+</ol>
+<ol start="2">
+<li>Add the new field on Item Card.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-209" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/newfieldpage-e1505062520254.png" alt="" width="1179" height="323" srcset="./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254.png 1179w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-300x82.png 300w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-768x210.png 768w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-1024x281.png 1024w" sizes="(max-width: 1179px) 100vw, 1179px" /></p>
+<ol start="3">
+<li>Save the objects.</li>
+<li>Create a new codeunit or Import it after downloading from <a href="https://drive.google.com/open?id=0B65B-0VIQNG-Si1QdWZIekVKelk">here</a>. Create a new function.</li>
+</ol>
+<p>Make sure to replace the Client ID with your own client id that you will receive after registration</p>
+<p>CODE:<img class="aligncenter size-full wp-image-211" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur.png" alt="" width="1170" height="382" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur.png 1170w, ./../../../wp-content/uploads/2017/09/sendtoimgur-300x98.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-768x251.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-1024x334.png 1024w" sizes="(max-width: 1170px) 100vw, 1170px" /></p>
+<p><strong> </strong></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL PostImageToImgur(PictureInBase64 : BigText) : Text
+
+PostUrl := 'https://api.imgur.com/3/image';
+
+HttpClient := HttpClient.HttpClient();
+
+HttpClient.BaseAddress := Uri.Uri(PostUrl);
+
+stringcontent :=stringcontent.StringContent('{"image":"'+FORMAT(PictureInBase64)+'"}',encoding.UTF8,'application/json');
+
+HttpContent:=stringcontent;
+
+HttpClient.DefaultRequestHeaders.Add('Authorization','Client-ID &lt;Your Imgur client ID&gt;');
+
+HttpResponseMessage := HttpClient.PostAsync('',HttpContent).Result;
+
+HttpResponseMessage.EnsureSuccessStatusCode;
+
+result := HttpResponseMessage.Content.ReadAsStringAsync.Result;
+
+JObject := JObject.Parse(result.ToString);
+
+IF (JObject.GetValue('success').ToString)='True' THEN BEGIN
+
+Json := JObject.GetValue('data').ToString;
+
+JObject2 := JObject2.Parse(Json);
+
+EXIT(JObject2.GetValue('link').ToString);
+
+END ELSE
+
+EXIT('error');</pre>
+<p>Local Variables:</p>
+<p><img class="aligncenter size-full wp-image-210" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur-variables.png" alt="" width="1272" height="281" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur-variables.png 1272w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-300x66.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-768x170.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-1024x226.png 1024w" sizes="(max-width: 1272px) 100vw, 1272px" /></p>
+<p>Parameters<img class="aligncenter size-full wp-image-212" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur-parameters.png" alt="" width="1133" height="203" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur-parameters.png 1133w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-300x54.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-768x138.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-1024x183.png 1024w" sizes="(max-width: 1133px) 100vw, 1133px" /></p>
+<p>Return Value</p>
+<p><img class="aligncenter size-full wp-image-213" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sentoimgurreturn.png" alt="" width="532" height="203" srcset="./../../../wp-content/uploads/2017/09/sentoimgurreturn.png 532w, ./../../../wp-content/uploads/2017/09/sentoimgurreturn-300x114.png 300w" sizes="(max-width: 532px) 100vw, 532px" /></p>
+<ol start="5">
+<li>Create two subscribers functions to handle User uploading a image to Item card or Taking an image by mobile device.</li>
+</ol>
+<p>&nbsp;</p>
+<p>Code: <img class="aligncenter size-full wp-image-215" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/subs.png" alt="" width="786" height="611" srcset="./../../../wp-content/uploads/2017/09/subs.png 786w, ./../../../wp-content/uploads/2017/09/subs-300x233.png 300w, ./../../../wp-content/uploads/2017/09/subs-768x597.png 768w" sizes="(max-width: 786px) 100vw, 786px" /></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">[EventSubscriber] ItemPictureOnActionImport(VAR Rec : Record Item)
+
+ IF (Rec.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ CLEAR(BigPictureText);
+
+ TempBlob.INIT;
+
+ MediaGuid:=Rec.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Rec."Picture url":=PostImageToImgur(BigPictureText);
+
+ Rec.MODIFY;
+
+ MESSAGE('Sent to Imgur');
+
+ END
+
+
+
+[EventSubscriber] ItemPictureOnActionTake(VAR Rec : Record Item)
+
+ IF (Rec.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ CLEAR(BigPictureText);
+
+ TempBlob.INIT;
+
+ MediaGuid:=Rec.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Rec."Picture url":=PostImageToImgur(BigPictureText);
+
+ Rec.MODIFY;
+
+ MESSAGE('Sent to Imgur');
+
+ END</pre>
+<p>Properties:</p>
+<p><strong>ItemPictureOnActionImport</strong></p>
+<p><img class="aligncenter size-full wp-image-222" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/subp1.png" alt="" width="515" height="240" srcset="./../../../wp-content/uploads/2017/09/subp1.png 515w, ./../../../wp-content/uploads/2017/09/subp1-300x140.png 300w" sizes="(max-width: 515px) 100vw, 515px" /></p>
+<p><strong>ItemPictureOnActionTake</strong></p>
+<p><img class="aligncenter size-full wp-image-221" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sub-p2.png" alt="" width="505" height="210" srcset="./../../../wp-content/uploads/2017/09/sub-p2.png 505w, ./../../../wp-content/uploads/2017/09/sub-p2-300x125.png 300w" sizes="(max-width: 505px) 100vw, 505px" /></p>
+<p>&nbsp;</p>
+<p>Variables (same for both subscribers)</p>
+<p><img class="aligncenter size-full wp-image-220" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sub-vars.png" alt="" width="1294" height="191" srcset="./../../../wp-content/uploads/2017/09/sub-vars.png 1294w, ./../../../wp-content/uploads/2017/09/sub-vars-300x44.png 300w, ./../../../wp-content/uploads/2017/09/sub-vars-768x113.png 768w, ./../../../wp-content/uploads/2017/09/sub-vars-1024x151.png 1024w" sizes="(max-width: 1294px) 100vw, 1294px" /></p>
+<ol start="6">
+<li>So we have handled new pictures that will be uploaded by users but what about the pictures that are already there.</li>
+</ol>
+<p>For that you can run a bulk function once for your DB.</p>
+<p>Code:<img class="aligncenter size-full wp-image-219" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/bulk.png" alt="" width="740" height="494" srcset="./../../../wp-content/uploads/2017/09/bulk.png 740w, ./../../../wp-content/uploads/2017/09/bulk-300x200.png 300w, ./../../../wp-content/uploads/2017/09/bulk-120x80.png 120w" sizes="(max-width: 740px) 100vw, 740px" /></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL BulkItemPictureUpload()
+
+IF Item.FINDFIRST THEN
+
+ REPEAT
+
+ IF (Item.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ TempBlob.INIT;
+
+ MediaGuid:=Item.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Item."Picture url":=PostImageToImgur(BigPictureText);
+
+ Item.MODIFY;
+
+ CLEAR(BigPictureText);
+
+ END
+
+ UNTIL
+
+ Item.NEXT=0;
+
+ MESSAGE('completed');
+
+</pre>
+<p>Now all your images are uploaded to imgur and can be shown in PowerApps</p>
+<p>&nbsp;</p>
+<ol start="7">
+<li>Open PowerApps web portal again. Refresh the data source so that Picture URL get populated.<img class="aligncenter size-full wp-image-223" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/refresh.png" alt="" width="436" height="425" srcset="./../../../wp-content/uploads/2017/09/refresh.png 436w, ./../../../wp-content/uploads/2017/09/refresh-300x292.png 300w" sizes="(max-width: 436px) 100vw, 436px" /></li>
+<li>Select an image and change data property to Picture_url</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-218" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/pa1.png" alt="" width="853" height="497" srcset="./../../../wp-content/uploads/2017/09/pa1.png 853w, ./../../../wp-content/uploads/2017/09/pa1-300x175.png 300w, ./../../../wp-content/uploads/2017/09/pa1-768x447.png 768w" sizes="(max-width: 853px) 100vw, 853px" /><img class="aligncenter size-full wp-image-217" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/pa2.png" alt="" width="853" height="484" srcset="./../../../wp-content/uploads/2017/09/pa2.png 853w, ./../../../wp-content/uploads/2017/09/pa2-300x170.png 300w, ./../../../wp-content/uploads/2017/09/pa2-768x436.png 768w" sizes="(max-width: 853px) 100vw, 853px" /></p>
+<ol start="9">
+<li>Pictures will be automatically populated.</li>
+<li>The App is created with Pictures from NAV.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-224" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/phone.png" alt="" width="349" height="693" srcset="./../../../wp-content/uploads/2017/09/phone.png 349w, ./../../../wp-content/uploads/2017/09/phone-151x300.png 151w" sizes="(max-width: 349px) 100vw, 349px" /></p>
+<p>In an upcoming blog, I will try and see if we can make this integration two way. Adding ability to edit item details in the app which will sync back to NAV.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/09/10/build-a-powerapp-add-images-part2/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>View code of Extension Objects in RTC</title>
+		<link>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/index.html</link>
+		<comments>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/index.html#comments</comments>
+		<pubDate>Tue, 18 Jul 2017 05:23:40 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=164</guid>
+		<description><![CDATA[If you have some experience working with NAV extensions, you would know that once an extension is installed for a tenant you cannot see the objects in Developer environment. NAV stores these objects in table 2000000150 (Nav App Object Metadata).]]></description>
+				<content:encoded><![CDATA[<p>If you have some experience working with NAV extensions, you would know that once an extension is installed for a tenant you cannot see the objects in Developer environment. NAV stores these objects in table 2000000150 (Nav App Object Metadata). Using the way from my previous blog, I was able to modify the page from that blog to also show objects of extensions. Check it out <a href="https://ctrlshiftf4.com/2017/07/02/display-cal-and-c-code-of-a-object-in-rtc/" target="_blank" rel="noopener noreferrer">here.</a></p>
+<p>&nbsp;</p>
+<p>You can download the objects for this demo from <a href="https://drive.google.com/open?id=0B65B-0VIQNG-dDBxU19hdGphY2s" target="_blank" rel="noopener noreferrer">here.</a>(Google Drive)</p>
+<p>&nbsp;</p>
+<p><strong>Usage and Screenshots</strong></p>
+<ol>
+<li>Import the objects and Open RTCcode1 (Page 50502)</li>
+</ol>
+<p>2.Select required Code Type and the object you want to see the code of from ‘NavAppObjectList’ subpage.</p>
+<p>3. Press GetCode Action</p>
+<p><img class="alignnone size-full wp-image-165" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/called-from.png" alt="" width="942" height="588" srcset="./../../../wp-content/uploads/2017/07/called-from.png 942w, ./../../../wp-content/uploads/2017/07/called-from-300x187.png 300w, ./../../../wp-content/uploads/2017/07/called-from-768x479.png 768w" sizes="(max-width: 942px) 100vw, 942px" /></p>
+<p>Code of that object will be displayed in ‘Code’ control</p>
+<p><img class="alignnone size-full wp-image-166" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/code.png" alt="" width="1031" height="547" srcset="./../../../wp-content/uploads/2017/07/code.png 1031w, ./../../../wp-content/uploads/2017/07/code-300x159.png 300w, ./../../../wp-content/uploads/2017/07/code-768x407.png 768w, ./../../../wp-content/uploads/2017/07/code-1024x543.png 1024w" sizes="(max-width: 1031px) 100vw, 1031px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

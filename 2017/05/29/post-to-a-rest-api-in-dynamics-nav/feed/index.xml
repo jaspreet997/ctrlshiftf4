@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Post to a rest api in Dynamics NAV</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>By: Bart</title>
+		<link>./../index.html#comment-136</link>
+		<dc:creator><![CDATA[Bart]]></dc:creator>
+		<pubDate>Thu, 18 Oct 2018 11:55:30 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-136</guid>
+		<description><![CDATA[Hi,
+I have a problem running CU 1297 on NAS server. My integration works perfectly fine  on the client version (no errors, no dialog windows, nothing), but whenever I run it on NAS it complains about client callbacks for all  dotnet variables CU 1297 is using. All of them are already set up not to run on client (as suggested in some forums) but that is not solving the problem. Is it possible to run CU1297 on NAS as all, and if not, is there any alternative to it which would work on NAS?]]></description>
+		<content:encoded><![CDATA[<p>Hi,<br />
+I have a problem running CU 1297 on NAS server. My integration works perfectly fine  on the client version (no errors, no dialog windows, nothing), but whenever I run it on NAS it complains about client callbacks for all  dotnet variables CU 1297 is using. All of them are already set up not to run on client (as suggested in some forums) but that is not solving the problem. Is it possible to run CU1297 on NAS as all, and if not, is there any alternative to it which would work on NAS?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Prakash Kumar</title>
+		<link>./../index.html#comment-125</link>
+		<dc:creator><![CDATA[Prakash Kumar]]></dc:creator>
+		<pubDate>Fri, 27 Jul 2018 16:38:46 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-125</guid>
+		<description><![CDATA[Hi Jaspreet,
+
+These are very excellent articles and it helps alot, but I am stuck at a point where I am trying to call a URL which uses SSO(single sign on) and there it asks for credentials, even though I have supplied the correct credentials to the HttpWebRequest.Credential property still getting issue of 401 un authorized error.
+
+Can you please help in my case.
+
+Regards,
+Prakash]]></description>
+		<content:encoded><![CDATA[<p>Hi Jaspreet,</p>
+<p>These are very excellent articles and it helps alot, but I am stuck at a point where I am trying to call a URL which uses SSO(single sign on) and there it asks for credentials, even though I have supplied the correct credentials to the HttpWebRequest.Credential property still getting issue of 401 un authorized error.</p>
+<p>Can you please help in my case.</p>
+<p>Regards,<br />
+Prakash</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: jaspreet</title>
+		<link>./../index.html#comment-103</link>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+		<pubDate>Wed, 24 Jan 2018 04:30:02 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-103</guid>
+		<description><![CDATA[Hi Donah, 
+Nav 2017 already has the .dll included in the program files location. But downloading ensures you have the latest version.]]></description>
+		<content:encoded><![CDATA[<p>Hi Donah,<br />
+Nav 2017 already has the .dll included in the program files location. But downloading ensures you have the latest version.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Donah</title>
+		<link>./../index.html#comment-102</link>
+		<dc:creator><![CDATA[Donah]]></dc:creator>
+		<pubDate>Wed, 24 Jan 2018 04:26:06 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-102</guid>
+		<description><![CDATA[Solved. I was able to download the Newtonsoft.Json dll and include it in the program data dll.
+Thanks]]></description>
+		<content:encoded><![CDATA[<p>Solved. I was able to download the Newtonsoft.Json dll and include it in the program data dll.<br />
+Thanks</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Donah</title>
+		<link>./../index.html#comment-101</link>
+		<dc:creator><![CDATA[Donah]]></dc:creator>
+		<pubDate>Wed, 24 Jan 2018 04:00:51 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-101</guid>
+		<description><![CDATA[Thanks for this post, i was trying to create a variable for Json Object. i got this error 
+
+Could not load type Newtonsoft.Json.Linq.Jobject.&#039;Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed&#039;. 
+
+What can i do?
+
+Thanks]]></description>
+		<content:encoded><![CDATA[<p>Thanks for this post, i was trying to create a variable for Json Object. i got this error </p>
+<p>Could not load type Newtonsoft.Json.Linq.Jobject.&#8217;Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed&#8217;. </p>
+<p>What can i do?</p>
+<p>Thanks</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: jaspreet</title>
+		<link>./../index.html#comment-74</link>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+		<pubDate>Fri, 24 Nov 2017 08:21:02 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-74</guid>
+		<description><![CDATA[Can you mail me the txt file of your code (find it in my Contact me page).
+I will have a look and see if I can find something
+
+Version should not matter]]></description>
+		<content:encoded><![CDATA[<p>Can you mail me the txt file of your code (find it in my Contact me page).<br />
+I will have a look and see if I can find something</p>
+<p>Version should not matter</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kenneth</title>
+		<link>./../index.html#comment-73</link>
+		<dc:creator><![CDATA[Kenneth]]></dc:creator>
+		<pubDate>Fri, 24 Nov 2017 07:59:20 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-73</guid>
+		<description><![CDATA[Okay, Update! I&#039;ve downgradet newtonsoft to 6.0.1 and now i get a new error:
+A DotNet variable has not been instantiated. Attempting to call Tostring in CodeUnit (mycodeunitname): InitializeHttpPost. 
+I know what it means.. but why? :D 
+I&#039;m assuming that it&#039;s the  MESSAGE(JObject.GetValue(&#039;job&#039;).ToString). 
+I&#039;ve change &#039;job&#039; to &#039;pdf&#039; since that the json property name i want the value of. 
+
+
+I&#039;m sry for the frequest questions and i thank you for your time. 
+Please feel free to remove all my question so your blog dosn&#039;t look all messy :)]]></description>
+		<content:encoded><![CDATA[<p>Okay, Update! I&#8217;ve downgradet newtonsoft to 6.0.1 and now i get a new error:<br />
+A DotNet variable has not been instantiated. Attempting to call Tostring in CodeUnit (mycodeunitname): InitializeHttpPost.<br />
+I know what it means.. but why? 😀<br />
+I&#8217;m assuming that it&#8217;s the  MESSAGE(JObject.GetValue(&#8216;job&#8217;).ToString).<br />
+I&#8217;ve change &#8216;job&#8217; to &#8216;pdf&#8217; since that the json property name i want the value of. </p>
+<p>I&#8217;m sry for the frequest questions and i thank you for your time.<br />
+Please feel free to remove all my question so your blog dosn&#8217;t look all messy 🙂</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kenneth</title>
+		<link>./../index.html#comment-72</link>
+		<dc:creator><![CDATA[Kenneth]]></dc:creator>
+		<pubDate>Fri, 24 Nov 2017 07:21:23 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-72</guid>
+		<description><![CDATA[Well okay.. I&#039;ve changes nothing and now it goes through. 
+I do get an error on the Newtonesoft.json.dll.
+And I&#039;ve tried both a .Net 4.5 and 4.0 version. 
+It says: Could Not Load an instance of the following .NET Framework object: Newtonesoft.jon.dll version 10.0.0.0... and so on.]]></description>
+		<content:encoded><![CDATA[<p>Well okay.. I&#8217;ve changes nothing and now it goes through.<br />
+I do get an error on the Newtonesoft.json.dll.<br />
+And I&#8217;ve tried both a .Net 4.5 and 4.0 version.<br />
+It says: Could Not Load an instance of the following .NET Framework object: Newtonesoft.jon.dll version 10.0.0.0&#8230; and so on.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: jaspreet</title>
+		<link>./../index.html#comment-71</link>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+		<pubDate>Fri, 24 Nov 2017 01:08:42 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-71</guid>
+		<description><![CDATA[If you are talking about the response then you already get it in BLOB so you are fine using READASTEXT.
+
+If you are talking about the body that you will be posting to the api and want to post more than just text, You can.
+In the HttpWebRequest codeunit there are other AddBody functions where you can even post a BLOB to the api.]]></description>
+		<content:encoded><![CDATA[<p>If you are talking about the response then you already get it in BLOB so you are fine using READASTEXT.</p>
+<p>If you are talking about the body that you will be posting to the api and want to post more than just text, You can.<br />
+In the HttpWebRequest codeunit there are other AddBody functions where you can even post a BLOB to the api.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kenneth</title>
+		<link>./../index.html#comment-70</link>
+		<dc:creator><![CDATA[Kenneth]]></dc:creator>
+		<pubDate>Thu, 23 Nov 2017 18:39:38 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-70</guid>
+		<description><![CDATA[Thx for the fast reply. 
+Let me try to explain. I think maybe i don&#039;t understand the code. 
+I POST body.
+This gives me an answer with a 8000 lenght text.
+Where does the code fail? I know it&#039;s because it&#039;s to big, and BIGTEXT would fix this.
+But what do i change to make sure that i&#039;m able to get the response into a BIGTEXT object or storage instead of text (which is to small to handle 8k)?]]></description>
+		<content:encoded><![CDATA[<p>Thx for the fast reply.<br />
+Let me try to explain. I think maybe i don&#8217;t understand the code.<br />
+I POST body.<br />
+This gives me an answer with a 8000 lenght text.<br />
+Where does the code fail? I know it&#8217;s because it&#8217;s to big, and BIGTEXT would fix this.<br />
+But what do i change to make sure that i&#8217;m able to get the response into a BIGTEXT object or storage instead of text (which is to small to handle 8k)?</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Display CAL and C# code of a object in RTC</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>By: jaspreet</title>
+		<link>./../index.html#comment-8</link>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+		<pubDate>Tue, 15 Aug 2017 10:42:21 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=141#comment-8</guid>
+		<description><![CDATA[Yeah and this can also help us to check code of objects from published extensions which are not visible in Developer Enviroment.]]></description>
+		<content:encoded><![CDATA[<p>Yeah and this can also help us to check code of objects from published extensions which are not visible in Developer Enviroment.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Dadi Karason</title>
+		<link>./../index.html#comment-7</link>
+		<dc:creator><![CDATA[Dadi Karason]]></dc:creator>
+		<pubDate>Fri, 11 Aug 2017 15:21:38 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=141#comment-7</guid>
+		<description><![CDATA[Nice. I knew you could access the C# code from the %programdata%\Microsoft folders but this is more convenient.]]></description>
+		<content:encoded><![CDATA[<p>Nice. I knew you could access the C# code from the %programdata%\Microsoft folders but this is more convenient.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: View code of Extension Objects in RTC &#8211; Jaspreet Singh</title>
+		<link>./../index.html#comment-6</link>
+		<dc:creator><![CDATA[View code of Extension Objects in RTC &#8211; Jaspreet Singh]]></dc:creator>
+		<pubDate>Tue, 18 Jul 2017 05:23:43 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=141#comment-6</guid>
+		<description><![CDATA[[&#8230;] If you have some experience working with NAV extensions, you would know that once an extension is installed for a tenant you cannot see the objects in Developer environment. NAV stores these objects in table 2000000150 (Nav App Object Metadata). Using the way from my previous blog, I was able to modify the page from that blog to also show objects of extensions. Check it out here. [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] If you have some experience working with NAV extensions, you would know that once an extension is installed for a tenant you cannot see the objects in Developer environment. NAV stores these objects in table 2000000150 (Nav App Object Metadata). Using the way from my previous blog, I was able to modify the page from that blog to also show objects of extensions. Check it out here. [&#8230;]</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

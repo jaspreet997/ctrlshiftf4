@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Extensions &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>Extensions &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Custom Workflows in AL &#8211; Part 2 Response</title>
+		<link>./../../../2017/12/09/custom-workflows-in-al-part-2-response/index.html</link>
+		<comments>./../../../2017/12/09/custom-workflows-in-al-part-2-response/index.html#comments</comments>
+		<pubDate>Sat, 09 Dec 2017 11:56:15 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[AL]]></category>
+		<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics NAV 2018]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Events]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[Response]]></category>
+		<category><![CDATA[VSCODE]]></category>
+		<category><![CDATA[Webclient]]></category>
+		<category><![CDATA[Workflows]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=281</guid>
+		<description><![CDATA[In the previous blog, we talked about how we can raise a custom Workflow Event in NAV using AL. Let’s see how to create custom Reponses for Workflows in the new AL environment. Steps: Create a new code unit. (in]]></description>
+				<content:encoded><![CDATA[<p>In the <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">previous</a> blog, we talked about how we can raise a custom Workflow Event in NAV using AL. Let’s see how to create custom Reponses for Workflows in the new AL environment.</p>
+<p>Steps:</p>
+<ol>
+<li>Create a new code unit. (in VSCode with Al Extension enabled, typing tcodeunit + ENTER key trigger a code snippet and creates a basic layout of a code unit)</li>
+<li>Create a new Procedure ‘ApiEmailValidationResponseCode’ with return type code.<img class="aligncenter size-full wp-image-282" src="./../../../wp-content/uploads/2017/12/2evw1.png" alt="" width="597" height="280" srcset="./../../../wp-content/uploads/2017/12/2evw1.png 597w, ./../../../wp-content/uploads/2017/12/2evw1-300x141.png 300w" sizes="(max-width: 597px) 100vw, 597px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="3">
+<li>Create a new Event subscriber for Codeunit Workflow Response handling , Event OnAddworkflowReponsetoLibrary<img class="aligncenter size-full wp-image-283" src="./../../../wp-content/uploads/2017/12/2evw2.png" alt="" width="1239" height="181" srcset="./../../../wp-content/uploads/2017/12/2evw2.png 1239w, ./../../../wp-content/uploads/2017/12/2evw2-300x44.png 300w, ./../../../wp-content/uploads/2017/12/2evw2-768x112.png 768w, ./../../../wp-content/uploads/2017/12/2evw2-1024x150.png 1024w" sizes="(max-width: 1239px) 100vw, 1239px" /></li>
+</ol>
+<p>Declare a variable of Workflow Response Handling codeunit in the procedure and call the    function AddResponsetoLibrary as shown above.</p>
+<p>For the Response option group Parameter, pass Group 50100. Response option group lets you add some user input that the user can choose when they select our Response. To do this follow the steps below.</p>
+<ol start="4">
+<li>We need to add a new custom field in a standard table “Workflow Step Argument”</li>
+</ol>
+<p>Since we are not touching base code, We can meet this requirement using the new type of objects introduced called TableExtension and PageExtension.</p>
+<p>Create a new object of type tableextension as shown below. The snippet to quickly create the layout is ‘ttableext’.<img class="aligncenter size-full wp-image-284" src="./../../../wp-content/uploads/2017/12/2evw3.png" alt="" width="729" height="312" srcset="./../../../wp-content/uploads/2017/12/2evw3.png 729w, ./../../../wp-content/uploads/2017/12/2evw3-300x128.png 300w" sizes="(max-width: 729px) 100vw, 729px" /></p>
+<ol start="5">
+<li>Similarly create a new page extension. This will allow you to add the newly created field from the table extension to the base page “Workflow Response Options”.<img class="aligncenter size-full wp-image-285" src="./../../../wp-content/uploads/2017/12/2evw4.png" alt="" width="748" height="558" srcset="./../../../wp-content/uploads/2017/12/2evw4.png 748w, ./../../../wp-content/uploads/2017/12/2evw4-300x224.png 300w" sizes="(max-width: 748px) 100vw, 748px" /></li>
+</ol>
+<p>This field also needs a Visible=&#8221;Response Option Group&#8221; = &#8216;GROUP 50100&#8217;; This property will make sure that our custom Response options will only be visible when the user selects our response from the available list.</p>
+<ol start="6">
+<li>Return to the Response Codeunit that we created in the beginning of this post.</li>
+<li>Create a new subscriber of codeunit &#8220;Workflow Response Handling&#8221;, Event &#8216;OnExecuteWorkflowResponse&#8217;.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-286" src="./../../../wp-content/uploads/2017/12/2evw5.png" alt="" width="1246" height="283" srcset="./../../../wp-content/uploads/2017/12/2evw5.png 1246w, ./../../../wp-content/uploads/2017/12/2evw5-300x68.png 300w, ./../../../wp-content/uploads/2017/12/2evw5-768x174.png 768w, ./../../../wp-content/uploads/2017/12/2evw5-1024x233.png 1024w" sizes="(max-width: 1246px) 100vw, 1246px" /></p>
+<p>As you can see, This pattern will remain the same for all your responses. The only change would be the Case ‘ApiEmailValidationResponseCode’. Everytime systems detects that your response is being triggered , it will run the function ‘ActualApiEmailValidationWFResponse’ function and pass the parameters to it.</p>
+<ol start="8">
+<li>Create a new procedure called ‘ActualApiEmailValidationWFResponse’. This is the one where you write your actual logic that you want to run every time your response is executed.<img class="aligncenter size-full wp-image-294" src="./../../../wp-content/uploads/2017/12/actualevw.png" alt="" width="1279" height="616" srcset="./../../../wp-content/uploads/2017/12/actualevw.png 1279w, ./../../../wp-content/uploads/2017/12/actualevw-300x144.png 300w, ./../../../wp-content/uploads/2017/12/actualevw-768x370.png 768w, ./../../../wp-content/uploads/2017/12/actualevw-1024x493.png 1024w" sizes="(max-width: 1279px) 100vw, 1279px" /></li>
+</ol>
+<p>This function basically checks the Variant Parameter and detects if the Variant is a customer RecRef or User RecRef. Depending on the what the Variant is , It will trigger the email validation api which I have created in a separate codeunit.</p>
+<ol start="9">
+<li>Create a new codeunit. Also create a new procedure within that called InitializeApi.</li>
+</ol>
+<p>Declare the variables as shown below. AL language now include native httpclient support and we do not need to declare dotnet variable anymore. It also comes packed with native Json support to read and write data to JSON.<img class="aligncenter size-full wp-image-288" src="./../../../wp-content/uploads/2017/12/2evw7.png" alt="" width="853" height="665" srcset="./../../../wp-content/uploads/2017/12/2evw7.png 853w, ./../../../wp-content/uploads/2017/12/2evw7-300x234.png 300w, ./../../../wp-content/uploads/2017/12/2evw7-768x599.png 768w" sizes="(max-width: 853px) 100vw, 853px" /></p>
+<p>I am using a free api to validate emails from <a href="https://mailboxlayer.com/">https://mailboxlayer.com/</a>. It supports receiving the email to check in the query of the URL. Please replace &lt;youraccesskey&gt; with what your own key which you will receive after registering for the free Api.</p>
+<p>The Api returns the result in JSON format. We are only interested in the smtp_check key since that is the one which checks if the Mail server belonging to the user provided email address actually exist on internet.</p>
+<p>&nbsp;</p>
+<p>Sample JSON Result:</p>
+<ol start="10">
+<li>
+<pre class="prettyprint lang-json" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">{
+
+ "email": "support@apilayer.com",
+
+ "did_you_mean": "",
+
+ "format_valid": true,
+
+ "mx_found": true,
+
+ "smtp_check": true,
+
+ "catch_all": false,
+
+ "role": true,
+
+ "disposable": false,
+
+ "free": false,
+
+ "score": 0.8
+
+}</pre>
+<p>And finally lets create the ShowResult Procedure which shows the output to the user based on the ValidationOption that user selects in the Response.<img class="aligncenter size-full wp-image-289" src="./../../../wp-content/uploads/2017/12/2evw8.png" alt="" width="775" height="349" srcset="./../../../wp-content/uploads/2017/12/2evw8.png 775w, ./../../../wp-content/uploads/2017/12/2evw8-300x135.png 300w, ./../../../wp-content/uploads/2017/12/2evw8-768x346.png 768w" sizes="(max-width: 775px) 100vw, 775px" /></li>
+</ol>
+<p>So, if in the ResponseOption, the Workflow creator selects ‘Error’ then user will be shown an error and won’t be allowed to enter a invalid email. But if the user selects warning then only a warning notification is shown.</p>
+<p>Press Ctrl+f5 to package all code in an extension and deploy to Application Server.</p>
+<p>Let’s see how it all works together with the custom Events we created in <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Part 1</a>.</p>
+<p>Demo:</p>
+<p>Create a new workflow as shown below. For the Event select the custom event we created in part 1 ’User Card Email field is changed’.<img class="aligncenter size-full wp-image-290" src="./../../../wp-content/uploads/2017/12/2evw9.png" alt="" width="1002" height="534" srcset="./../../../wp-content/uploads/2017/12/2evw9.png 1002w, ./../../../wp-content/uploads/2017/12/2evw9-300x160.png 300w, ./../../../wp-content/uploads/2017/12/2evw9-768x409.png 768w" sizes="(max-width: 1002px) 100vw, 1002px" /></p>
+<p>On the Response side , Select the custom response we created(‘Check if the format is valid and server actually exist’) and select the EVW_ValidationOption as ‘Error’ in the drop down.<img class="aligncenter size-full wp-image-291" src="./../../../wp-content/uploads/2017/12/2evw10.png" alt="" width="579" height="421" srcset="./../../../wp-content/uploads/2017/12/2evw10.png 579w, ./../../../wp-content/uploads/2017/12/2evw10-300x218.png 300w" sizes="(max-width: 579px) 100vw, 579px" /></p>
+<p>&nbsp;</p>
+<p>Press Ok and Click on the Enabled check box to enable the workflow. Workflow is created.</p>
+<p>Now Open User card and try to enter an invalid email address. You will receive an Error as shown below.</p>
+<p><img class="aligncenter wp-image-292 size-full" src="./../../../wp-content/uploads/2017/12/2evw11-e1512820711165.png" alt="" width="734" height="361" srcset="./../../../wp-content/uploads/2017/12/2evw11-e1512820711165.png 734w, ./../../../wp-content/uploads/2017/12/2evw11-e1512820711165-300x148.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></p>
+<p>In Case the email is fine User receives a success notification.</p>
+<p><img class="aligncenter size-full wp-image-293" src="./../../../wp-content/uploads/2017/12/2evw12.png" alt="" width="613" height="104" srcset="./../../../wp-content/uploads/2017/12/2evw12.png 613w, ./../../../wp-content/uploads/2017/12/2evw12-300x51.png 300w" sizes="(max-width: 613px) 100vw, 613px" /></p>
+<p>&nbsp;</p>
+<p>That’s it, we have created a custom event and custom response with user selectable response options in AL and created an Extension for the customization.</p>
+<p>Link to <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Part 1</a></p>
+<p>Download code <a href="https://drive.google.com/open?id=1_9UBhLKuJ2ruRHg84M51FGttnKbiztmn">GoogleDrive</a></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/12/09/custom-workflows-in-al-part-2-response/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Multiple webclients on one Server</title>
+		<link>./../../../2017/08/27/multiple-webclients-on-one-server/index.html</link>
+		<comments>./../../../2017/08/27/multiple-webclients-on-one-server/index.html#respond</comments>
+		<pubDate>Sun, 27 Aug 2017 16:30:32 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[Webclient]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=181</guid>
+		<description><![CDATA[While installing NAV, It automatically sets up a Webclient Instance as well But it doesn’t do the same when we create a new separate Instance. To have multiple webclients we need to set them up manually. Identify the instance for]]></description>
+				<content:encoded><![CDATA[<p>While installing NAV, It automatically sets up a Webclient Instance as well But it doesn’t do the same when we create a new separate Instance. To have multiple webclients we need to set them up manually.</p>
+<ol>
+<li>Identify the instance for which we need webclient.</li>
+<li>Open Powershell ISE as Adminstrator and run the following command</li>
+</ol>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">New-NAVWebServerInstance -WebServerInstance &lt;name of webservice instance&gt; -Server localhost -ServerInstance &lt;NAV server Instance name&gt;</pre>
+<p>&nbsp;</p>
+<p>Replace &lt;name of webservice instance&gt; with the name you want. This is the name that you will need to type in browser to access the webclient</p>
+<p>Replace &lt;NAV server Instance name&gt; with the name of your nav server instance</p>
+<p><img class="aligncenter wp-image-175 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/1-e1503827358231.png" alt="" width="1179" height="340" srcset="./../../../wp-content/uploads/2017/08/1-e1503827358231.png 1179w, ./../../../wp-content/uploads/2017/08/1-e1503827358231-300x87.png 300w, ./../../../wp-content/uploads/2017/08/1-e1503827358231-768x221.png 768w, ./../../../wp-content/uploads/2017/08/1-e1503827358231-1024x295.png 1024w" sizes="(max-width: 1179px) 100vw, 1179px" /></p>
+<p>&nbsp;</p>
+<ol start="3">
+<li>This creates a new webservice instance which can be checked at C:\inetpub\wwwroot</li>
+</ol>
+<p><img class="aligncenter wp-image-176 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/2-e1503827422158.png" alt="" width="849" height="375" srcset="./../../../wp-content/uploads/2017/08/2-e1503827422158.png 849w, ./../../../wp-content/uploads/2017/08/2-e1503827422158-300x133.png 300w, ./../../../wp-content/uploads/2017/08/2-e1503827422158-768x339.png 768w" sizes="(max-width: 849px) 100vw, 849px" /></p>
+<p>&nbsp;</p>
+<ol start="4">
+<li>Lets try to access the webclient now. We can use the url http://localhost:8080/&lt;name of webservice instance&gt; /webclient. Unfortunately you will be greeted by the following generic error screen.</li>
+</ol>
+<p><img class="aligncenter wp-image-177 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/3-e1503827475829.png" alt="" width="1057" height="358" srcset="./../../../wp-content/uploads/2017/08/3-e1503827475829.png 1057w, ./../../../wp-content/uploads/2017/08/3-e1503827475829-300x102.png 300w, ./../../../wp-content/uploads/2017/08/3-e1503827475829-768x260.png 768w, ./../../../wp-content/uploads/2017/08/3-e1503827475829-1024x347.png 1024w" sizes="(max-width: 1057px) 100vw, 1057px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ol start="5">
+<li>To fix this we need to make a couple of changes to the config file which can be found at</li>
+</ol>
+<p>C:\inetpub\wwwroot\&lt;name of webservice instance&gt;\web.config.</p>
+<p>We need to change the value of  &lt;add key=&#8221;ClientServicesPort&#8221; value=&#8221;XXXX&#8221; /&gt; to the correct client service port of your instance.</p>
+<p><img class="aligncenter wp-image-178 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/4-e1503827553238.png" alt="" width="803" height="414" srcset="./../../../wp-content/uploads/2017/08/4-e1503827553238.png 803w, ./../../../wp-content/uploads/2017/08/4-e1503827553238-300x155.png 300w, ./../../../wp-content/uploads/2017/08/4-e1503827553238-768x396.png 768w" sizes="(max-width: 803px) 100vw, 803px" /></p>
+<p>After this change the webclient should start working fine.</p>
+<p><img class="aligncenter size-full wp-image-179" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/5-e1503827599891.png" alt="" width="1094" height="647" srcset="./../../../wp-content/uploads/2017/08/5-e1503827599891.png 1094w, ./../../../wp-content/uploads/2017/08/5-e1503827599891-300x177.png 300w, ./../../../wp-content/uploads/2017/08/5-e1503827599891-768x454.png 768w, ./../../../wp-content/uploads/2017/08/5-e1503827599891-1024x606.png 1024w" sizes="(max-width: 1094px) 100vw, 1094px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/08/27/multiple-webclients-on-one-server/feed/index.html</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>View code of Extension Objects in RTC</title>
+		<link>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/index.html</link>
+		<comments>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/index.html#comments</comments>
+		<pubDate>Tue, 18 Jul 2017 05:23:40 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=164</guid>
+		<description><![CDATA[If you have some experience working with NAV extensions, you would know that once an extension is installed for a tenant you cannot see the objects in Developer environment. NAV stores these objects in table 2000000150 (Nav App Object Metadata).]]></description>
+				<content:encoded><![CDATA[<p>If you have some experience working with NAV extensions, you would know that once an extension is installed for a tenant you cannot see the objects in Developer environment. NAV stores these objects in table 2000000150 (Nav App Object Metadata). Using the way from my previous blog, I was able to modify the page from that blog to also show objects of extensions. Check it out <a href="https://ctrlshiftf4.com/2017/07/02/display-cal-and-c-code-of-a-object-in-rtc/" target="_blank" rel="noopener noreferrer">here.</a></p>
+<p>&nbsp;</p>
+<p>You can download the objects for this demo from <a href="https://drive.google.com/open?id=0B65B-0VIQNG-dDBxU19hdGphY2s" target="_blank" rel="noopener noreferrer">here.</a>(Google Drive)</p>
+<p>&nbsp;</p>
+<p><strong>Usage and Screenshots</strong></p>
+<ol>
+<li>Import the objects and Open RTCcode1 (Page 50502)</li>
+</ol>
+<p>2.Select required Code Type and the object you want to see the code of from ‘NavAppObjectList’ subpage.</p>
+<p>3. Press GetCode Action</p>
+<p><img class="alignnone size-full wp-image-165" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/called-from.png" alt="" width="942" height="588" srcset="./../../../wp-content/uploads/2017/07/called-from.png 942w, ./../../../wp-content/uploads/2017/07/called-from-300x187.png 300w, ./../../../wp-content/uploads/2017/07/called-from-768x479.png 768w" sizes="(max-width: 942px) 100vw, 942px" /></p>
+<p>Code of that object will be displayed in ‘Code’ control</p>
+<p><img class="alignnone size-full wp-image-166" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/code.png" alt="" width="1031" height="547" srcset="./../../../wp-content/uploads/2017/07/code.png 1031w, ./../../../wp-content/uploads/2017/07/code-300x159.png 300w, ./../../../wp-content/uploads/2017/07/code-768x407.png 768w, ./../../../wp-content/uploads/2017/07/code-1024x543.png 1024w" sizes="(max-width: 1031px) 100vw, 1031px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>OTP Authentication in Dynamics NAV</title>
+		<link>./../../../2017/06/10/otp-authentication-in-dynamics-nav/index.html</link>
+		<comments>./../../../2017/06/10/otp-authentication-in-dynamics-nav/index.html#comments</comments>
+		<pubDate>Sat, 10 Jun 2017 10:25:12 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112</guid>
+		<description><![CDATA[In NAV, OTP authentication can add an extra layer of security to our Environments. The basic idea is that when every user tries to open a company, s/he will receive a OTP on their registered mobile number. They will have]]></description>
+				<content:encoded><![CDATA[<p>In NAV, OTP authentication can add an extra layer of security to our Environments. The basic idea is that when every user tries to open a company, s/he will receive a OTP on their registered mobile number. They will have to key in this number in NAV to gain access. This is usually known as two factor authentications.</p>
+<p>To do this in NAV you need a service to send SMS. There are a lot available on internet. In this demo, I am using SMS service from NEXMO. Do note that when choosing a service, it is crucial to check the limitations. For example, NEXMO can deliver SMS in India only between 9 am to 6 pm. Similar limitations exist for other regions as well.</p>
+<p>Once you choose a service you will have to go through their documentation. Most will provide Restful APIs which can be easily consumed in NAV. Lets try to use Nexmo for the time being</p>
+<p>Steps</p>
+<ol>
+<li>Create a new codeunit in your object range</li>
+<li>You will need a new function to initiliaze and send request to the API.</li>
+</ol>
+<p>&nbsp;</p>
+<p>Syntax</p>
+<p><img class="size-full wp-image-119 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/httpPost.png" alt="" width="899" height="564" srcset="./../../../wp-content/uploads/2017/06/httpPost.png 899w, ./../../../wp-content/uploads/2017/06/httpPost-300x188.png 300w, ./../../../wp-content/uploads/2017/06/httpPost-768x482.png 768w" sizes="(max-width: 899px) 100vw, 899px" /></p>
+<p>&nbsp;</p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL HttpPostSMS()
+
+
+
+Status:=1;
+
+Answer := DIALOG.CONFIRM('Do you want to recieve OTP',FALSE);
+
+IF Answer= TRUE THEN BEGIN
+
+  HttpWebRequestMgt.Initialize(Url+GetParams);
+
+  HttpWebRequestMgt.DisableUI;
+
+  HttpWebRequestMgt.SetMethod('POST');
+
+  HttpWebRequestMgt.SetReturnType('application/json');
+
+
+
+  TempBlob.INIT;
+
+  TempBlob.Blob.CREATEINSTREAM(Instr);
+
+  IF HttpWebRequestMgt.GetResponse(Instr,HttpStatusCode,ResponseHeaders) THEN BEGIN
+
+    IF HttpStatusCode.ToString = HttpStatusCode.OK.ToString THEN BEGIN
+
+       Result := TempBlob.ReadAsText('',TEXTENCODING::UTF8);
+
+       JObject:= JObject.Parse(Result);
+
+       temp:=JObject.GetValue('messages').ToString;
+
+       temp :=DELCHR(temp,'=','[]');
+
+       JObject :=JObject.Parse(temp);
+
+       EVALUATE(Status,JObject.GetValue('status').ToString);
+
+    END ELSE MESSAGE('not 200');
+
+  END ELSE MESSAGE('no reponse at all');
+
+END ELSE ERROR ('Cannot open company without OTP');
+
+
+
+
+
+LOCAL GetParams() : Text
+
+Params := '?api_key=&lt;your key&gt;&amp;api_secret=&lt;your secret&gt;&amp;to=&lt;number to which sms has to go&gt;&amp;from=Jaspreet NAV&amp;text=%1';
+
+Params := STRSUBSTNO(Params,GetRandom);
+
+EXIT(Params);
+
+
+
+
+
+
+
+LOCAL GetRandom() : Text
+
+OTP := RANDOM(99999);
+
+RandomParam := SMStext;
+
+RandomParam:=STRSUBSTNO(RandomParam,COMPANYNAME,OTP);
+
+EXIT(RandomParam);</pre>
+<p>You will also need to define local variables and global variables</p>
+<p>Local</p>
+<p><img class="alignnone size-full wp-image-120" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/httppostvariables.png" alt="" width="1347" height="335" srcset="./../../../wp-content/uploads/2017/06/httppostvariables.png 1347w, ./../../../wp-content/uploads/2017/06/httppostvariables-300x75.png 300w, ./../../../wp-content/uploads/2017/06/httppostvariables-768x191.png 768w, ./../../../wp-content/uploads/2017/06/httppostvariables-1024x255.png 1024w" sizes="(max-width: 1347px) 100vw, 1347px" /></p>
+<p>Global</p>
+<p><img class="size-full wp-image-118 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/globalvars.png" alt="" width="1118" height="98" srcset="./../../../wp-content/uploads/2017/06/globalvars.png 1118w, ./../../../wp-content/uploads/2017/06/globalvars-300x26.png 300w, ./../../../wp-content/uploads/2017/06/globalvars-768x67.png 768w, ./../../../wp-content/uploads/2017/06/globalvars-1024x90.png 1024w" sizes="(max-width: 1118px) 100vw, 1118px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>This function would send a SMS to a hardcoded number (should come from user master in actual implementation). Next, we need to call this function Before a company opens. I will use OnBeforeOpenCompany event from Code unit 1 (ApplicationManagement). For versions where events are not available you can simply call the function in code unit 1.</p>
+<p>&nbsp;</p>
+<p>Syntax</p>
+<p><img class="size-full wp-image-122 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/OnBeforeopencompanu.png" alt="" width="683" height="404" srcset="./../../../wp-content/uploads/2017/06/OnBeforeopencompanu.png 683w, ./../../../wp-content/uploads/2017/06/OnBeforeopencompanu-300x177.png 300w" sizes="(max-width: 683px) 100vw, 683px" /></p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">HttpPostSMS;
+Count := 0;
+Success := FALSE;
+IF Status = 0 
+ THEN 
+ REPEAT
+   CLEAR(TwoFactorAuth);
+    IF TwoFactorAuth.RUNMODAL&lt;&gt;ACTION::OK THEN 
+      ERROR('Cancelled');
+    IF TwoFactorAuth.GetEnteredOTP = OTP THEN BEGIN
+      Success:=TRUE;
+    END
+    ELSE BEGIN
+      Count += 1;
+      MESSAGE('Wrong OTP');
+    END; 
+ UNTIL (Count = 3) OR Success;
+ IF NOT Success THEN ERROR('You have entered wrong otp too many times');</pre>
+<p>&nbsp;</p>
+<p>Variables need to be defined as well.</p>
+<p><img class="size-full wp-image-121 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/onbefore-vars.png" alt="" width="1257" height="165" srcset="./../../../wp-content/uploads/2017/06/onbefore-vars.png 1257w, ./../../../wp-content/uploads/2017/06/onbefore-vars-300x39.png 300w, ./../../../wp-content/uploads/2017/06/onbefore-vars-768x101.png 768w, ./../../../wp-content/uploads/2017/06/onbefore-vars-1024x134.png 1024w" sizes="(max-width: 1257px) 100vw, 1257px" /></p>
+<p>You also need to create a new page and declare a single global variable. Then set that variable as a field.</p>
+<p><img class="alignnone size-full wp-image-124" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/page.png" alt="" width="1300" height="185" srcset="./../../../wp-content/uploads/2017/06/page.png 1300w, ./../../../wp-content/uploads/2017/06/page-300x43.png 300w, ./../../../wp-content/uploads/2017/06/page-768x109.png 768w, ./../../../wp-content/uploads/2017/06/page-1024x146.png 1024w" sizes="(max-width: 1300px) 100vw, 1300px" /></p>
+<p>Global variables of page</p>
+<p><img class="size-full wp-image-123 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/page-global.png" alt="" width="333" height="182" srcset="./../../../wp-content/uploads/2017/06/page-global.png 333w, ./../../../wp-content/uploads/2017/06/page-global-300x164.png 300w" sizes="(max-width: 333px) 100vw, 333px" /></p>
+<p>We also need a function in page to transfer the entered OTP to our code unit</p>
+<p><img class="size-full wp-image-117 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/funcinpage.png" alt="" width="351" height="160" srcset="./../../../wp-content/uploads/2017/06/funcinpage.png 351w, ./../../../wp-content/uploads/2017/06/funcinpage-300x137.png 300w" sizes="(max-width: 351px) 100vw, 351px" /></p>
+<p>Once everything is done, When a user tries to login s/he will get a OTP on their phone. They will see a dialog in NAV and must enter the OTP. They get three tries to do so.</p>
+<p><img class="size-full wp-image-116 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/finalimage.png" alt="" width="478" height="285" srcset="./../../../wp-content/uploads/2017/06/finalimage.png 478w, ./../../../wp-content/uploads/2017/06/finalimage-300x179.png 300w" sizes="(max-width: 478px) 100vw, 478px" /></p>
+<p><img class="wp-image-125 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/Smssc-e1497088659182.png" alt="" width="453" height="357" srcset="./../../../wp-content/uploads/2017/06/Smssc-e1497088659182.png 1080w, ./../../../wp-content/uploads/2017/06/Smssc-e1497088659182-300x237.png 300w, ./../../../wp-content/uploads/2017/06/Smssc-e1497088659182-768x607.png 768w, ./../../../wp-content/uploads/2017/06/Smssc-e1497088659182-1024x810.png 1024w" sizes="(max-width: 453px) 100vw, 453px" /></p>
+<p>Future Scope:</p>
+<p>In actual implementation users phone number should come from the master. Also there can be a option where the end user can either choose SMS or Email to receive the OTP for authentication.</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/06/10/otp-authentication-in-dynamics-nav/feed/index.html</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Post to a rest api in Dynamics NAV</title>
+		<link>./../../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/index.html</link>
+		<comments>./../../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/index.html#comments</comments>
+		<pubDate>Mon, 29 May 2017 04:24:56 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103</guid>
+		<description><![CDATA[Post is usually used when we want to submit some parameter to the server. The paramaters unlike rest are not put in the link itself but are sent in ‘Body’. In Nav , We can post using either Codeunit 1297]]></description>
+				<content:encoded><![CDATA[<p>Post is usually used when we want to submit some parameter to the server.</p>
+<p>The paramaters unlike rest are not put in the link itself but are sent in ‘Body’.</p>
+<p>In Nav , We can post using either Codeunit 1297 Http Web Request Mgt. or using System.HttpClient Control add-in among other methods.</p>
+<p>Let’s go over the syntax when using CU 1297. I will be posting to a test api hosted by <a href="https://reqres.in/">https://reqres.in/</a> for demo. Documentation for the api can be found there. We will be using api/users for the demo</p>
+<p><img class="size-full wp-image-109 alignnone" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/reqres-documentation.png" alt="" width="1064" height="584" srcset="./../../../wp-content/uploads/2017/05/reqres-documentation.png 1064w, ./../../../wp-content/uploads/2017/05/reqres-documentation-300x165.png 300w, ./../../../wp-content/uploads/2017/05/reqres-documentation-768x422.png 768w, ./../../../wp-content/uploads/2017/05/reqres-documentation-1024x562.png 1024w" sizes="(max-width: 1064px) 100vw, 1064px" /></p>
+<p>First create a new codeunit in your range.</p>
+<p>Syntax in Nav</p>
+<p>&nbsp;</p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">PostUrl := 'https://reqres.in/api/users';
+
+HttpWebRequestMgt.Initialize(PostUrl);
+
+HttpWebRequestMgt.DisableUI;
+
+HttpWebRequestMgt.SetMethod('POST');
+
+HttpWebRequestMgt.SetContentType('application/json');
+
+HttpWebRequestMgt.SetReturnType('application/json');
+
+HttpWebRequestMgt.AddBodyAsText(body);
+
+
+TempBlob.INIT;
+
+TempBlob.Blob.CREATEINSTREAM(Instr);
+
+IF HttpWebRequestMgt.GetResponse(Instr,HttpStatusCode,ResponseHeaders) THEN BEGIN
+
+ MESSAGE('httpstatuscode : '+HttpStatusCode.ToString);
+
+ MESSAGE(ResponseHeaders.ToString);
+
+ ApiResult := TempBlob.ReadAsText('',TEXTENCODING::UTF8);
+
+ MESSAGE(ApiResult);
+
+ JObject:=JObject.Parse(ApiResult);
+
+ MESSAGE(JObject.GetValue('job').ToString);
+
+END ELSE MESSAGE('2'+RegistrationError);
+
+
+
+</pre>
+<p><img class="alignnone size-full wp-image-104" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/cu-syntax.png" alt="" width="858" height="437" srcset="./../../../wp-content/uploads/2017/05/cu-syntax.png 858w, ./../../../wp-content/uploads/2017/05/cu-syntax-300x153.png 300w, ./../../../wp-content/uploads/2017/05/cu-syntax-768x391.png 768w" sizes="(max-width: 858px) 100vw, 858px" /></p>
+<p>You will need to define these variables.</p>
+<p><img class="aligncenter wp-image-105 size-full" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/cu-variables.png" alt="" width="1311" height="341" srcset="./../../../wp-content/uploads/2017/05/cu-variables.png 1311w, ./../../../wp-content/uploads/2017/05/cu-variables-300x78.png 300w, ./../../../wp-content/uploads/2017/05/cu-variables-768x200.png 768w, ./../../../wp-content/uploads/2017/05/cu-variables-1024x266.png 1024w" sizes="(max-width: 1311px) 100vw, 1311px" /></p>
+<p>You need text constants as well. Note that body can be a variable too . The codeunit can also accept a blob type in case your data is large. Just use HttpWebRequestMgt.AddBodyBlob(nameofblob); instead of HttpWebRequestMgt.AddBodyAsText(body);</p>
+<p><img class="size-full wp-image-108 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/text-constants.png" alt="" width="563" height="172" srcset="./../../../wp-content/uploads/2017/05/text-constants.png 563w, ./../../../wp-content/uploads/2017/05/text-constants-300x92.png 300w" sizes="(max-width: 563px) 100vw, 563px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The output from api is stored in tempblob which can then be read in a text string.</p>
+<p><img class="size-full wp-image-106 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/outputpostrest.png" alt="" width="677" height="283" srcset="./../../../wp-content/uploads/2017/05/outputpostrest.png 677w, ./../../../wp-content/uploads/2017/05/outputpostrest-300x125.png 300w" sizes="(max-width: 677px) 100vw, 677px" /></p>
+<p>Refer to  <a href="https://ctrlshiftf4.com/2017/05/17/consume-openweather-rest-api-in-dynamics-nav/">https://ctrlshiftf4.com/2017/05/17/consume-openweather-rest-api-in-dynamics-nav/</a> as i have explained how to parse data from Rest Api there in detail.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/feed/index.html</wfw:commentRss>
+		<slash:comments>13</slash:comments>
+		</item>
+		<item>
+		<title>Smart Notifications -How To</title>
+		<link>./../../../2017/04/30/smart-notifications-how-to/index.html</link>
+		<comments>./../../../2017/04/30/smart-notifications-how-to/index.html#respond</comments>
+		<pubDate>Sun, 30 Apr 2017 05:10:57 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4-jmail123.rhcloud.com/?p=14</guid>
+		<description><![CDATA[For Dynamics Nav 2017 / Dynamics 365 for Financials Smart notifications provide a way to interact and inform the end user without stopping them from doing their work. It&#8217;s a Non-Intrusive way to Push messages in Nav unlike MESSAGE() and]]></description>
+				<content:encoded><![CDATA[<p><span style="text-decoration: underline;"><em>For Dynamics Nav 2017 / Dynamics 365 for Financials<br />
+</em></span></p>
+<p>Smart notifications provide a way to interact and inform the end user without stopping them from doing their work. It&#8217;s a Non-Intrusive way to Push messages in Nav unlike MESSAGE() and ERROR().</p>
+<p>It&#8217;s meant for low importance messages that user should know but not critical enough to stop his work</p>
+<p><strong>Scenario: </strong>User is filling his expense claim and has not uploaded a receipt for the line he is making. We will use these new types of notification to remind him to upload an invoice receipt also providing them a quick way to do it without leaving the page they are currently using by adding an Action to the Notification.</p>
+<p><strong>Steps:<br />
+</strong></p>
+<ol>
+<li>Open a code unit in Dev environment. It could be an existing one depending upon the requirement.</li>
+<li>Create a new function and Write logic as required</li>
+</ol>
+<p><img class="aligncenter wp-image-37 size-full" src="https://ctrlshiftf4.com/wp-content/uploads/2017/04/Basic-notification-code.png" alt="" width="693" height="414" srcset="./../../../wp-content/uploads/2017/04/Basic-notification-code.png 693w, ./../../../wp-content/uploads/2017/04/Basic-notification-code-300x179.png 300w" sizes="(max-width: 693px) 100vw, 693px" />Syntax for the notification is</p>
+<h5 style="text-align: left;"><span style="color: black; font-family: Consolas;"><span style="font-size: 12pt; background-color: white;"> </span></span></h5>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">RecieptNoti.MESSAGE(NoReciept);
+
+RecieptNoti.SCOPE := NOTIFICATIONSCOPE::LocalScope;
+
+RecieptNoti.SEND;</pre>
+<p style="margin-left: 36pt;"><span style="color: black;">Where <strong>RecieptNoti</strong> is a Variable of type &#8216;Notification&#8217;<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;"><strong>NoReciept</strong> is a text constant that holds the value we want to print from message<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;"><strong>.Send </strong>Sends the notification<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;"><strong>NotificationSCOPE</strong> has two types Local and Global<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;">Local: It Shows the notification on page from where it was fired<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;">Global: Shows the notification everywhere in Nav no matter where user is.<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;"> Note: GlobalScope is not working at this point</span></p>
+<p style="margin-left: 36pt; text-align: left;">Next call this function we just created. Here I am going to call it from OnValidate of Vendor Invoice No. field.</p>
+<p><img class="size-full wp-image-38 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/04/Callthefx.png" alt="" width="615" height="352" srcset="./../../../wp-content/uploads/2017/04/Callthefx.png 615w, ./../../../wp-content/uploads/2017/04/Callthefx-300x172.png 300w, ./../../../wp-content/uploads/2017/04/Callthefx-420x240.png 420w" sizes="(max-width: 615px) 100vw, 615px" /></p>
+<ul>
+<li>Test it</li>
+</ul>
+<p>&nbsp;</p>
+<p><img class="alignnone" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/04/043017_0510_SmartNotifi3.png" alt="" width="540" height="228" align="left" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Next we Add an Action to this Notification.</strong></p>
+<p><img class="wp-image-36 size-full aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/04/with-Action.png" alt="" width="840" height="465" srcset="./../../../wp-content/uploads/2017/04/with-Action.png 840w, ./../../../wp-content/uploads/2017/04/with-Action-300x166.png 300w, ./../../../wp-content/uploads/2017/04/with-Action-768x425.png 768w" sizes="(max-width: 840px) 100vw, 840px" /></p>
+<p><img class="aligncenter" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/04/043017_0510_SmartNotifi5.png" alt="" width="504" height="154" /></p>
+<p><strong>Syntax:<br />
+</strong></p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">RecieptNoti.MESSAGE(NoReciept);
+
+RecieptNoti.SCOPE := NOTIFICATIONSCOPE::LocalScope;
+
+RecieptNoti.SETDATA('Expense No.',FORMAT(ExpenseLine."Expense No."));
+
+RecieptNoti.ADDACTION(Attach,CODEUNIT::"Expense Attachment Management",'Upload');
+
+RecieptNoti.SEND;</pre>
+<p>&nbsp;</p>
+<p><span style="color: black;">.SETDATA lets you set a text into the notification which you can retrieve in the function you call<br />
+</span></p>
+<p><span style="color: black;">.ADDACTION(Text, Code unit id, Function Name)<br />
+</span></p>
+<p><span style="color: black;">.GETDATA lets you get the data that you previously set in the function and use it for your logic<br />
+</span></p>
+<ol>
+<li><span style="color: black;">The Function that we want to add to the notification should have a variable of type &#8216;Notification and has to be Global for it to work.<br />
+</span></li>
+<li><span style="color: black;">Test it.<br />
+</span></li>
+</ol>
+<p><img class="aligncenter" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/04/043017_0510_SmartNotifi6.png" alt="" width="631" height="225" align="left" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Clicking on &#8216;Attach Now &#8216; opens a file browse dialog box and lets the user to upload a invoice.</p>
+<p>&nbsp;</p>
+<p style="margin-left: 18pt;"><img class="aligncenter" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/04/043017_0510_SmartNotifi8.png" alt="" /></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/04/30/smart-notifications-how-to/feed/index.html</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

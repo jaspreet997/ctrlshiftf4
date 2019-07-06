@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>powerapps &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>powerapps &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Build a PowerApp – Add Images Part2</title>
+		<link>./../../../2017/09/10/build-a-powerapp-add-images-part2/index.html</link>
+		<comments>./../../../2017/09/10/build-a-powerapp-add-images-part2/index.html#comments</comments>
+		<pubDate>Sun, 10 Sep 2017 17:16:44 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[powerapps]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=207</guid>
+		<description><![CDATA[This is the second part of the Build a PowerApp. In the last blog, I explained how you can create a simple app from a Odata connection. Link to Part 1 This part will focus on how we can sync]]></description>
+				<content:encoded><![CDATA[<p>This is the second part of the Build a PowerApp. In the last blog, I explained how you can create a simple app from a Odata connection. <a href="./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html">Link</a> to Part 1</p>
+<p>This part will focus on how we can sync Item Pictures from NAV to the PowerApps.</p>
+<p><strong>Limitation:</strong> Since NAV stores images in MediaSet/Media type we cannot pass them through Odata webservices (which is what the Dynamics NAV Connector uses).</p>
+<p><strong>Workaround:</strong> Convert NAV images to base64 and send them to image storage service. Capture the direct link of the images and store them in a field on Item table. Pass that field to PowerApp through Odata. PowerApp will then recognize the image URL and display the images.</p>
+<p><strong>Note:</strong> I have added a field in Item table and Item list page. You can avoid that by creating a new table and page with 1-1 relation with Item. Then either create a query combining both tables and expose as webservice or simply add another data source in PowerApp and handle the relation logic in there</p>
+<p>To do this I used Imgur API to store images from NAV. You need to register at imgur and create a new Application ID <a href="https://api.imgur.com/oauth2/addclient">here</a>. To know more about how to use the upload API, please refer to the docs <a href="https://api.imgur.com/">here</a>.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Create a new field in Item Table to capture Direct URLs of Images.<img class="aligncenter wp-image-242 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b.png" alt="" width="562" height="671" srcset="./../../../wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b.png 562w, ./../../../wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b-251x300.png 251w" sizes="(max-width: 562px) 100vw, 562px" /></li>
+</ol>
+<ol start="2">
+<li>Add the new field on Item Card.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-209" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/newfieldpage-e1505062520254.png" alt="" width="1179" height="323" srcset="./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254.png 1179w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-300x82.png 300w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-768x210.png 768w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-1024x281.png 1024w" sizes="(max-width: 1179px) 100vw, 1179px" /></p>
+<ol start="3">
+<li>Save the objects.</li>
+<li>Create a new codeunit or Import it after downloading from <a href="https://drive.google.com/open?id=0B65B-0VIQNG-Si1QdWZIekVKelk">here</a>. Create a new function.</li>
+</ol>
+<p>Make sure to replace the Client ID with your own client id that you will receive after registration</p>
+<p>CODE:<img class="aligncenter size-full wp-image-211" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur.png" alt="" width="1170" height="382" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur.png 1170w, ./../../../wp-content/uploads/2017/09/sendtoimgur-300x98.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-768x251.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-1024x334.png 1024w" sizes="(max-width: 1170px) 100vw, 1170px" /></p>
+<p><strong> </strong></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL PostImageToImgur(PictureInBase64 : BigText) : Text
+
+PostUrl := 'https://api.imgur.com/3/image';
+
+HttpClient := HttpClient.HttpClient();
+
+HttpClient.BaseAddress := Uri.Uri(PostUrl);
+
+stringcontent :=stringcontent.StringContent('{"image":"'+FORMAT(PictureInBase64)+'"}',encoding.UTF8,'application/json');
+
+HttpContent:=stringcontent;
+
+HttpClient.DefaultRequestHeaders.Add('Authorization','Client-ID &lt;Your Imgur client ID&gt;');
+
+HttpResponseMessage := HttpClient.PostAsync('',HttpContent).Result;
+
+HttpResponseMessage.EnsureSuccessStatusCode;
+
+result := HttpResponseMessage.Content.ReadAsStringAsync.Result;
+
+JObject := JObject.Parse(result.ToString);
+
+IF (JObject.GetValue('success').ToString)='True' THEN BEGIN
+
+Json := JObject.GetValue('data').ToString;
+
+JObject2 := JObject2.Parse(Json);
+
+EXIT(JObject2.GetValue('link').ToString);
+
+END ELSE
+
+EXIT('error');</pre>
+<p>Local Variables:</p>
+<p><img class="aligncenter size-full wp-image-210" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur-variables.png" alt="" width="1272" height="281" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur-variables.png 1272w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-300x66.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-768x170.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-1024x226.png 1024w" sizes="(max-width: 1272px) 100vw, 1272px" /></p>
+<p>Parameters<img class="aligncenter size-full wp-image-212" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur-parameters.png" alt="" width="1133" height="203" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur-parameters.png 1133w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-300x54.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-768x138.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-1024x183.png 1024w" sizes="(max-width: 1133px) 100vw, 1133px" /></p>
+<p>Return Value</p>
+<p><img class="aligncenter size-full wp-image-213" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sentoimgurreturn.png" alt="" width="532" height="203" srcset="./../../../wp-content/uploads/2017/09/sentoimgurreturn.png 532w, ./../../../wp-content/uploads/2017/09/sentoimgurreturn-300x114.png 300w" sizes="(max-width: 532px) 100vw, 532px" /></p>
+<ol start="5">
+<li>Create two subscribers functions to handle User uploading a image to Item card or Taking an image by mobile device.</li>
+</ol>
+<p>&nbsp;</p>
+<p>Code: <img class="aligncenter size-full wp-image-215" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/subs.png" alt="" width="786" height="611" srcset="./../../../wp-content/uploads/2017/09/subs.png 786w, ./../../../wp-content/uploads/2017/09/subs-300x233.png 300w, ./../../../wp-content/uploads/2017/09/subs-768x597.png 768w" sizes="(max-width: 786px) 100vw, 786px" /></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">[EventSubscriber] ItemPictureOnActionImport(VAR Rec : Record Item)
+
+ IF (Rec.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ CLEAR(BigPictureText);
+
+ TempBlob.INIT;
+
+ MediaGuid:=Rec.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Rec."Picture url":=PostImageToImgur(BigPictureText);
+
+ Rec.MODIFY;
+
+ MESSAGE('Sent to Imgur');
+
+ END
+
+
+
+[EventSubscriber] ItemPictureOnActionTake(VAR Rec : Record Item)
+
+ IF (Rec.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ CLEAR(BigPictureText);
+
+ TempBlob.INIT;
+
+ MediaGuid:=Rec.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Rec."Picture url":=PostImageToImgur(BigPictureText);
+
+ Rec.MODIFY;
+
+ MESSAGE('Sent to Imgur');
+
+ END</pre>
+<p>Properties:</p>
+<p><strong>ItemPictureOnActionImport</strong></p>
+<p><img class="aligncenter size-full wp-image-222" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/subp1.png" alt="" width="515" height="240" srcset="./../../../wp-content/uploads/2017/09/subp1.png 515w, ./../../../wp-content/uploads/2017/09/subp1-300x140.png 300w" sizes="(max-width: 515px) 100vw, 515px" /></p>
+<p><strong>ItemPictureOnActionTake</strong></p>
+<p><img class="aligncenter size-full wp-image-221" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sub-p2.png" alt="" width="505" height="210" srcset="./../../../wp-content/uploads/2017/09/sub-p2.png 505w, ./../../../wp-content/uploads/2017/09/sub-p2-300x125.png 300w" sizes="(max-width: 505px) 100vw, 505px" /></p>
+<p>&nbsp;</p>
+<p>Variables (same for both subscribers)</p>
+<p><img class="aligncenter size-full wp-image-220" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sub-vars.png" alt="" width="1294" height="191" srcset="./../../../wp-content/uploads/2017/09/sub-vars.png 1294w, ./../../../wp-content/uploads/2017/09/sub-vars-300x44.png 300w, ./../../../wp-content/uploads/2017/09/sub-vars-768x113.png 768w, ./../../../wp-content/uploads/2017/09/sub-vars-1024x151.png 1024w" sizes="(max-width: 1294px) 100vw, 1294px" /></p>
+<ol start="6">
+<li>So we have handled new pictures that will be uploaded by users but what about the pictures that are already there.</li>
+</ol>
+<p>For that you can run a bulk function once for your DB.</p>
+<p>Code:<img class="aligncenter size-full wp-image-219" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/bulk.png" alt="" width="740" height="494" srcset="./../../../wp-content/uploads/2017/09/bulk.png 740w, ./../../../wp-content/uploads/2017/09/bulk-300x200.png 300w, ./../../../wp-content/uploads/2017/09/bulk-120x80.png 120w" sizes="(max-width: 740px) 100vw, 740px" /></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL BulkItemPictureUpload()
+
+IF Item.FINDFIRST THEN
+
+ REPEAT
+
+ IF (Item.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ TempBlob.INIT;
+
+ MediaGuid:=Item.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Item."Picture url":=PostImageToImgur(BigPictureText);
+
+ Item.MODIFY;
+
+ CLEAR(BigPictureText);
+
+ END
+
+ UNTIL
+
+ Item.NEXT=0;
+
+ MESSAGE('completed');
+
+</pre>
+<p>Now all your images are uploaded to imgur and can be shown in PowerApps</p>
+<p>&nbsp;</p>
+<ol start="7">
+<li>Open PowerApps web portal again. Refresh the data source so that Picture URL get populated.<img class="aligncenter size-full wp-image-223" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/refresh.png" alt="" width="436" height="425" srcset="./../../../wp-content/uploads/2017/09/refresh.png 436w, ./../../../wp-content/uploads/2017/09/refresh-300x292.png 300w" sizes="(max-width: 436px) 100vw, 436px" /></li>
+<li>Select an image and change data property to Picture_url</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-218" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/pa1.png" alt="" width="853" height="497" srcset="./../../../wp-content/uploads/2017/09/pa1.png 853w, ./../../../wp-content/uploads/2017/09/pa1-300x175.png 300w, ./../../../wp-content/uploads/2017/09/pa1-768x447.png 768w" sizes="(max-width: 853px) 100vw, 853px" /><img class="aligncenter size-full wp-image-217" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/pa2.png" alt="" width="853" height="484" srcset="./../../../wp-content/uploads/2017/09/pa2.png 853w, ./../../../wp-content/uploads/2017/09/pa2-300x170.png 300w, ./../../../wp-content/uploads/2017/09/pa2-768x436.png 768w" sizes="(max-width: 853px) 100vw, 853px" /></p>
+<ol start="9">
+<li>Pictures will be automatically populated.</li>
+<li>The App is created with Pictures from NAV.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-224" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/phone.png" alt="" width="349" height="693" srcset="./../../../wp-content/uploads/2017/09/phone.png 349w, ./../../../wp-content/uploads/2017/09/phone-151x300.png 151w" sizes="(max-width: 349px) 100vw, 349px" /></p>
+<p>In an upcoming blog, I will try and see if we can make this integration two way. Adding ability to edit item details in the app which will sync back to NAV.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/09/10/build-a-powerapp-add-images-part2/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Build a PowerApp &#8211; Data from Nav 2017 Part1</title>
+		<link>./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html</link>
+		<comments>./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html#comments</comments>
+		<pubDate>Sun, 10 Sep 2017 16:47:03 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[powerapps]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=184</guid>
+		<description><![CDATA[&#160; PowerApps is a tool provided by Microsoft which lets you build business apps quickly using data from Microsoft and Non-Microsoft services. To get data from NAV 2017 into PowerApps we will need to set up a connector. Pre-Requisites Microsoft]]></description>
+				<content:encoded><![CDATA[<p>&nbsp;</p>
+<p>PowerApps is a tool provided by Microsoft which lets you build business apps quickly using data from Microsoft and Non-Microsoft services. To get data from NAV 2017 into PowerApps we will need to set up a connector.</p>
+<p><strong>Pre-Requisites</strong></p>
+<ol>
+<li>Microsoft Office 365 account with PowerApps plan or trial enabled</li>
+<li>Dynamics NAV 2017 with NavUserPassword enabled since windows authentication is not supported. Please follow this <a href="https://saurav-nav.blogspot.in/2015/11/microsoft-dynamics-nav-2016-how-to.html">awesome blog</a> by Saurav Dhyani if you need help setting it up.</li>
+<li>Public IP on NAV server so that the connector can connect and fetch data from tables.</li>
+<li>Basic NAV knowledge</li>
+</ol>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Create a new user in NAV. This can be done by searching for ‘Users’</li>
+</ol>
+<p><img class="aligncenter wp-image-236 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/0efc7d50e4a94883beb416389e6b0d6d.png" alt="" width="800" height="307" srcset="./../../../wp-content/uploads/2017/09/0efc7d50e4a94883beb416389e6b0d6d.png 800w, ./../../../wp-content/uploads/2017/09/0efc7d50e4a94883beb416389e6b0d6d-300x115.png 300w, ./../../../wp-content/uploads/2017/09/0efc7d50e4a94883beb416389e6b0d6d-768x295.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ol start="2">
+<li>Click on New and enter User Name and then generate a webservice key. This key will be used by connector as password.</li>
+</ol>
+<p><img class="aligncenter wp-image-240 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/1ad4592505284601b3b19025fea8e355.png" alt="" width="627" height="566" srcset="./../../../wp-content/uploads/2017/09/1ad4592505284601b3b19025fea8e355.png 627w, ./../../../wp-content/uploads/2017/09/1ad4592505284601b3b19025fea8e355-300x271.png 300w" sizes="(max-width: 627px) 100vw, 627px" /></p>
+<p>Note your username and webservice key as they will be need in further steps.</p>
+<ol start="3">
+<li>Go to WebServices page and Click on new. Select object type as Page , and number as 31. Enter itemlist in Service Name and then click on Publish.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-196" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/webservice-e1505060547623.png" alt="" width="688" height="538" srcset="./../../../wp-content/uploads/2017/09/webservice-e1505060547623.png 688w, ./../../../wp-content/uploads/2017/09/webservice-e1505060547623-300x235.png 300w" sizes="(max-width: 688px) 100vw, 688px" /></p>
+<p>&nbsp;</p>
+<ol start="4">
+<li>Click on Reload. Copy the OdataV4 URL from this page.</li>
+</ol>
+<p>It should be of the form</p>
+<p>http://&lt;server/ IP&gt;:&lt;OdataPort&gt;/&lt;your instance name&gt;/ODataV4/Company(&#8216;CRONUS%20Canada%2C%20Inc.&#8217;)/itemlist</p>
+<ol start="5">
+<li>Next step is to Open powerapps web portal by going to <a href="https://web.powerapps.com/">https://web.powerapps.com/</a></li>
+</ol>
+<p>You may have to login to your Account.</p>
+<p><img class="aligncenter size-full wp-image-187" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/blog.png" alt="" width="977" height="702" srcset="./../../../wp-content/uploads/2017/09/blog.png 977w, ./../../../wp-content/uploads/2017/09/blog-300x216.png 300w, ./../../../wp-content/uploads/2017/09/blog-768x552.png 768w" sizes="(max-width: 977px) 100vw, 977px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ol start="6">
+<li>Click on Connections on the left pane and Click on NEW CONNECTION on top right<img class="aligncenter wp-image-237 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5.png" alt="" width="800" height="220" srcset="./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5.png 800w, ./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5-300x83.png 300w, ./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5-768x211.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></li>
+<li>Select Dynamics NAV from the list and click on + button next to it.<img class="aligncenter size-full wp-image-192" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/new-app.png" alt="" width="967" height="698" srcset="./../../../wp-content/uploads/2017/09/new-app.png 967w, ./../../../wp-content/uploads/2017/09/new-app-300x217.png 300w, ./../../../wp-content/uploads/2017/09/new-app-768x554.png 768w" sizes="(max-width: 967px) 100vw, 967px" /></li>
+<li>This will open a form. Enter your generic odatav4 url. Don’t add company or service name part of the URL.</li>
+</ol>
+<p>For Example: http://&lt;server/ IP&gt;:&lt;OdataPort&gt;/&lt;your instance name&gt;/ODataV4/</p>
+<p>Enter Username of the user you created and Webservice key in Password field.</p>
+<p>Enter your Nav Company name.</p>
+<p><img class="aligncenter size-full wp-image-193" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/new-connection.png" alt="" width="625" height="528" srcset="./../../../wp-content/uploads/2017/09/new-connection.png 625w, ./../../../wp-content/uploads/2017/09/new-connection-300x253.png 300w" sizes="(max-width: 625px) 100vw, 625px" /></p>
+<p>Click on Create.</p>
+<ol start="9">
+<li>Click on + New App button on bottom left.</li>
+</ol>
+<p>&nbsp;</p>
+<ol start="10">
+<li>Click on the Right Arrow in Start with your data icons.</li>
+</ol>
+<p><img class="aligncenter wp-image-238 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/695d98f5ce914031afe22981a12b1984.png" alt="" width="800" height="262" srcset="./../../../wp-content/uploads/2017/09/695d98f5ce914031afe22981a12b1984.png 800w, ./../../../wp-content/uploads/2017/09/695d98f5ce914031afe22981a12b1984-300x98.png 300w, ./../../../wp-content/uploads/2017/09/695d98f5ce914031afe22981a12b1984-768x252.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></p>
+<ol start="11">
+<li>Select Dynamics NAV. Select Default.<img class="aligncenter wp-image-237 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5.png" alt="" width="800" height="220" srcset="./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5.png 800w, ./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5-300x83.png 300w, ./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5-768x211.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></li>
+<li>Select itemlist and click on connect on the choose table list.<img class="aligncenter size-full wp-image-188" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/Chose-table.png" alt="" width="804" height="591" srcset="./../../../wp-content/uploads/2017/09/Chose-table.png 804w, ./../../../wp-content/uploads/2017/09/Chose-table-300x221.png 300w, ./../../../wp-content/uploads/2017/09/Chose-table-768x565.png 768w" sizes="(max-width: 804px) 100vw, 804px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="13">
+<li>This will start building the app. Basically PowerApps will try and build a app based on the itemlist webservice.<img class="aligncenter size-full wp-image-189" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/getting-things-ready.png" alt="" width="665" height="281" srcset="./../../../wp-content/uploads/2017/09/getting-things-ready.png 665w, ./../../../wp-content/uploads/2017/09/getting-things-ready-300x127.png 300w" sizes="(max-width: 665px) 100vw, 665px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="14">
+<li>Once its ready the app can be customized.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-200" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/appscreen.png" alt="" width="1149" height="656" srcset="./../../../wp-content/uploads/2017/09/appscreen.png 1149w, ./../../../wp-content/uploads/2017/09/appscreen-300x171.png 300w, ./../../../wp-content/uploads/2017/09/appscreen-768x438.png 768w, ./../../../wp-content/uploads/2017/09/appscreen-1024x585.png 1024w, ./../../../wp-content/uploads/2017/09/appscreen-840x480.png 840w" sizes="(max-width: 1149px) 100vw, 1149px" /></p>
+<ol start="15">
+<li>At this point you can play around with different settings and options to customize the app.</li>
+</ol>
+<p>For Example I am going to change the layout of the BrowseScreen1 to include images. Layout can be found under Data Tab.</p>
+<p><img class="aligncenter size-full wp-image-190" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/layout.png" alt="" width="1109" height="571" srcset="./../../../wp-content/uploads/2017/09/layout.png 1109w, ./../../../wp-content/uploads/2017/09/layout-300x154.png 300w, ./../../../wp-content/uploads/2017/09/layout-768x395.png 768w, ./../../../wp-content/uploads/2017/09/layout-1024x527.png 1024w" sizes="(max-width: 1109px) 100vw, 1109px" /></p>
+<ol start="16">
+<li>Next , change the fields to be shown on this screen. This is done by changing the subtitle 2 to Description and Title 2 to No.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-201" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/label.png" alt="" width="1112" height="480" srcset="./../../../wp-content/uploads/2017/09/label.png 1112w, ./../../../wp-content/uploads/2017/09/label-300x129.png 300w, ./../../../wp-content/uploads/2017/09/label-768x332.png 768w, ./../../../wp-content/uploads/2017/09/label-1024x442.png 1024w" sizes="(max-width: 1112px) 100vw, 1112px" /></p>
+<ol start="17">
+<li>Next we want that clicking on the image opens the details page of the Item. This is done by selecting the image and going to Advanced tabe. Then change the OnSelect property from false to Navigate(DetailScreen1, ScreenTransition.None)</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-202" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/nextscreen.png" alt="" width="1121" height="472" srcset="./../../../wp-content/uploads/2017/09/nextscreen.png 1121w, ./../../../wp-content/uploads/2017/09/nextscreen-300x126.png 300w, ./../../../wp-content/uploads/2017/09/nextscreen-768x323.png 768w, ./../../../wp-content/uploads/2017/09/nextscreen-1024x431.png 1024w" sizes="(max-width: 1121px) 100vw, 1121px" /></p>
+<ol start="18">
+<li>Click on Play to see how your App looks</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-204" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/play.png" alt="" width="594" height="280" srcset="./../../../wp-content/uploads/2017/09/play.png 594w, ./../../../wp-content/uploads/2017/09/play-300x141.png 300w" sizes="(max-width: 594px) 100vw, 594px" /></p>
+<ol start="19">
+<li>Pressing X on the top right brings back to design window. Once you are ready with your app. GO to File and select SAVE. This will save your app and you can access or share it to your organization through office portal.<img class="aligncenter size-full wp-image-205" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/preview.png" alt="" width="1093" height="660" srcset="./../../../wp-content/uploads/2017/09/preview.png 1093w, ./../../../wp-content/uploads/2017/09/preview-300x181.png 300w, ./../../../wp-content/uploads/2017/09/preview-768x464.png 768w, ./../../../wp-content/uploads/2017/09/preview-1024x618.png 1024w" sizes="(max-width: 1093px) 100vw, 1093px" /></li>
+</ol>
+<p><img class="aligncenter size-full wp-image-185" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/save.png" alt="" width="1073" height="494" srcset="./../../../wp-content/uploads/2017/09/save.png 1073w, ./../../../wp-content/uploads/2017/09/save-300x138.png 300w, ./../../../wp-content/uploads/2017/09/save-768x354.png 768w, ./../../../wp-content/uploads/2017/09/save-1024x471.png 1024w" sizes="(max-width: 1073px) 100vw, 1073px" /></p>
+<p>As you can see the images are not yet pulled from NAV. This is because NAV saves images in a Media/Mediaset data type which is not recognized in powerapp. I have found a workaround which is will explain in the next blog post. Stay tuned.</p>
+<p><a href="./../../../2017/09/10/build-a-powerapp-add-images-part2/index.html">Link</a> to Part2</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

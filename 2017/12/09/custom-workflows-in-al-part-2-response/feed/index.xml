@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Custom Workflows in AL &#8211; Part 2 Response</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>By: DICKSON KIMEU</title>
+		<link>./../index.html#comment-142</link>
+		<dc:creator><![CDATA[DICKSON KIMEU]]></dc:creator>
+		<pubDate>Sat, 01 Dec 2018 14:54:04 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=281#comment-142</guid>
+		<description><![CDATA[Kindly send me a sample for custom approval workflow in AL.
+
+I.e Adding approvals on leave application a new module]]></description>
+		<content:encoded><![CDATA[<p>Kindly send me a sample for custom approval workflow in AL.</p>
+<p>I.e Adding approvals on leave application a new module</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Laura Nicolàs</title>
+		<link>./../index.html#comment-105</link>
+		<dc:creator><![CDATA[Laura Nicolàs]]></dc:creator>
+		<pubDate>Wed, 24 Jan 2018 11:20:40 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=281#comment-105</guid>
+		<description><![CDATA[Hello Jaspreet,
+
+I read all your blogpost and value your opinions. I would love to hear your thoughts on this question:
+
+Imagine you have to develop an extension that is going to be used in 10,000 
+different Dynamics NAV customers. What characteristics would that extension have?
+
+A blog post about this would be perfect .-)
+
+I have also opened a discussion at mibuso:
+https://forum.mibuso.com/discussion/70804/nav-2018-characteristics-of-a-scalable-extension
+
+Thanks a lot!
+
+Laura Nicolàs]]></description>
+		<content:encoded><![CDATA[<p>Hello Jaspreet,</p>
+<p>I read all your blogpost and value your opinions. I would love to hear your thoughts on this question:</p>
+<p>Imagine you have to develop an extension that is going to be used in 10,000<br />
+different Dynamics NAV customers. What characteristics would that extension have?</p>
+<p>A blog post about this would be perfect .-)</p>
+<p>I have also opened a discussion at mibuso:<br />
+<a href="https://forum.mibuso.com/discussion/70804/nav-2018-characteristics-of-a-scalable-extension" rel="nofollow">https://forum.mibuso.com/discussion/70804/nav-2018-characteristics-of-a-scalable-extension</a></p>
+<p>Thanks a lot!</p>
+<p>Laura Nicolàs</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

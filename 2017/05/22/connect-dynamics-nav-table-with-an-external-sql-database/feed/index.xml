@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Connect Dynamics NAV table with an External SQL Database</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>By: Muhammad Arif</title>
+		<link>./../index.html#comment-185</link>
+		<dc:creator><![CDATA[Muhammad Arif]]></dc:creator>
+		<pubDate>Fri, 24 May 2019 06:12:23 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-185</guid>
+		<description><![CDATA[Great work,
+I have one query i am trying to display message on InsertRecord trigger its work fine when  i insert record from nav but when i insert record from SQLServer the message could not display i think when we insert record from SQLServer then its trigger not fired.
+Any soluction ?]]></description>
+		<content:encoded><![CDATA[<p>Great work,<br />
+I have one query i am trying to display message on InsertRecord trigger its work fine when  i insert record from nav but when i insert record from SQLServer the message could not display i think when we insert record from SQLServer then its trigger not fired.<br />
+Any soluction ?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Cabanos</title>
+		<link>./../index.html#comment-143</link>
+		<dc:creator><![CDATA[Cabanos]]></dc:creator>
+		<pubDate>Fri, 07 Dec 2018 07:33:02 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-143</guid>
+		<description><![CDATA[Hi,
+What kind of rights user must have for SQL database? Control, Delete, Insert...?]]></description>
+		<content:encoded><![CDATA[<p>Hi,<br />
+What kind of rights user must have for SQL database? Control, Delete, Insert&#8230;?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: CNowak</title>
+		<link>./../index.html#comment-137</link>
+		<dc:creator><![CDATA[CNowak]]></dc:creator>
+		<pubDate>Mon, 29 Oct 2018 10:48:39 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-137</guid>
+		<description><![CDATA[Hi Jaspreet,
+I want to connect to a transfer database with a given tablestructure.
+There are fields in then table with datatype „float“. 
+When i do a read on this  table i get the error:
+
+Table.Setrange(…);
+Tabel.FINDFIRST(); -&#062; Error:
+...
+Table content in the IORH_ORDER_HEADER table on SQL Server contains a value that is not compatible with the corresponding data type that is defined for the table.  
+
+Field: IORH_WEIGHT
+Type: Decimal
+SQL type: float
+
+The table design may have been changed outside Microsoft Dynamics NAV.
+…
+
+Any idea, how to handle this?]]></description>
+		<content:encoded><![CDATA[<p>Hi Jaspreet,<br />
+I want to connect to a transfer database with a given tablestructure.<br />
+There are fields in then table with datatype „float“.<br />
+When i do a read on this  table i get the error:</p>
+<p>Table.Setrange(…);<br />
+Tabel.FINDFIRST(); -&gt; Error:<br />
+&#8230;<br />
+Table content in the IORH_ORDER_HEADER table on SQL Server contains a value that is not compatible with the corresponding data type that is defined for the table.  </p>
+<p>Field: IORH_WEIGHT<br />
+Type: Decimal<br />
+SQL type: float</p>
+<p>The table design may have been changed outside Microsoft Dynamics NAV.<br />
+…</p>
+<p>Any idea, how to handle this?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ramandeep</title>
+		<link>./../index.html#comment-95</link>
+		<dc:creator><![CDATA[Ramandeep]]></dc:creator>
+		<pubDate>Thu, 07 Dec 2017 06:36:03 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-95</guid>
+		<description><![CDATA[Lets test your new functionality.]]></description>
+		<content:encoded><![CDATA[<p>Lets test your new functionality.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: jaspreet</title>
+		<link>./../index.html#comment-93</link>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+		<pubDate>Thu, 07 Dec 2017 06:16:51 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-93</guid>
+		<description><![CDATA[Hi Mads,
+I did pass username and password in my Database connection string and it was a externally hosted SQL server.
+So I can confirm to you that it is using the username and password specified in the connection string.
+
+You can try to get a free sql server from https://appharbor.com/addons/sqlserver to test this functionality. It was fairly straightforward.]]></description>
+		<content:encoded><![CDATA[<p>Hi Mads,<br />
+I did pass username and password in my Database connection string and it was a externally hosted SQL server.<br />
+So I can confirm to you that it is using the username and password specified in the connection string.</p>
+<p>You can try to get a free sql server from <a href="https://appharbor.com/addons/sqlserver" rel="nofollow">https://appharbor.com/addons/sqlserver</a> to test this functionality. It was fairly straightforward.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Mads Morre</title>
+		<link>./../index.html#comment-83</link>
+		<dc:creator><![CDATA[Mads Morre]]></dc:creator>
+		<pubDate>Wed, 06 Dec 2017 12:09:10 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-83</guid>
+		<description><![CDATA[Hi Jaspreet
+Just found this Blog
+I’m trying to connect to an external SQL via these functionality, but I get an error, saying that I haven’t got the permissions.
+
+When I read this discussion on MIBUSO then “https://forum.mibuso.com/discussion/67072/connecting-nav-2016-to-an-external-sql-database” it seems that the system uses the NAV Service User iD and not the one specified in the parameter.
+How did you solve that?
+Regards
+Mads Morre]]></description>
+		<content:encoded><![CDATA[<p>Hi Jaspreet<br />
+Just found this Blog<br />
+I’m trying to connect to an external SQL via these functionality, but I get an error, saying that I haven’t got the permissions.</p>
+<p>When I read this discussion on MIBUSO then “https://forum.mibuso.com/discussion/67072/connecting-nav-2016-to-an-external-sql-database” it seems that the system uses the NAV Service User iD and not the one specified in the parameter.<br />
+How did you solve that?<br />
+Regards<br />
+Mads Morre</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: jaspreet</title>
+		<link>./../index.html#comment-55</link>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+		<pubDate>Tue, 21 Nov 2017 16:57:29 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-55</guid>
+		<description><![CDATA[You mean ExternalName Property of the table? You would like to take customers from different companies in NAV  and sync them to separate tables in the External DB?
+
+As far as I know , ExternalName cannot be set using C/AL. 
+You can write logic to register different database connection  depending upon the current company although I don&#039;t think it helps with your requirement.]]></description>
+		<content:encoded><![CDATA[<p>You mean ExternalName Property of the table? You would like to take customers from different companies in NAV  and sync them to separate tables in the External DB?</p>
+<p>As far as I know , ExternalName cannot be set using C/AL.<br />
+You can write logic to register different database connection  depending upon the current company although I don&#8217;t think it helps with your requirement.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Joao</title>
+		<link>./../index.html#comment-54</link>
+		<dc:creator><![CDATA[Joao]]></dc:creator>
+		<pubDate>Tue, 21 Nov 2017 11:56:25 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-54</guid>
+		<description><![CDATA[How would you dynamically change property ExternalName using C/AL, to rely on the same structure at a time on different external connections, but access similar structured, but distinct, external tables? e.g. the Customer table in different companies and tenants?]]></description>
+		<content:encoded><![CDATA[<p>How would you dynamically change property ExternalName using C/AL, to rely on the same structure at a time on different external connections, but access similar structured, but distinct, external tables? e.g. the Customer table in different companies and tenants?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Joao</title>
+		<link>./../index.html#comment-53</link>
+		<dc:creator><![CDATA[Joao]]></dc:creator>
+		<pubDate>Tue, 21 Nov 2017 10:55:48 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-53</guid>
+		<description><![CDATA[Great article, Jaspreet!
+
+How about if you want to use the same table structure, say table RemoteCustomer to connect at different times to different NAV company Customer tables? Imagine this in multi-tenancy NAV.
+
+How can one programmatically change the ExternalName property, and say e.g. ExternalName=Company1$Customer or ExternalName=Company2$Customer or ExternalName=Company3$Customer]]></description>
+		<content:encoded><![CDATA[<p>Great article, Jaspreet!</p>
+<p>How about if you want to use the same table structure, say table RemoteCustomer to connect at different times to different NAV company Customer tables? Imagine this in multi-tenancy NAV.</p>
+<p>How can one programmatically change the ExternalName property, and say e.g. ExternalName=Company1$Customer or ExternalName=Company2$Customer or ExternalName=Company3$Customer</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

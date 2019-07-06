@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: View code of Extension Objects in RTC</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>By: jaspreet</title>
+		<link>./../index.html#comment-104</link>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+		<pubDate>Wed, 24 Jan 2018 04:32:45 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=164#comment-104</guid>
+		<description><![CDATA[Hi Ian, If they have a dev license then yes. Although I haven&#039;t tried to replicate this on a newer version of NAV with Extensions 2.0 It could be that they have patched this now. Will try  on Nav 2018.]]></description>
+		<content:encoded><![CDATA[<p>Hi Ian, If they have a dev license then yes. Although I haven&#8217;t tried to replicate this on a newer version of NAV with Extensions 2.0 It could be that they have patched this now. Will try  on Nav 2018.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ian Morgan</title>
+		<link>./../index.html#comment-100</link>
+		<dc:creator><![CDATA[Ian Morgan]]></dc:creator>
+		<pubDate>Sun, 21 Jan 2018 02:07:16 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=164#comment-100</guid>
+		<description><![CDATA[This is an interesting feature, although possibly dangerous.
+ 
+Out of interest, do you think that if an ISV has code in an extension, this would basically make that source code accessible to anyone who has access to the development environment, regardless of normal object number permissions?]]></description>
+		<content:encoded><![CDATA[<p>This is an interesting feature, although possibly dangerous.</p>
+<p>Out of interest, do you think that if an ISV has code in an extension, this would basically make that source code accessible to anyone who has access to the development environment, regardless of normal object number permissions?</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

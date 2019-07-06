@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: OTP Authentication in Dynamics NAV</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>By: vishal</title>
+		<link>./../index.html#comment-113</link>
+		<dc:creator><![CDATA[vishal]]></dc:creator>
+		<pubDate>Mon, 09 Apr 2018 06:10:45 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112#comment-113</guid>
+		<description><![CDATA[Newtonsoft.Json dll no object please solve  this problem.]]></description>
+		<content:encoded><![CDATA[<p>Newtonsoft.Json dll no object please solve  this problem.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: vishal</title>
+		<link>./../index.html#comment-112</link>
+		<dc:creator><![CDATA[vishal]]></dc:creator>
+		<pubDate>Fri, 06 Apr 2018 09:38:38 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112#comment-112</guid>
+		<description><![CDATA[picture is not clear local variable]]></description>
+		<content:encoded><![CDATA[<p>picture is not clear local variable</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: vishal</title>
+		<link>./../index.html#comment-111</link>
+		<dc:creator><![CDATA[vishal]]></dc:creator>
+		<pubDate>Fri, 06 Apr 2018 09:04:02 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112#comment-111</guid>
+		<description><![CDATA[please give a object]]></description>
+		<content:encoded><![CDATA[<p>please give a object</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ravi Goyal</title>
+		<link>./../index.html#comment-5</link>
+		<dc:creator><![CDATA[Ravi Goyal]]></dc:creator>
+		<pubDate>Wed, 14 Jun 2017 19:13:16 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112#comment-5</guid>
+		<description><![CDATA[Great Article! Worked successfully for me.
+
+However, following things can be updated in the blog:
+1. Url - text constant - &#039;https://rest.nexmo.com/sms/json&#039;
+2. For Newtonsoft.Json dll -&#062; Copy this dll from C:\Program Files (x86)\Microsoft Dynamics NAV\100\RoleTailored Client and into C:\Program Files (x86)\Microsoft Dynamics NAV\100\RoleTailored Client\Add-ins.
+3. There is only one codeunit used wherein all the 4 functions - HttpPostSMS, GetParams, GetRandom, OnBeforeCompanyOpen, are created.
+4. TwoFactorAuth - The variable refer the new page &#039;Two Factor Auth&#039; that was created for Input OTP.
+5. SMSText - Text Constant - &#039;OTP for Login to %1 is %2. Please enter it in NAV.&#039;
+
+Regards,
+Ravi Goyal]]></description>
+		<content:encoded><![CDATA[<p>Great Article! Worked successfully for me.</p>
+<p>However, following things can be updated in the blog:<br />
+1. Url &#8211; text constant &#8211; &#8216;https://rest.nexmo.com/sms/json&#8217;<br />
+2. For Newtonsoft.Json dll -&gt; Copy this dll from C:\Program Files (x86)\Microsoft Dynamics NAV\100\RoleTailored Client and into C:\Program Files (x86)\Microsoft Dynamics NAV\100\RoleTailored Client\Add-ins.<br />
+3. There is only one codeunit used wherein all the 4 functions &#8211; HttpPostSMS, GetParams, GetRandom, OnBeforeCompanyOpen, are created.<br />
+4. TwoFactorAuth &#8211; The variable refer the new page &#8216;Two Factor Auth&#8217; that was created for Input OTP.<br />
+5. SMSText &#8211; Text Constant &#8211; &#8216;OTP for Login to %1 is %2. Please enter it in NAV.&#8217;</p>
+<p>Regards,<br />
+Ravi Goyal</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

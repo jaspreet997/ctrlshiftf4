@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./../../cdn-cgi/apps/head/aE6vWkBDPeNvOaql7XUgXYc8Y7w.js"></script><link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="./../../xmlrpc.php">
+
+<title>SQL &#8211; Jaspreet Singh</title>
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com'/>
+<link rel='dns-prefetch' href='//fonts.googleapis.com'/>
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com'/>
+<link rel='dns-prefetch' href='//s.w.org'/>
+<link rel="alternate" type="application/rss+xml" title="Jaspreet Singh &raquo; Feed" href="./../../feed/index.html"/>
+<link rel="alternate" type="application/rss+xml" title="Jaspreet Singh &raquo; Comments Feed" href="./../../comments/feed/index.html"/>
+<link rel="alternate" type="application/rss+xml" title="Jaspreet Singh &raquo; SQL Category Feed" href="./feed/index.html"/>
+<link rel='stylesheet' id='cookie-law-info-css' href='./../../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public.css?ver=1.7.1' type='text/css' media='all'/>
+<link rel='stylesheet' id='cookie-law-info-gdpr-css' href='./../../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr.css?ver=1.7.1' type='text/css' media='all'/>
+<link rel='stylesheet' id='es-widget-css-css' href='./../../wp-content/plugins/email-subscribers/widget/es-widget.css?ver=4.9.10' type='text/css' media='all'/>
+<link rel='stylesheet' id='gglcptch-css' href='./../../wp-content/plugins/google-captcha/css/gglcptch.css?ver=1.38' type='text/css' media='all'/>
+<link rel='stylesheet' id='worldstar-stylesheet-css' href='./../../wp-content/themes/worldstar/style.css?ver=1.3' type='text/css' media='all'/>
+<link rel='stylesheet' id='genericons-css' href='./../../wp-content/themes/worldstar/css/genericons/genericons.css?ver=3.4.1' type='text/css' media='all'/>
+<link rel='stylesheet' id='worldstar-default-fonts-css' href='//fonts.googleapis.com/css?family=Open+Sans%3A400%2C400italic%2C700%2C700italic%7COswald%3A400%2C400italic%2C700%2C700italic&#038;subset=latin%2Clatin-ext' type='text/css' media='all'/>
+<link rel='stylesheet' id='font-awesome-css' href='//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css?ver=0.3.7' type='text/css' media='all'/>
+<link rel='stylesheet' id='amarkal-css' href='./../../wp-content/plugins/mivhak/vendor/askupa-software/amarkal-framework/Assets/css/amarkal.min.css?ver=0.3.7' type='text/css' media='all'/>
+<link rel='stylesheet' id='select2-css' href='./../../wp-content/plugins/mivhak/vendor/askupa-software/amarkal-framework/Assets/css/select2.min.css?ver=0.3.7' type='text/css' media='all'/>
+<link rel='stylesheet' id='mivhak-css' href='./../../wp-content/plugins/mivhak/assets/css/mivhak.min.css?ver=1.3.6' type='text/css' media='all'/>
+<script type='text/javascript' src='./../../wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='./../../wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>//<![CDATA[
+var Cli_Data={"nn_cookie_ids":[],"cookielist":[]};var log_object={"ajax_url":"https:\/\/www.ctrlshiftf4.com\/wp-admin\/admin-ajax.php"};
+//]]></script>
+<script type='text/javascript' src='./../../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public.js?ver=1.7.1'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='./wp-content/themes/worldstar/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<script type='text/javascript'>//<![CDATA[
+var worldstar_menu_title="Menu";
+//]]></script>
+<script type='text/javascript' src='./../../wp-content/themes/worldstar/js/navigation.js?ver=20160719'></script>
+<link rel='https://api.w.org/' href='./../../wp-json/index.html'/>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../xmlrpc.php?rsd"/>
+<meta name="generator" content="WordPress 4.9.10"/>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5828842919472999",enable_page_level_ads:true});</script>		<style type="text/css">.recentcomments a{display:inline!important;padding:0!important;margin:0!important}</style>
+				<script type="text/javascript">var cli_flush_cache=2;</script>
+		<link rel="icon" href="./../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png" sizes="32x32"/>
+<link rel="icon" href="./../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-192x192.png" sizes="192x192"/>
+<link rel="apple-touch-icon-precomposed" href="./../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-180x180.png"/>
+<meta name="msapplication-TileImage" content="./wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-270x270.png"/>
+		<style type="text/css" id="wp-custom-css">#bitnami-banner{display:none}</style>
+	</head>
+
+<body class="archive category category-sql category-8 wp-custom-logo post-layout-columns">
+
+	<div id="page" class="hfeed site">
+
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		
+		<header id="masthead" class="site-header clearfix" role="banner">
+
+			<div class="header-main container clearfix">
+
+				<div id="logo" class="site-branding clearfix">
+
+					<a href="./../../index.html" class="custom-logo-link" rel="home" itemprop="url"><img width="180" height="180" src="./../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-1.png" class="custom-logo" alt="Jaspreet Singh" itemprop="logo" srcset="./../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-1.png 180w, ./../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-1-150x150.png 150w" sizes="(max-width: 180px) 100vw, 180px"/></a>					
+			<p class="site-title"><a href="./../../index.html" rel="home">Jaspreet Singh</a></p>
+
+							
+			<p class="site-description">Dynamics NAV Tech blog </p>
+
+		
+				</div><!-- .site-branding -->
+
+				<div class="header-widgets clearfix">
+
+					
+				</div><!-- .header-widgets -->
+
+
+			</div><!-- .header-main -->
+
+			<div id="main-navigation-wrap" class="primary-navigation-wrap">
+
+				<nav id="main-navigation" class="primary-navigation navigation container clearfix" role="navigation">
+					<ul id="menu-menu-1" class="main-navigation-menu"><li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42"><a href="https://ctrlshiftf4.com/">Home</a></li>
+<li id="menu-item-270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-270"><a href="./../../contact-me/index.html">Contact Me</a></li>
+</ul>				</nav><!-- #main-navigation -->
+
+			</div>
+
+		</header><!-- #masthead -->
+
+		
+		
+		<div id="content" class="site-content container clearfix">
+
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+			
+				<header class="page-header">
+					<h1 class="archive-title">Category: SQL</h1>				</header><!-- .page-header -->
+
+				
+				<div id="post-wrapper" class="post-wrapper clearfix">
+
+					
+<div class="post-column clearfix">
+
+	<article id="post-89" class="post-89 post type-post status-publish format-standard has-post-thumbnail hentry category-dynamics-365 category-dynamics-nav-2017 category-sql category-sqlserver tag-dynamics-365-for-financials tag-dynamics-nav tag-externalsql tag-nav-2017">
+
+		<div class="post-image">
+
+			
+			<a href="./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html" rel="bookmark">
+				<img width="840" height="464" src="./../../wp-content/uploads/2017/05/tablescompare-840x464.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt=""/>			</a>
+
+		
+			
+		<div class="entry-categories clearfix">
+
+			<span class="meta-category">
+				<a href="./../dynamics-365/index.html" rel="category tag">Dynamics 365</a> <a href="./../dynamics-nav-2017/index.html" rel="category tag">Dynamics NAV 2017</a> <a href="./index.html" rel="category tag">SQL</a> <a href="./server/index.html" rel="category tag">SQL Server</a>			</span>
+
+		</div><!-- .entry-categories -->
+
+		
+		</div>
+
+		<header class="entry-header">
+
+			<h2 class="entry-title"><a href="./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html" rel="bookmark">Connect Dynamics NAV table with an External SQL Database</a></h2>
+			<div class="entry-meta"><span class="meta-date"><a href="./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html" title="10:35 am" rel="bookmark"><time class="entry-date published updated" datetime="2017-05-22T10:35:45+00:00">May 22, 2017</time></a></span><span class="meta-author"> <span class="author vcard"><a class="url fn n" href="./../../author/jaspreet/index.html" title="View all posts by jaspreet" rel="author">jaspreet</a></span></span><span class="meta-comments"> <a href="./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comments">9</a></span></div>
+		</header><!-- .entry-header -->
+
+		<div class="entry-content clearfix">
+
+			<p>Let’s talk about Table type property of NAV tables. There’s a very interesting option in here, ExternalSQL. This option can help us sync a table in Nav with a  table in SQL granted they have a same structure. Let’s see</p>
+			
+		<a href="./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html" class="more-link">Read more</a>
+
+		
+		</div><!-- .entry-content -->
+
+	</article>
+
+</div>
+
+<div class="post-column clearfix">
+
+	<article id="post-26" class="post-26 post type-post status-publish format-standard has-post-thumbnail hentry category-sql category-sqlserver">
+
+		<div class="post-image">
+
+			
+			<a href="./../../2017/05/02/sql-server-performance-tuning-overview/index.html" rel="bookmark">
+				<img width="298" height="240" src="./../../wp-content/uploads/2017/05/backup-sql-server-ret.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt=""/>			</a>
+
+		
+			
+		<div class="entry-categories clearfix">
+
+			<span class="meta-category">
+				<a href="./index.html" rel="category tag">SQL</a> <a href="./server/index.html" rel="category tag">SQL Server</a>			</span>
+
+		</div><!-- .entry-categories -->
+
+		
+		</div>
+
+		<header class="entry-header">
+
+			<h2 class="entry-title"><a href="./../../2017/05/02/sql-server-performance-tuning-overview/index.html" rel="bookmark">SQL Server Performance Tuning &#8211; Overview</a></h2>
+			<div class="entry-meta"><span class="meta-date"><a href="./../../2017/05/02/sql-server-performance-tuning-overview/index.html" title="11:07 am" rel="bookmark"><time class="entry-date published updated" datetime="2017-05-02T11:07:41+00:00">May 2, 2017</time></a></span><span class="meta-author"> <span class="author vcard"><a class="url fn n" href="./../../author/achalmehan/index.html" title="View all posts by Achal Mehan" rel="author">Achal Mehan</a></span></span><span class="meta-comments"> <a href="./../../2017/05/02/sql-server-performance-tuning-overview/index.html#comments">1</a></span></div>
+		</header><!-- .entry-header -->
+
+		<div class="entry-content clearfix">
+
+			<p>While working with the large SQL Server Databases the most common issue that user(s) or administrator(s) face is the Performance issue, which eventually results in the sluggish response to the queries, thus delaying the application response time. Performance refers to</p>
+			
+		<a href="./../../2017/05/02/sql-server-performance-tuning-overview/index.html" class="more-link">Read more</a>
+
+		
+		</div><!-- .entry-content -->
+
+	</article>
+
+</div>
+
+				</div>
+
+				
+		</main><!-- #main -->
+	</section><!-- #primary -->
+
+	
+	<section id="secondary" class="sidebar widget-area clearfix" role="complementary">
+
+		<aside id="search-2" class="widget widget_search clearfix">
+<form role="search" method="get" class="search-form" action="./../../index.html">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" title="Search for:"/>
+	</label>
+	<button type="submit" class="search-submit">
+		<span class="genericon-search"></span>
+		<span class="screen-reader-text">Search</span>
+	</button>
+</form>
+</aside><aside id="pages-3" class="widget widget_pages clearfix"><div class="widget-header"><h3 class="widget-title">Navigation</h3></div>		<ul>
+			<li class="page_item page-item-2"><a href="./../../contact-me/index.html">Contact Me</a></li>
+<li class="page_item page-item-274"><a href="./../../privacy-policy/index.html">Privacy Policy</a></li>
+		</ul>
+		</aside><aside id="categories-2" class="widget widget_categories clearfix"><div class="widget-header"><h3 class="widget-title">Categories</h3></div>		<ul>
+	<li class="cat-item cat-item-16"><a href="./../al/index.html">AL</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="./../dynamics-365/index.html">Dynamics 365</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="./../dynamics-nav-2017/index.html">Dynamics NAV 2017</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="./../dynamics-nav-2018/index.html">Dynamics NAV 2018</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="./../extensions/index.html">Extensions</a>
+</li>
+	<li class="cat-item cat-item-8 current-cat"><a href="./index.html">SQL</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="./server/index.html">SQL Server</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="./../uncategorized/index.html">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="./../visual-studio-code/index.html">Visual Studio Code</a>
+</li>
+		</ul>
+</aside><aside id="email-subscribers-2" class="widget widget_text elp-widget clearfix"><div class="widget-header"><h3 class="widget-title">Subscribe</h3></div>        <div class="es_form_container">
+            <form class="es_widget_form" data-es_form_id="es_widget_form">
+								                    <div class="es_lablebox">
+                        <label class="es_widget_form_name">Name</label>
+                    </div>
+                    <div class="es_textbox">
+                        <input type="text" id="es_txt_name" class="es_textbox_class" name="es_txt_name" value="" maxlength="60">
+                    </div>
+				                <div class="es_lablebox">
+                    <label class="es_widget_form_email">Email *</label>
+                </div>
+                <div class="es_textbox">
+                    <input type="email" id="es_txt_email" class="es_textbox_class" name="es_txt_email" value="" maxlength="60" required>
+                </div>
+				                <div class="es_button">
+                    <input type="submit" id="es_txt_button" class="es_textbox_button es_submit_button" name="es_txt_button" value="Subscribe">
+                </div>
+                <div class="es_msg" id="es_widget_msg">
+                    <span id="es_msg"></span>
+                </div>
+				                <input type="hidden" id="es_txt_group" name="es_txt_group" value="">
+	                            <input type="hidden" name="es-subscribe" id="es-subscribe" value="4b91edaa36"/>
+                <label style="position:absolute;top:-99999px;left:-99999px;z-index:-99;"><input type="text" name="es_hp_ab95ade4f3" class="es_required_field" tabindex="-1" autocomplete="off"/></label>
+            </form>
+			        </div>
+		</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries clearfix">		<div class="widget-header"><h3 class="widget-title">Recent Posts</h3></div>		<ul>
+											<li>
+					<a href="./../../2017/12/09/custom-workflows-in-al-part-2-response/index.html">Custom Workflows in AL &#8211; Part 2 Response</a>
+									</li>
+											<li>
+					<a href="./../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Custom Workflows in AL &#8211; Part 1 &#8216;Events&#8217;</a>
+									</li>
+											<li>
+					<a href="./../../2017/09/10/build-a-powerapp-add-images-part2/index.html">Build a PowerApp – Add Images Part2</a>
+									</li>
+											<li>
+					<a href="./../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html">Build a PowerApp &#8211; Data from Nav 2017 Part1</a>
+									</li>
+											<li>
+					<a href="./../../2017/08/27/multiple-webclients-on-one-server/index.html">Multiple webclients on one Server</a>
+									</li>
+					</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments clearfix"><div class="widget-header"><h3 class="widget-title">Recent Comments</h3></div><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Muhammad Arif</span> on <a href="./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comment-185">Connect Dynamics NAV table with an External SQL Database</a></li><li class="recentcomments"><span class="comment-author-link">Cabanos</span> on <a href="./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comment-143">Connect Dynamics NAV table with an External SQL Database</a></li><li class="recentcomments"><span class="comment-author-link">DICKSON KIMEU</span> on <a href="./../../2017/12/09/custom-workflows-in-al-part-2-response/index.html#comment-142">Custom Workflows in AL &#8211; Part 2 Response</a></li><li class="recentcomments"><span class="comment-author-link">CNowak</span> on <a href="./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comment-137">Connect Dynamics NAV table with an External SQL Database</a></li><li class="recentcomments"><span class="comment-author-link">Bart</span> on <a href="./../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/index.html#comment-136">Post to a rest api in Dynamics NAV</a></li></ul></aside><aside id="archives-2" class="widget widget_archive clearfix"><div class="widget-header"><h3 class="widget-title">Archives</h3></div>		<ul>
+			<li><a href='./../../2017/12/index.html'>December 2017</a></li>
+	<li><a href='./../../2017/11/index.html'>November 2017</a></li>
+	<li><a href='./../../2017/09/index.html'>September 2017</a></li>
+	<li><a href='./../../2017/08/index.html'>August 2017</a></li>
+	<li><a href='./../../2017/07/index.html'>July 2017</a></li>
+	<li><a href='./../../2017/06/index.html'>June 2017</a></li>
+	<li><a href='./../../2017/05/index.html'>May 2017</a></li>
+	<li><a href='./../../2017/04/index.html'>April 2017</a></li>
+		</ul>
+		</aside>
+	</section><!-- #secondary -->
+
+
+
+	</div><!-- #content -->
+
+	
+	<div id="footer" class="footer-wrap">
+
+		<footer id="colophon" class="site-footer container clearfix" role="contentinfo">
+
+			
+			<div id="footer-text" class="site-info">
+				
+	<span class="credit-link">
+		Powered by <a href="http://wordpress.org/" title="WordPress">WordPress</a> and <a href="https://themezee.com/themes/worldstar/" title="WorldStar WordPress Theme">WorldStar</a>.	</span>
+
+				</div><!-- .site-info -->
+
+		</footer><!-- #colophon -->
+
+	</div>
+
+</div><!-- #page -->
+
+<div id="cookie-law-info-bar"><span>This website uses cookies to improve your experience. You can opt-out if you wish.<a href="#" data-cli_action="accept" id="cookie_action_close_header" class="medium cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button">Accept</a> <a href="./../../index.html" id="CONSTANT_OPEN_URL" target="_blank" class="cli-plugin-main-link">Read More</a></span></div><div id="cookie-law-info-again"><span id="cookie_hdr_showagain">Privacy & Cookies Policy</span></div><div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">//<![CDATA[
+cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#FFF","border":"#b1a6a6c2","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":true,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":true,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+//]]></script><script type='text/javascript'>//<![CDATA[
+var es_widget_page_notices={"es_email_notice":"Please enter email address","es_rate_limit_notice":"You need to wait for sometime before subscribing again","es_success_message":"Successfully Subscribed.","es_success_notice":"Your subscription was successful! Kindly check your mailbox and confirm your subscription. If you don't see the email within a few minutes, check the spam\/junk folder.","es_email_exists":"Email Address already exists!","es_error":"Oops.. Unexpected error occurred.","es_invalid_email":"Invalid email address","es_try_later":"Please try after some time","es_ajax_url":"https:\/\/www.ctrlshiftf4.com\/wp-admin\/admin-ajax.php"};
+//]]></script>
+<script type='text/javascript' src='./../../wp-content/plugins/email-subscribers/widget/es-widget-page.js?ver=4.9.10'></script>
+<script type='text/javascript' src='./../../wp-content/plugins/mivhak/vendor/askupa-software/amarkal-framework/Assets/js/select2.min.js?ver=0.3.7'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js?ver=1.2.3'></script>
+<script type='text/javascript'>//<![CDATA[
+var mivhak_settings={"line_numbers":"1","auto_assign":"PRE,CODE,XHR","show_meta":"","min_lines":"1","default_lang":"","font_size":"12","theme":"chrome","version":"1.3.6","lang_list":{"abap":"ABAP","abc":"ABC","actionscript":"ActionScript","ada":"Ada","apache_conf":"ApacheConf","applescript":"AppleScript","asciidoc":"AsciiDoc","assembly_x86":"Assembly x86","autohotkey":"AutoHotkey","batchfile":"Batch File","c9search":"c9search","c_cpp":"C\/C++","cirru":"cirru","clojure":"Clojure","cobol":"COBOL","coffee":"CoffeeScript","coldfusion":"ColdFusion","csharp":"C#","css":"CSS","curly":"Curly","d":"D","dart":"Dart","diff":"diff","django":"Django","dockerfile":"Dockerfile","dot":"DOT","eiffel":"Eiffel","ejs":"EJS","elixir":"Elixir","elm":"Elm","erlang":"Erlang","forth":"Forth","ftl":"FTL","gcode":"G-Code","gherkin":"Gherkin","gitignore":"gitignore","glsl":"GLSL","gobstones":"gobstones","golang":"Go","groovy":"Groovy","haml":"Haml","handlebars":"Handlebars","haskell":"Haskell","haxe":"Haxe","html":"HTML","html_elixir":"HTML Elixir","html_ruby":"HTML Ruby","ini":"INI","io":"io","jack":"JACK","jade":"Jade","java":"Java","javascript":"JavaScript","json":"JSON","jsoniq":"JSONiq","jsp":"JSP","jsx":"JSX","julia":"Julia","latex":"LaTex","lean":"Lean","less":"Less","liquid":"Liquid","lisp":"Lisp","livescript":"LiveScript","logiql":"LogiQL","lsl":"LSL","lua":"Lua","luapage":"Luapage","lucene":"Lucene","makefile":"Makefile","markdown":"Markdown","mask":"Mask","matlab":"MATLAB","maze":"Maze","mel":"MEL","mipsassembler":"MIPS Assembler","mushcode":"MUSHCode","mysql":"MySQL","nix":"nix","nsis":"NSIS","objectivec":"Objective-C","ocaml":"OCaml","pascal":"Pascal","perl":"Perl","pgsql":"pgSQL","php":"PHP","plain_text":"Plain Text","powershell":"PowerShell","praat":"Praat","prolog":"Prolog","properties":"Properties","protobuf":"Protocol Bufffers","python":"Python","r":"R","razor":"Razor","rdoc":"RDoc","rhtml":"rhtml","rst":"reStructuredText","ruby":"Ruby","rust":"Rust","sass":"Sass","scad":"SCAD","scala":"Scala","scheme":"Scheme","scss":"SCSS","sh":"sh","sjs":"SJS","smarty":"Smarty","snippets":"Snippets","soy_template":"Soy Template","space":"Space","sql":"SQL","sqlserver":"SQLServer","stylus":"Stylus","svg":"SVG","swift":"Swift","swig":"Swig","tcl":"Tcl","tex":"Tex","text":"Text","textile":"Textile","toml":"Toml","twig":"Twig","typescript":"TypeScript","vala":"Vala","vbscript":"VBScript","velocity":"Velocity","verilog":"Verilog","vhdl":"VHDL","wollok":"Wollok","xml":"XML","xquery":"XQuery","yaml":"YAML"},"i18n":["line","lines","Copy this code to clipboard","Open this code in a new window","Wrap lines","Show code","About"]};
+//]]></script>
+<script type='text/javascript' src='./../../wp-content/plugins/mivhak/assets/js/mivhak.min.js?ver=1.3.6'></script>
+        <script>if(typeof QTags!=='undefined'){QTags.addButton('pre','pre','<pre>','</pre>\n','p','',105);}</script>
+    
+  <div id="bitnami-banner" data-banner-id="bade1">  <style>#bitnami-banner{z-index:100000;height:80px;padding:0px;width:120px;background:transparent;position:fixed;right:0px;bottom:0px;border:0px solid #ededed}#bitnami-banner .bitnami-corner-image-div{position:fixed;right:0px;bottom:0px;border:0px;z-index:100001;height:110px}#bitnami-banner .bitnami-corner-image-div .bitnami-corner-image{position:fixed;right:0px;bottom:0px;border:0px;z-index:100001;height:110px}#bitnami-close-banner-button{height:12px;width:12px;z-index:10000000000;position:fixed;right:5px;bottom:65px;display:none;cursor:pointer}</style>  <img id="bitnami-close-banner-button" src="./../../bitnami/images/close.png"/>  <div class="bitnami-corner-image-div">     <a href="./../../bitnami/index.html" target="_blank">       <img class="bitnami-corner-image" alt="Bitnami" src="./../../bitnami/images/corner-logo.png"/>     </a>  </div>  <script type="text/javascript" src="./../../bitnami/banner.js"></script> </div>   </body>
+</html>

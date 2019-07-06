@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Dynamics NAV 2018 &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>Dynamics NAV 2018 &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Custom Workflows in AL &#8211; Part 2 Response</title>
+		<link>./../../../2017/12/09/custom-workflows-in-al-part-2-response/index.html</link>
+		<comments>./../../../2017/12/09/custom-workflows-in-al-part-2-response/index.html#comments</comments>
+		<pubDate>Sat, 09 Dec 2017 11:56:15 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[AL]]></category>
+		<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics NAV 2018]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Events]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[Response]]></category>
+		<category><![CDATA[VSCODE]]></category>
+		<category><![CDATA[Webclient]]></category>
+		<category><![CDATA[Workflows]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=281</guid>
+		<description><![CDATA[In the previous blog, we talked about how we can raise a custom Workflow Event in NAV using AL. Let’s see how to create custom Reponses for Workflows in the new AL environment. Steps: Create a new code unit. (in]]></description>
+				<content:encoded><![CDATA[<p>In the <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">previous</a> blog, we talked about how we can raise a custom Workflow Event in NAV using AL. Let’s see how to create custom Reponses for Workflows in the new AL environment.</p>
+<p>Steps:</p>
+<ol>
+<li>Create a new code unit. (in VSCode with Al Extension enabled, typing tcodeunit + ENTER key trigger a code snippet and creates a basic layout of a code unit)</li>
+<li>Create a new Procedure ‘ApiEmailValidationResponseCode’ with return type code.<img class="aligncenter size-full wp-image-282" src="./../../../wp-content/uploads/2017/12/2evw1.png" alt="" width="597" height="280" srcset="./../../../wp-content/uploads/2017/12/2evw1.png 597w, ./../../../wp-content/uploads/2017/12/2evw1-300x141.png 300w" sizes="(max-width: 597px) 100vw, 597px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="3">
+<li>Create a new Event subscriber for Codeunit Workflow Response handling , Event OnAddworkflowReponsetoLibrary<img class="aligncenter size-full wp-image-283" src="./../../../wp-content/uploads/2017/12/2evw2.png" alt="" width="1239" height="181" srcset="./../../../wp-content/uploads/2017/12/2evw2.png 1239w, ./../../../wp-content/uploads/2017/12/2evw2-300x44.png 300w, ./../../../wp-content/uploads/2017/12/2evw2-768x112.png 768w, ./../../../wp-content/uploads/2017/12/2evw2-1024x150.png 1024w" sizes="(max-width: 1239px) 100vw, 1239px" /></li>
+</ol>
+<p>Declare a variable of Workflow Response Handling codeunit in the procedure and call the    function AddResponsetoLibrary as shown above.</p>
+<p>For the Response option group Parameter, pass Group 50100. Response option group lets you add some user input that the user can choose when they select our Response. To do this follow the steps below.</p>
+<ol start="4">
+<li>We need to add a new custom field in a standard table “Workflow Step Argument”</li>
+</ol>
+<p>Since we are not touching base code, We can meet this requirement using the new type of objects introduced called TableExtension and PageExtension.</p>
+<p>Create a new object of type tableextension as shown below. The snippet to quickly create the layout is ‘ttableext’.<img class="aligncenter size-full wp-image-284" src="./../../../wp-content/uploads/2017/12/2evw3.png" alt="" width="729" height="312" srcset="./../../../wp-content/uploads/2017/12/2evw3.png 729w, ./../../../wp-content/uploads/2017/12/2evw3-300x128.png 300w" sizes="(max-width: 729px) 100vw, 729px" /></p>
+<ol start="5">
+<li>Similarly create a new page extension. This will allow you to add the newly created field from the table extension to the base page “Workflow Response Options”.<img class="aligncenter size-full wp-image-285" src="./../../../wp-content/uploads/2017/12/2evw4.png" alt="" width="748" height="558" srcset="./../../../wp-content/uploads/2017/12/2evw4.png 748w, ./../../../wp-content/uploads/2017/12/2evw4-300x224.png 300w" sizes="(max-width: 748px) 100vw, 748px" /></li>
+</ol>
+<p>This field also needs a Visible=&#8221;Response Option Group&#8221; = &#8216;GROUP 50100&#8217;; This property will make sure that our custom Response options will only be visible when the user selects our response from the available list.</p>
+<ol start="6">
+<li>Return to the Response Codeunit that we created in the beginning of this post.</li>
+<li>Create a new subscriber of codeunit &#8220;Workflow Response Handling&#8221;, Event &#8216;OnExecuteWorkflowResponse&#8217;.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-286" src="./../../../wp-content/uploads/2017/12/2evw5.png" alt="" width="1246" height="283" srcset="./../../../wp-content/uploads/2017/12/2evw5.png 1246w, ./../../../wp-content/uploads/2017/12/2evw5-300x68.png 300w, ./../../../wp-content/uploads/2017/12/2evw5-768x174.png 768w, ./../../../wp-content/uploads/2017/12/2evw5-1024x233.png 1024w" sizes="(max-width: 1246px) 100vw, 1246px" /></p>
+<p>As you can see, This pattern will remain the same for all your responses. The only change would be the Case ‘ApiEmailValidationResponseCode’. Everytime systems detects that your response is being triggered , it will run the function ‘ActualApiEmailValidationWFResponse’ function and pass the parameters to it.</p>
+<ol start="8">
+<li>Create a new procedure called ‘ActualApiEmailValidationWFResponse’. This is the one where you write your actual logic that you want to run every time your response is executed.<img class="aligncenter size-full wp-image-294" src="./../../../wp-content/uploads/2017/12/actualevw.png" alt="" width="1279" height="616" srcset="./../../../wp-content/uploads/2017/12/actualevw.png 1279w, ./../../../wp-content/uploads/2017/12/actualevw-300x144.png 300w, ./../../../wp-content/uploads/2017/12/actualevw-768x370.png 768w, ./../../../wp-content/uploads/2017/12/actualevw-1024x493.png 1024w" sizes="(max-width: 1279px) 100vw, 1279px" /></li>
+</ol>
+<p>This function basically checks the Variant Parameter and detects if the Variant is a customer RecRef or User RecRef. Depending on the what the Variant is , It will trigger the email validation api which I have created in a separate codeunit.</p>
+<ol start="9">
+<li>Create a new codeunit. Also create a new procedure within that called InitializeApi.</li>
+</ol>
+<p>Declare the variables as shown below. AL language now include native httpclient support and we do not need to declare dotnet variable anymore. It also comes packed with native Json support to read and write data to JSON.<img class="aligncenter size-full wp-image-288" src="./../../../wp-content/uploads/2017/12/2evw7.png" alt="" width="853" height="665" srcset="./../../../wp-content/uploads/2017/12/2evw7.png 853w, ./../../../wp-content/uploads/2017/12/2evw7-300x234.png 300w, ./../../../wp-content/uploads/2017/12/2evw7-768x599.png 768w" sizes="(max-width: 853px) 100vw, 853px" /></p>
+<p>I am using a free api to validate emails from <a href="https://mailboxlayer.com/">https://mailboxlayer.com/</a>. It supports receiving the email to check in the query of the URL. Please replace &lt;youraccesskey&gt; with what your own key which you will receive after registering for the free Api.</p>
+<p>The Api returns the result in JSON format. We are only interested in the smtp_check key since that is the one which checks if the Mail server belonging to the user provided email address actually exist on internet.</p>
+<p>&nbsp;</p>
+<p>Sample JSON Result:</p>
+<ol start="10">
+<li>
+<pre class="prettyprint lang-json" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">{
+
+ "email": "support@apilayer.com",
+
+ "did_you_mean": "",
+
+ "format_valid": true,
+
+ "mx_found": true,
+
+ "smtp_check": true,
+
+ "catch_all": false,
+
+ "role": true,
+
+ "disposable": false,
+
+ "free": false,
+
+ "score": 0.8
+
+}</pre>
+<p>And finally lets create the ShowResult Procedure which shows the output to the user based on the ValidationOption that user selects in the Response.<img class="aligncenter size-full wp-image-289" src="./../../../wp-content/uploads/2017/12/2evw8.png" alt="" width="775" height="349" srcset="./../../../wp-content/uploads/2017/12/2evw8.png 775w, ./../../../wp-content/uploads/2017/12/2evw8-300x135.png 300w, ./../../../wp-content/uploads/2017/12/2evw8-768x346.png 768w" sizes="(max-width: 775px) 100vw, 775px" /></li>
+</ol>
+<p>So, if in the ResponseOption, the Workflow creator selects ‘Error’ then user will be shown an error and won’t be allowed to enter a invalid email. But if the user selects warning then only a warning notification is shown.</p>
+<p>Press Ctrl+f5 to package all code in an extension and deploy to Application Server.</p>
+<p>Let’s see how it all works together with the custom Events we created in <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Part 1</a>.</p>
+<p>Demo:</p>
+<p>Create a new workflow as shown below. For the Event select the custom event we created in part 1 ’User Card Email field is changed’.<img class="aligncenter size-full wp-image-290" src="./../../../wp-content/uploads/2017/12/2evw9.png" alt="" width="1002" height="534" srcset="./../../../wp-content/uploads/2017/12/2evw9.png 1002w, ./../../../wp-content/uploads/2017/12/2evw9-300x160.png 300w, ./../../../wp-content/uploads/2017/12/2evw9-768x409.png 768w" sizes="(max-width: 1002px) 100vw, 1002px" /></p>
+<p>On the Response side , Select the custom response we created(‘Check if the format is valid and server actually exist’) and select the EVW_ValidationOption as ‘Error’ in the drop down.<img class="aligncenter size-full wp-image-291" src="./../../../wp-content/uploads/2017/12/2evw10.png" alt="" width="579" height="421" srcset="./../../../wp-content/uploads/2017/12/2evw10.png 579w, ./../../../wp-content/uploads/2017/12/2evw10-300x218.png 300w" sizes="(max-width: 579px) 100vw, 579px" /></p>
+<p>&nbsp;</p>
+<p>Press Ok and Click on the Enabled check box to enable the workflow. Workflow is created.</p>
+<p>Now Open User card and try to enter an invalid email address. You will receive an Error as shown below.</p>
+<p><img class="aligncenter wp-image-292 size-full" src="./../../../wp-content/uploads/2017/12/2evw11-e1512820711165.png" alt="" width="734" height="361" srcset="./../../../wp-content/uploads/2017/12/2evw11-e1512820711165.png 734w, ./../../../wp-content/uploads/2017/12/2evw11-e1512820711165-300x148.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></p>
+<p>In Case the email is fine User receives a success notification.</p>
+<p><img class="aligncenter size-full wp-image-293" src="./../../../wp-content/uploads/2017/12/2evw12.png" alt="" width="613" height="104" srcset="./../../../wp-content/uploads/2017/12/2evw12.png 613w, ./../../../wp-content/uploads/2017/12/2evw12-300x51.png 300w" sizes="(max-width: 613px) 100vw, 613px" /></p>
+<p>&nbsp;</p>
+<p>That’s it, we have created a custom event and custom response with user selectable response options in AL and created an Extension for the customization.</p>
+<p>Link to <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Part 1</a></p>
+<p>Download code <a href="https://drive.google.com/open?id=1_9UBhLKuJ2ruRHg84M51FGttnKbiztmn">GoogleDrive</a></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/12/09/custom-workflows-in-al-part-2-response/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Uncategorized &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>Uncategorized &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Smart Notifications -How To</title>
+		<link>./../../../2017/04/30/smart-notifications-how-to/index.html</link>
+		<comments>./../../../2017/04/30/smart-notifications-how-to/index.html#respond</comments>
+		<pubDate>Sun, 30 Apr 2017 05:10:57 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4-jmail123.rhcloud.com/?p=14</guid>
+		<description><![CDATA[For Dynamics Nav 2017 / Dynamics 365 for Financials Smart notifications provide a way to interact and inform the end user without stopping them from doing their work. It&#8217;s a Non-Intrusive way to Push messages in Nav unlike MESSAGE() and]]></description>
+				<content:encoded><![CDATA[<p><span style="text-decoration: underline;"><em>For Dynamics Nav 2017 / Dynamics 365 for Financials<br />
+</em></span></p>
+<p>Smart notifications provide a way to interact and inform the end user without stopping them from doing their work. It&#8217;s a Non-Intrusive way to Push messages in Nav unlike MESSAGE() and ERROR().</p>
+<p>It&#8217;s meant for low importance messages that user should know but not critical enough to stop his work</p>
+<p><strong>Scenario: </strong>User is filling his expense claim and has not uploaded a receipt for the line he is making. We will use these new types of notification to remind him to upload an invoice receipt also providing them a quick way to do it without leaving the page they are currently using by adding an Action to the Notification.</p>
+<p><strong>Steps:<br />
+</strong></p>
+<ol>
+<li>Open a code unit in Dev environment. It could be an existing one depending upon the requirement.</li>
+<li>Create a new function and Write logic as required</li>
+</ol>
+<p><img class="aligncenter wp-image-37 size-full" src="https://ctrlshiftf4.com/wp-content/uploads/2017/04/Basic-notification-code.png" alt="" width="693" height="414" srcset="./../../../wp-content/uploads/2017/04/Basic-notification-code.png 693w, ./../../../wp-content/uploads/2017/04/Basic-notification-code-300x179.png 300w" sizes="(max-width: 693px) 100vw, 693px" />Syntax for the notification is</p>
+<h5 style="text-align: left;"><span style="color: black; font-family: Consolas;"><span style="font-size: 12pt; background-color: white;"> </span></span></h5>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">RecieptNoti.MESSAGE(NoReciept);
+
+RecieptNoti.SCOPE := NOTIFICATIONSCOPE::LocalScope;
+
+RecieptNoti.SEND;</pre>
+<p style="margin-left: 36pt;"><span style="color: black;">Where <strong>RecieptNoti</strong> is a Variable of type &#8216;Notification&#8217;<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;"><strong>NoReciept</strong> is a text constant that holds the value we want to print from message<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;"><strong>.Send </strong>Sends the notification<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;"><strong>NotificationSCOPE</strong> has two types Local and Global<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;">Local: It Shows the notification on page from where it was fired<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;">Global: Shows the notification everywhere in Nav no matter where user is.<br />
+</span></p>
+<p style="margin-left: 36pt;"><span style="color: black;"> Note: GlobalScope is not working at this point</span></p>
+<p style="margin-left: 36pt; text-align: left;">Next call this function we just created. Here I am going to call it from OnValidate of Vendor Invoice No. field.</p>
+<p><img class="size-full wp-image-38 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/04/Callthefx.png" alt="" width="615" height="352" srcset="./../../../wp-content/uploads/2017/04/Callthefx.png 615w, ./../../../wp-content/uploads/2017/04/Callthefx-300x172.png 300w, ./../../../wp-content/uploads/2017/04/Callthefx-420x240.png 420w" sizes="(max-width: 615px) 100vw, 615px" /></p>
+<ul>
+<li>Test it</li>
+</ul>
+<p>&nbsp;</p>
+<p><img class="alignnone" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/04/043017_0510_SmartNotifi3.png" alt="" width="540" height="228" align="left" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Next we Add an Action to this Notification.</strong></p>
+<p><img class="wp-image-36 size-full aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/04/with-Action.png" alt="" width="840" height="465" srcset="./../../../wp-content/uploads/2017/04/with-Action.png 840w, ./../../../wp-content/uploads/2017/04/with-Action-300x166.png 300w, ./../../../wp-content/uploads/2017/04/with-Action-768x425.png 768w" sizes="(max-width: 840px) 100vw, 840px" /></p>
+<p><img class="aligncenter" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/04/043017_0510_SmartNotifi5.png" alt="" width="504" height="154" /></p>
+<p><strong>Syntax:<br />
+</strong></p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">RecieptNoti.MESSAGE(NoReciept);
+
+RecieptNoti.SCOPE := NOTIFICATIONSCOPE::LocalScope;
+
+RecieptNoti.SETDATA('Expense No.',FORMAT(ExpenseLine."Expense No."));
+
+RecieptNoti.ADDACTION(Attach,CODEUNIT::"Expense Attachment Management",'Upload');
+
+RecieptNoti.SEND;</pre>
+<p>&nbsp;</p>
+<p><span style="color: black;">.SETDATA lets you set a text into the notification which you can retrieve in the function you call<br />
+</span></p>
+<p><span style="color: black;">.ADDACTION(Text, Code unit id, Function Name)<br />
+</span></p>
+<p><span style="color: black;">.GETDATA lets you get the data that you previously set in the function and use it for your logic<br />
+</span></p>
+<ol>
+<li><span style="color: black;">The Function that we want to add to the notification should have a variable of type &#8216;Notification and has to be Global for it to work.<br />
+</span></li>
+<li><span style="color: black;">Test it.<br />
+</span></li>
+</ol>
+<p><img class="aligncenter" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/04/043017_0510_SmartNotifi6.png" alt="" width="631" height="225" align="left" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Clicking on &#8216;Attach Now &#8216; opens a file browse dialog box and lets the user to upload a invoice.</p>
+<p>&nbsp;</p>
+<p style="margin-left: 18pt;"><img class="aligncenter" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/04/043017_0510_SmartNotifi8.png" alt="" /></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/04/30/smart-notifications-how-to/feed/index.html</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments for Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Fri, 24 May 2019 06:12:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+	<item>
+		<title>Comment on Connect Dynamics NAV table with an External SQL Database by Muhammad Arif</title>
+		<link>./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comment-185</link>
+		<dc:creator><![CDATA[Muhammad Arif]]></dc:creator>
+		<pubDate>Fri, 24 May 2019 06:12:23 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-185</guid>
+		<description><![CDATA[Great work,
+I have one query i am trying to display message on InsertRecord trigger its work fine when  i insert record from nav but when i insert record from SQLServer the message could not display i think when we insert record from SQLServer then its trigger not fired.
+Any soluction ?]]></description>
+		<content:encoded><![CDATA[<p>Great work,<br />
+I have one query i am trying to display message on InsertRecord trigger its work fine when  i insert record from nav but when i insert record from SQLServer the message could not display i think when we insert record from SQLServer then its trigger not fired.<br />
+Any soluction ?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Connect Dynamics NAV table with an External SQL Database by Cabanos</title>
+		<link>./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comment-143</link>
+		<dc:creator><![CDATA[Cabanos]]></dc:creator>
+		<pubDate>Fri, 07 Dec 2018 07:33:02 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-143</guid>
+		<description><![CDATA[Hi,
+What kind of rights user must have for SQL database? Control, Delete, Insert...?]]></description>
+		<content:encoded><![CDATA[<p>Hi,<br />
+What kind of rights user must have for SQL database? Control, Delete, Insert&#8230;?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Custom Workflows in AL &#8211; Part 2 Response by DICKSON KIMEU</title>
+		<link>./../../2017/12/09/custom-workflows-in-al-part-2-response/index.html#comment-142</link>
+		<dc:creator><![CDATA[DICKSON KIMEU]]></dc:creator>
+		<pubDate>Sat, 01 Dec 2018 14:54:04 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=281#comment-142</guid>
+		<description><![CDATA[Kindly send me a sample for custom approval workflow in AL.
+
+I.e Adding approvals on leave application a new module]]></description>
+		<content:encoded><![CDATA[<p>Kindly send me a sample for custom approval workflow in AL.</p>
+<p>I.e Adding approvals on leave application a new module</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Connect Dynamics NAV table with an External SQL Database by CNowak</title>
+		<link>./../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comment-137</link>
+		<dc:creator><![CDATA[CNowak]]></dc:creator>
+		<pubDate>Mon, 29 Oct 2018 10:48:39 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89#comment-137</guid>
+		<description><![CDATA[Hi Jaspreet,
+I want to connect to a transfer database with a given tablestructure.
+There are fields in then table with datatype „float“. 
+When i do a read on this  table i get the error:
+
+Table.Setrange(…);
+Tabel.FINDFIRST(); -&#062; Error:
+...
+Table content in the IORH_ORDER_HEADER table on SQL Server contains a value that is not compatible with the corresponding data type that is defined for the table.  
+
+Field: IORH_WEIGHT
+Type: Decimal
+SQL type: float
+
+The table design may have been changed outside Microsoft Dynamics NAV.
+…
+
+Any idea, how to handle this?]]></description>
+		<content:encoded><![CDATA[<p>Hi Jaspreet,<br />
+I want to connect to a transfer database with a given tablestructure.<br />
+There are fields in then table with datatype „float“.<br />
+When i do a read on this  table i get the error:</p>
+<p>Table.Setrange(…);<br />
+Tabel.FINDFIRST(); -&gt; Error:<br />
+&#8230;<br />
+Table content in the IORH_ORDER_HEADER table on SQL Server contains a value that is not compatible with the corresponding data type that is defined for the table.  </p>
+<p>Field: IORH_WEIGHT<br />
+Type: Decimal<br />
+SQL type: float</p>
+<p>The table design may have been changed outside Microsoft Dynamics NAV.<br />
+…</p>
+<p>Any idea, how to handle this?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Post to a rest api in Dynamics NAV by Bart</title>
+		<link>./../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/index.html#comment-136</link>
+		<dc:creator><![CDATA[Bart]]></dc:creator>
+		<pubDate>Thu, 18 Oct 2018 11:55:30 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-136</guid>
+		<description><![CDATA[Hi,
+I have a problem running CU 1297 on NAS server. My integration works perfectly fine  on the client version (no errors, no dialog windows, nothing), but whenever I run it on NAS it complains about client callbacks for all  dotnet variables CU 1297 is using. All of them are already set up not to run on client (as suggested in some forums) but that is not solving the problem. Is it possible to run CU1297 on NAS as all, and if not, is there any alternative to it which would work on NAS?]]></description>
+		<content:encoded><![CDATA[<p>Hi,<br />
+I have a problem running CU 1297 on NAS server. My integration works perfectly fine  on the client version (no errors, no dialog windows, nothing), but whenever I run it on NAS it complains about client callbacks for all  dotnet variables CU 1297 is using. All of them are already set up not to run on client (as suggested in some forums) but that is not solving the problem. Is it possible to run CU1297 on NAS as all, and if not, is there any alternative to it which would work on NAS?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Post to a rest api in Dynamics NAV by Prakash Kumar</title>
+		<link>./../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/index.html#comment-125</link>
+		<dc:creator><![CDATA[Prakash Kumar]]></dc:creator>
+		<pubDate>Fri, 27 Jul 2018 16:38:46 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103#comment-125</guid>
+		<description><![CDATA[Hi Jaspreet,
+
+These are very excellent articles and it helps alot, but I am stuck at a point where I am trying to call a URL which uses SSO(single sign on) and there it asks for credentials, even though I have supplied the correct credentials to the HttpWebRequest.Credential property still getting issue of 401 un authorized error.
+
+Can you please help in my case.
+
+Regards,
+Prakash]]></description>
+		<content:encoded><![CDATA[<p>Hi Jaspreet,</p>
+<p>These are very excellent articles and it helps alot, but I am stuck at a point where I am trying to call a URL which uses SSO(single sign on) and there it asks for credentials, even though I have supplied the correct credentials to the HttpWebRequest.Credential property still getting issue of 401 un authorized error.</p>
+<p>Can you please help in my case.</p>
+<p>Regards,<br />
+Prakash</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Build a PowerApp &#8211; Data from Nav 2017 Part1 by Anil Kumar Anisetty</title>
+		<link>./../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html#comment-122</link>
+		<dc:creator><![CDATA[Anil Kumar Anisetty]]></dc:creator>
+		<pubDate>Mon, 02 Jul 2018 08:49:37 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=184#comment-122</guid>
+		<description><![CDATA[Hello Jasprit,
+
+I am not able to make dynamics nav connection it says below. I have given the right url because when i open the same in browser it works. Please see if you can help me on this.
+
+The URL &#039;&#039; is not a valid Microsoft Dynamics NAV OData feed URL. The OData feed URL can be found on the &#039;Web Services&#039; page in Microsoft Dynamics NAV. clientRequestId: 97dd8e54-4ebc-4109-b0c2-9b66c8bc91c2]]></description>
+		<content:encoded><![CDATA[<p>Hello Jasprit,</p>
+<p>I am not able to make dynamics nav connection it says below. I have given the right url because when i open the same in browser it works. Please see if you can help me on this.</p>
+<p>The URL &#8221; is not a valid Microsoft Dynamics NAV OData feed URL. The OData feed URL can be found on the &#8216;Web Services&#8217; page in Microsoft Dynamics NAV. clientRequestId: 97dd8e54-4ebc-4109-b0c2-9b66c8bc91c2</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on OTP Authentication in Dynamics NAV by vishal</title>
+		<link>./../../2017/06/10/otp-authentication-in-dynamics-nav/index.html#comment-113</link>
+		<dc:creator><![CDATA[vishal]]></dc:creator>
+		<pubDate>Mon, 09 Apr 2018 06:10:45 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112#comment-113</guid>
+		<description><![CDATA[Newtonsoft.Json dll no object please solve  this problem.]]></description>
+		<content:encoded><![CDATA[<p>Newtonsoft.Json dll no object please solve  this problem.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on OTP Authentication in Dynamics NAV by vishal</title>
+		<link>./../../2017/06/10/otp-authentication-in-dynamics-nav/index.html#comment-112</link>
+		<dc:creator><![CDATA[vishal]]></dc:creator>
+		<pubDate>Fri, 06 Apr 2018 09:38:38 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112#comment-112</guid>
+		<description><![CDATA[picture is not clear local variable]]></description>
+		<content:encoded><![CDATA[<p>picture is not clear local variable</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on OTP Authentication in Dynamics NAV by vishal</title>
+		<link>./../../2017/06/10/otp-authentication-in-dynamics-nav/index.html#comment-111</link>
+		<dc:creator><![CDATA[vishal]]></dc:creator>
+		<pubDate>Fri, 06 Apr 2018 09:04:02 +0000</pubDate>
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112#comment-111</guid>
+		<description><![CDATA[please give a object]]></description>
+		<content:encoded><![CDATA[<p>please give a object</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

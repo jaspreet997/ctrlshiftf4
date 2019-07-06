@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jaspreet &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>jaspreet &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Custom Workflows in AL &#8211; Part 2 Response</title>
+		<link>./../../../2017/12/09/custom-workflows-in-al-part-2-response/index.html</link>
+		<comments>./../../../2017/12/09/custom-workflows-in-al-part-2-response/index.html#comments</comments>
+		<pubDate>Sat, 09 Dec 2017 11:56:15 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[AL]]></category>
+		<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics NAV 2018]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Events]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[Response]]></category>
+		<category><![CDATA[VSCODE]]></category>
+		<category><![CDATA[Webclient]]></category>
+		<category><![CDATA[Workflows]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=281</guid>
+		<description><![CDATA[In the previous blog, we talked about how we can raise a custom Workflow Event in NAV using AL. Let’s see how to create custom Reponses for Workflows in the new AL environment. Steps: Create a new code unit. (in]]></description>
+				<content:encoded><![CDATA[<p>In the <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">previous</a> blog, we talked about how we can raise a custom Workflow Event in NAV using AL. Let’s see how to create custom Reponses for Workflows in the new AL environment.</p>
+<p>Steps:</p>
+<ol>
+<li>Create a new code unit. (in VSCode with Al Extension enabled, typing tcodeunit + ENTER key trigger a code snippet and creates a basic layout of a code unit)</li>
+<li>Create a new Procedure ‘ApiEmailValidationResponseCode’ with return type code.<img class="aligncenter size-full wp-image-282" src="./../../../wp-content/uploads/2017/12/2evw1.png" alt="" width="597" height="280" srcset="./../../../wp-content/uploads/2017/12/2evw1.png 597w, ./../../../wp-content/uploads/2017/12/2evw1-300x141.png 300w" sizes="(max-width: 597px) 100vw, 597px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="3">
+<li>Create a new Event subscriber for Codeunit Workflow Response handling , Event OnAddworkflowReponsetoLibrary<img class="aligncenter size-full wp-image-283" src="./../../../wp-content/uploads/2017/12/2evw2.png" alt="" width="1239" height="181" srcset="./../../../wp-content/uploads/2017/12/2evw2.png 1239w, ./../../../wp-content/uploads/2017/12/2evw2-300x44.png 300w, ./../../../wp-content/uploads/2017/12/2evw2-768x112.png 768w, ./../../../wp-content/uploads/2017/12/2evw2-1024x150.png 1024w" sizes="(max-width: 1239px) 100vw, 1239px" /></li>
+</ol>
+<p>Declare a variable of Workflow Response Handling codeunit in the procedure and call the    function AddResponsetoLibrary as shown above.</p>
+<p>For the Response option group Parameter, pass Group 50100. Response option group lets you add some user input that the user can choose when they select our Response. To do this follow the steps below.</p>
+<ol start="4">
+<li>We need to add a new custom field in a standard table “Workflow Step Argument”</li>
+</ol>
+<p>Since we are not touching base code, We can meet this requirement using the new type of objects introduced called TableExtension and PageExtension.</p>
+<p>Create a new object of type tableextension as shown below. The snippet to quickly create the layout is ‘ttableext’.<img class="aligncenter size-full wp-image-284" src="./../../../wp-content/uploads/2017/12/2evw3.png" alt="" width="729" height="312" srcset="./../../../wp-content/uploads/2017/12/2evw3.png 729w, ./../../../wp-content/uploads/2017/12/2evw3-300x128.png 300w" sizes="(max-width: 729px) 100vw, 729px" /></p>
+<ol start="5">
+<li>Similarly create a new page extension. This will allow you to add the newly created field from the table extension to the base page “Workflow Response Options”.<img class="aligncenter size-full wp-image-285" src="./../../../wp-content/uploads/2017/12/2evw4.png" alt="" width="748" height="558" srcset="./../../../wp-content/uploads/2017/12/2evw4.png 748w, ./../../../wp-content/uploads/2017/12/2evw4-300x224.png 300w" sizes="(max-width: 748px) 100vw, 748px" /></li>
+</ol>
+<p>This field also needs a Visible=&#8221;Response Option Group&#8221; = &#8216;GROUP 50100&#8217;; This property will make sure that our custom Response options will only be visible when the user selects our response from the available list.</p>
+<ol start="6">
+<li>Return to the Response Codeunit that we created in the beginning of this post.</li>
+<li>Create a new subscriber of codeunit &#8220;Workflow Response Handling&#8221;, Event &#8216;OnExecuteWorkflowResponse&#8217;.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-286" src="./../../../wp-content/uploads/2017/12/2evw5.png" alt="" width="1246" height="283" srcset="./../../../wp-content/uploads/2017/12/2evw5.png 1246w, ./../../../wp-content/uploads/2017/12/2evw5-300x68.png 300w, ./../../../wp-content/uploads/2017/12/2evw5-768x174.png 768w, ./../../../wp-content/uploads/2017/12/2evw5-1024x233.png 1024w" sizes="(max-width: 1246px) 100vw, 1246px" /></p>
+<p>As you can see, This pattern will remain the same for all your responses. The only change would be the Case ‘ApiEmailValidationResponseCode’. Everytime systems detects that your response is being triggered , it will run the function ‘ActualApiEmailValidationWFResponse’ function and pass the parameters to it.</p>
+<ol start="8">
+<li>Create a new procedure called ‘ActualApiEmailValidationWFResponse’. This is the one where you write your actual logic that you want to run every time your response is executed.<img class="aligncenter size-full wp-image-294" src="./../../../wp-content/uploads/2017/12/actualevw.png" alt="" width="1279" height="616" srcset="./../../../wp-content/uploads/2017/12/actualevw.png 1279w, ./../../../wp-content/uploads/2017/12/actualevw-300x144.png 300w, ./../../../wp-content/uploads/2017/12/actualevw-768x370.png 768w, ./../../../wp-content/uploads/2017/12/actualevw-1024x493.png 1024w" sizes="(max-width: 1279px) 100vw, 1279px" /></li>
+</ol>
+<p>This function basically checks the Variant Parameter and detects if the Variant is a customer RecRef or User RecRef. Depending on the what the Variant is , It will trigger the email validation api which I have created in a separate codeunit.</p>
+<ol start="9">
+<li>Create a new codeunit. Also create a new procedure within that called InitializeApi.</li>
+</ol>
+<p>Declare the variables as shown below. AL language now include native httpclient support and we do not need to declare dotnet variable anymore. It also comes packed with native Json support to read and write data to JSON.<img class="aligncenter size-full wp-image-288" src="./../../../wp-content/uploads/2017/12/2evw7.png" alt="" width="853" height="665" srcset="./../../../wp-content/uploads/2017/12/2evw7.png 853w, ./../../../wp-content/uploads/2017/12/2evw7-300x234.png 300w, ./../../../wp-content/uploads/2017/12/2evw7-768x599.png 768w" sizes="(max-width: 853px) 100vw, 853px" /></p>
+<p>I am using a free api to validate emails from <a href="https://mailboxlayer.com/">https://mailboxlayer.com/</a>. It supports receiving the email to check in the query of the URL. Please replace &lt;youraccesskey&gt; with what your own key which you will receive after registering for the free Api.</p>
+<p>The Api returns the result in JSON format. We are only interested in the smtp_check key since that is the one which checks if the Mail server belonging to the user provided email address actually exist on internet.</p>
+<p>&nbsp;</p>
+<p>Sample JSON Result:</p>
+<ol start="10">
+<li>
+<pre class="prettyprint lang-json" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">{
+
+ "email": "support@apilayer.com",
+
+ "did_you_mean": "",
+
+ "format_valid": true,
+
+ "mx_found": true,
+
+ "smtp_check": true,
+
+ "catch_all": false,
+
+ "role": true,
+
+ "disposable": false,
+
+ "free": false,
+
+ "score": 0.8
+
+}</pre>
+<p>And finally lets create the ShowResult Procedure which shows the output to the user based on the ValidationOption that user selects in the Response.<img class="aligncenter size-full wp-image-289" src="./../../../wp-content/uploads/2017/12/2evw8.png" alt="" width="775" height="349" srcset="./../../../wp-content/uploads/2017/12/2evw8.png 775w, ./../../../wp-content/uploads/2017/12/2evw8-300x135.png 300w, ./../../../wp-content/uploads/2017/12/2evw8-768x346.png 768w" sizes="(max-width: 775px) 100vw, 775px" /></li>
+</ol>
+<p>So, if in the ResponseOption, the Workflow creator selects ‘Error’ then user will be shown an error and won’t be allowed to enter a invalid email. But if the user selects warning then only a warning notification is shown.</p>
+<p>Press Ctrl+f5 to package all code in an extension and deploy to Application Server.</p>
+<p>Let’s see how it all works together with the custom Events we created in <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Part 1</a>.</p>
+<p>Demo:</p>
+<p>Create a new workflow as shown below. For the Event select the custom event we created in part 1 ’User Card Email field is changed’.<img class="aligncenter size-full wp-image-290" src="./../../../wp-content/uploads/2017/12/2evw9.png" alt="" width="1002" height="534" srcset="./../../../wp-content/uploads/2017/12/2evw9.png 1002w, ./../../../wp-content/uploads/2017/12/2evw9-300x160.png 300w, ./../../../wp-content/uploads/2017/12/2evw9-768x409.png 768w" sizes="(max-width: 1002px) 100vw, 1002px" /></p>
+<p>On the Response side , Select the custom response we created(‘Check if the format is valid and server actually exist’) and select the EVW_ValidationOption as ‘Error’ in the drop down.<img class="aligncenter size-full wp-image-291" src="./../../../wp-content/uploads/2017/12/2evw10.png" alt="" width="579" height="421" srcset="./../../../wp-content/uploads/2017/12/2evw10.png 579w, ./../../../wp-content/uploads/2017/12/2evw10-300x218.png 300w" sizes="(max-width: 579px) 100vw, 579px" /></p>
+<p>&nbsp;</p>
+<p>Press Ok and Click on the Enabled check box to enable the workflow. Workflow is created.</p>
+<p>Now Open User card and try to enter an invalid email address. You will receive an Error as shown below.</p>
+<p><img class="aligncenter wp-image-292 size-full" src="./../../../wp-content/uploads/2017/12/2evw11-e1512820711165.png" alt="" width="734" height="361" srcset="./../../../wp-content/uploads/2017/12/2evw11-e1512820711165.png 734w, ./../../../wp-content/uploads/2017/12/2evw11-e1512820711165-300x148.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></p>
+<p>In Case the email is fine User receives a success notification.</p>
+<p><img class="aligncenter size-full wp-image-293" src="./../../../wp-content/uploads/2017/12/2evw12.png" alt="" width="613" height="104" srcset="./../../../wp-content/uploads/2017/12/2evw12.png 613w, ./../../../wp-content/uploads/2017/12/2evw12-300x51.png 300w" sizes="(max-width: 613px) 100vw, 613px" /></p>
+<p>&nbsp;</p>
+<p>That’s it, we have created a custom event and custom response with user selectable response options in AL and created an Extension for the customization.</p>
+<p>Link to <a href="./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html">Part 1</a></p>
+<p>Download code <a href="https://drive.google.com/open?id=1_9UBhLKuJ2ruRHg84M51FGttnKbiztmn">GoogleDrive</a></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/12/09/custom-workflows-in-al-part-2-response/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Custom Workflows in AL &#8211; Part 1 &#8216;Events&#8217;</title>
+		<link>./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html</link>
+		<comments>./../../../2017/11/11/custom-workflows-in-al-part-1-events/index.html#respond</comments>
+		<pubDate>Sat, 11 Nov 2017 06:10:28 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[AL]]></category>
+		<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Visual Studio Code]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Events]]></category>
+		<category><![CDATA[Response]]></category>
+		<category><![CDATA[VSCODE]]></category>
+		<category><![CDATA[Workflows]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=254</guid>
+		<description><![CDATA[The Goal of this blog post is to demonstrate the power of workflows and how they can be incorporated into customizations we do going forward. Workflows are more than just replacement for old Approvals. I think of them as wrapper]]></description>
+				<content:encoded><![CDATA[<p>The Goal of this blog post is to demonstrate the power of workflows and how they can be incorporated into customizations we do going forward. Workflows are more than just replacement for old Approvals. I think of them as wrapper to the new Eventing Model but with extra steps where user can tweak the execution flow according to their specific needs.</p>
+<p>Microsoft has included lots of pre-built templates for Workflows. Here I am only interested in custom ones. So, let’s create a scenario we can follow to create our own Workflow.</p>
+<p><strong>Scenario:</strong> Email Validation<strong>.</strong> Use an external API and send our Emails there to check If the Server exist. This way we can avoid lots of fake / dummy emails.</p>
+<p>Now Email is entered in lots of locations in NAV such as User Card, Customer, Approval Setup etc. We would like our Workflow to work in all those areas with as much shared code as possible.</p>
+<p>Secondly, Since Workflows can be customized by the user, lets add an option where the user can choose if they want to either just warn the user when the email is invalid or completely Stop the user from entering an invalid email by throwing an error.</p>
+<p>The goal here is to not touch the base NAV code. That means we can’t edit any standard code unit, page or table so the custom code can remain standalone. Luckily using AL we have the ability to extend base pages and tables without doing any change in the base objects.</p>
+<p>Finally write the custom code in AL language using Visual Studio code and generate an extension for this functionality.</p>
+<p><strong>Steps:</strong></p>
+<p><strong>Create the Events.</strong></p>
+<ol>
+<li>We will follow the pattern laid out by Microsoft for custom events. In a new code unit, create new Functions called ‘ApiCustomerEmailValidationCode’ and ‘ApiUserEmailValidationCode’. Both contain no code except one single line returning the name of the functions in Uppercase as shown below.<img class="aligncenter size-full wp-image-255" src="./../../../wp-content/uploads/2017/11/1evw1.png" alt="" width="637" height="195" srcset="./../../../wp-content/uploads/2017/11/1evw1.png 637w, ./../../../wp-content/uploads/2017/11/1evw1-300x92.png 300w" sizes="(max-width: 637px) 100vw, 637px" /></li>
+<li>Next, we need to add these events to library. This step basically creates the entry in Workflow Events table so that users can see your events when they try to create a new workflow. Create a new subscriber function. Add the following code. For the example we are creating two events each for Customer Card and User Card email fields.<img class="aligncenter size-full wp-image-256" src="./../../../wp-content/uploads/2017/11/1evw2.png" alt="" width="1194" height="210" srcset="./../../../wp-content/uploads/2017/11/1evw2.png 1194w, ./../../../wp-content/uploads/2017/11/1evw2-300x53.png 300w, ./../../../wp-content/uploads/2017/11/1evw2-768x135.png 768w, ./../../../wp-content/uploads/2017/11/1evw2-1024x180.png 1024w" sizes="(max-width: 1194px) 100vw, 1194px" /></li>
+<li>Up until this point we added our Event to Library but we haven’t created a trigger through which system knows that our Event has occurred, and it should start the workflow and execute the response.</li>
+</ol>
+<p>To do the above, I created two subscriber functions and using the Eventing model (Don’t confuse the Eventing model with Workflow Events) I basically created a hook to the OnBeforeValidate Events of the Emails fields on these tables.<img class="aligncenter size-full wp-image-257" src="./../../../wp-content/uploads/2017/11/1evw3.png" alt="" width="1240" height="337" srcset="./../../../wp-content/uploads/2017/11/1evw3.png 1240w, ./../../../wp-content/uploads/2017/11/1evw3-300x82.png 300w, ./../../../wp-content/uploads/2017/11/1evw3-768x209.png 768w, ./../../../wp-content/uploads/2017/11/1evw3-1024x278.png 1024w" sizes="(max-width: 1240px) 100vw, 1240px" /></p>
+<p>&nbsp;</p>
+<ol start="4">
+<li>Now we have created the Events required for this use case. Let’s try them out before we go further.</li>
+</ol>
+<ul>
+<li>Build the extension and open Dynamics NAV (You can also try in the webclient). Search for workflows and open workflow page.</li>
+<li>Click on New to create a new Workflow.<img class="aligncenter wp-image-258 size-full" src="./../../../wp-content/uploads/2017/11/1evw4-e1510380572757.png" alt="" width="805" height="402" srcset="./../../../wp-content/uploads/2017/11/1evw4-e1510380572757.png 805w, ./../../../wp-content/uploads/2017/11/1evw4-e1510380572757-300x150.png 300w, ./../../../wp-content/uploads/2017/11/1evw4-e1510380572757-768x384.png 768w" sizes="(max-width: 805px) 100vw, 805px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Enter the details like below.<img class="aligncenter size-full wp-image-259" src="./../../../wp-content/uploads/2017/11/1evw5.png" alt="" width="776" height="434" srcset="./../../../wp-content/uploads/2017/11/1evw5.png 776w, ./../../../wp-content/uploads/2017/11/1evw5-300x168.png 300w, ./../../../wp-content/uploads/2017/11/1evw5-768x430.png 768w" sizes="(max-width: 776px) 100vw, 776px" /></li>
+<li>In the ‘When Event’ drop down, Select the Event we just created i.e. ‘Customer email field is changed’<img class="aligncenter size-full wp-image-260" src="./../../../wp-content/uploads/2017/11/1evw6.png" alt="" width="584" height="551" srcset="./../../../wp-content/uploads/2017/11/1evw6.png 584w, ./../../../wp-content/uploads/2017/11/1evw6-300x283.png 300w" sizes="(max-width: 584px) 100vw, 584px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Now you should have something like below.<img class="aligncenter size-full wp-image-261" src="./../../../wp-content/uploads/2017/11/1evw7.png" alt="" width="795" height="174" srcset="./../../../wp-content/uploads/2017/11/1evw7.png 795w, ./../../../wp-content/uploads/2017/11/1evw7-300x66.png 300w, ./../../../wp-content/uploads/2017/11/1evw7-768x168.png 768w" sizes="(max-width: 795px) 100vw, 795px" /></li>
+<li>In the select response, select ‘Show Message %1’.<img class="aligncenter size-full wp-image-262" src="./../../../wp-content/uploads/2017/11/1evw8.png" alt="" width="584" height="543" srcset="./../../../wp-content/uploads/2017/11/1evw8.png 584w, ./../../../wp-content/uploads/2017/11/1evw8-300x279.png 300w" sizes="(max-width: 584px) 100vw, 584px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Now Enter a message like shown below and Press OK.<img class="aligncenter size-full wp-image-263" src="./../../../wp-content/uploads/2017/11/1evw9.png" alt="" width="692" height="246" srcset="./../../../wp-content/uploads/2017/11/1evw9.png 692w, ./../../../wp-content/uploads/2017/11/1evw9-300x107.png 300w" sizes="(max-width: 692px) 100vw, 692px" /></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Select the Enabled field.<img class="aligncenter size-full wp-image-264" src="./../../../wp-content/uploads/2017/11/1evw10.png" alt="" width="782" height="304" srcset="./../../../wp-content/uploads/2017/11/1evw10.png 782w, ./../../../wp-content/uploads/2017/11/1evw10-300x117.png 300w, ./../../../wp-content/uploads/2017/11/1evw10-768x299.png 768w" sizes="(max-width: 782px) 100vw, 782px" /></li>
+<li>Workflow Created. To check it, go to customer card and try changing the value of email. You will get a Prompt like this.<img class="aligncenter size-full wp-image-265" src="./../../../wp-content/uploads/2017/11/1evw11.png" alt="" width="816" height="374" srcset="./../../../wp-content/uploads/2017/11/1evw11.png 816w, ./../../../wp-content/uploads/2017/11/1evw11-300x138.png 300w, ./../../../wp-content/uploads/2017/11/1evw11-768x352.png 768w" sizes="(max-width: 816px) 100vw, 816px" /></li>
+</ul>
+<p>We have completed the first part of the blog post, we have created a custom event and tested it by triggering a Standard Response. In Next part, we will see how to create our own custom Responses.</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/11/11/custom-workflows-in-al-part-1-events/feed/index.html</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Build a PowerApp – Add Images Part2</title>
+		<link>./../../../2017/09/10/build-a-powerapp-add-images-part2/index.html</link>
+		<comments>./../../../2017/09/10/build-a-powerapp-add-images-part2/index.html#comments</comments>
+		<pubDate>Sun, 10 Sep 2017 17:16:44 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[powerapps]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=207</guid>
+		<description><![CDATA[This is the second part of the Build a PowerApp. In the last blog, I explained how you can create a simple app from a Odata connection. Link to Part 1 This part will focus on how we can sync]]></description>
+				<content:encoded><![CDATA[<p>This is the second part of the Build a PowerApp. In the last blog, I explained how you can create a simple app from a Odata connection. <a href="./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html">Link</a> to Part 1</p>
+<p>This part will focus on how we can sync Item Pictures from NAV to the PowerApps.</p>
+<p><strong>Limitation:</strong> Since NAV stores images in MediaSet/Media type we cannot pass them through Odata webservices (which is what the Dynamics NAV Connector uses).</p>
+<p><strong>Workaround:</strong> Convert NAV images to base64 and send them to image storage service. Capture the direct link of the images and store them in a field on Item table. Pass that field to PowerApp through Odata. PowerApp will then recognize the image URL and display the images.</p>
+<p><strong>Note:</strong> I have added a field in Item table and Item list page. You can avoid that by creating a new table and page with 1-1 relation with Item. Then either create a query combining both tables and expose as webservice or simply add another data source in PowerApp and handle the relation logic in there</p>
+<p>To do this I used Imgur API to store images from NAV. You need to register at imgur and create a new Application ID <a href="https://api.imgur.com/oauth2/addclient">here</a>. To know more about how to use the upload API, please refer to the docs <a href="https://api.imgur.com/">here</a>.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Create a new field in Item Table to capture Direct URLs of Images.<img class="aligncenter wp-image-242 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b.png" alt="" width="562" height="671" srcset="./../../../wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b.png 562w, ./../../../wp-content/uploads/2017/09/15a25b2e44a148eeaca41ea45f2fc15b-251x300.png 251w" sizes="(max-width: 562px) 100vw, 562px" /></li>
+</ol>
+<ol start="2">
+<li>Add the new field on Item Card.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-209" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/newfieldpage-e1505062520254.png" alt="" width="1179" height="323" srcset="./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254.png 1179w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-300x82.png 300w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-768x210.png 768w, ./../../../wp-content/uploads/2017/09/newfieldpage-e1505062520254-1024x281.png 1024w" sizes="(max-width: 1179px) 100vw, 1179px" /></p>
+<ol start="3">
+<li>Save the objects.</li>
+<li>Create a new codeunit or Import it after downloading from <a href="https://drive.google.com/open?id=0B65B-0VIQNG-Si1QdWZIekVKelk">here</a>. Create a new function.</li>
+</ol>
+<p>Make sure to replace the Client ID with your own client id that you will receive after registration</p>
+<p>CODE:<img class="aligncenter size-full wp-image-211" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur.png" alt="" width="1170" height="382" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur.png 1170w, ./../../../wp-content/uploads/2017/09/sendtoimgur-300x98.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-768x251.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-1024x334.png 1024w" sizes="(max-width: 1170px) 100vw, 1170px" /></p>
+<p><strong> </strong></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL PostImageToImgur(PictureInBase64 : BigText) : Text
+
+PostUrl := 'https://api.imgur.com/3/image';
+
+HttpClient := HttpClient.HttpClient();
+
+HttpClient.BaseAddress := Uri.Uri(PostUrl);
+
+stringcontent :=stringcontent.StringContent('{"image":"'+FORMAT(PictureInBase64)+'"}',encoding.UTF8,'application/json');
+
+HttpContent:=stringcontent;
+
+HttpClient.DefaultRequestHeaders.Add('Authorization','Client-ID &lt;Your Imgur client ID&gt;');
+
+HttpResponseMessage := HttpClient.PostAsync('',HttpContent).Result;
+
+HttpResponseMessage.EnsureSuccessStatusCode;
+
+result := HttpResponseMessage.Content.ReadAsStringAsync.Result;
+
+JObject := JObject.Parse(result.ToString);
+
+IF (JObject.GetValue('success').ToString)='True' THEN BEGIN
+
+Json := JObject.GetValue('data').ToString;
+
+JObject2 := JObject2.Parse(Json);
+
+EXIT(JObject2.GetValue('link').ToString);
+
+END ELSE
+
+EXIT('error');</pre>
+<p>Local Variables:</p>
+<p><img class="aligncenter size-full wp-image-210" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur-variables.png" alt="" width="1272" height="281" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur-variables.png 1272w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-300x66.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-768x170.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-variables-1024x226.png 1024w" sizes="(max-width: 1272px) 100vw, 1272px" /></p>
+<p>Parameters<img class="aligncenter size-full wp-image-212" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sendtoimgur-parameters.png" alt="" width="1133" height="203" srcset="./../../../wp-content/uploads/2017/09/sendtoimgur-parameters.png 1133w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-300x54.png 300w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-768x138.png 768w, ./../../../wp-content/uploads/2017/09/sendtoimgur-parameters-1024x183.png 1024w" sizes="(max-width: 1133px) 100vw, 1133px" /></p>
+<p>Return Value</p>
+<p><img class="aligncenter size-full wp-image-213" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sentoimgurreturn.png" alt="" width="532" height="203" srcset="./../../../wp-content/uploads/2017/09/sentoimgurreturn.png 532w, ./../../../wp-content/uploads/2017/09/sentoimgurreturn-300x114.png 300w" sizes="(max-width: 532px) 100vw, 532px" /></p>
+<ol start="5">
+<li>Create two subscribers functions to handle User uploading a image to Item card or Taking an image by mobile device.</li>
+</ol>
+<p>&nbsp;</p>
+<p>Code: <img class="aligncenter size-full wp-image-215" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/subs.png" alt="" width="786" height="611" srcset="./../../../wp-content/uploads/2017/09/subs.png 786w, ./../../../wp-content/uploads/2017/09/subs-300x233.png 300w, ./../../../wp-content/uploads/2017/09/subs-768x597.png 768w" sizes="(max-width: 786px) 100vw, 786px" /></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">[EventSubscriber] ItemPictureOnActionImport(VAR Rec : Record Item)
+
+ IF (Rec.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ CLEAR(BigPictureText);
+
+ TempBlob.INIT;
+
+ MediaGuid:=Rec.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Rec."Picture url":=PostImageToImgur(BigPictureText);
+
+ Rec.MODIFY;
+
+ MESSAGE('Sent to Imgur');
+
+ END
+
+
+
+[EventSubscriber] ItemPictureOnActionTake(VAR Rec : Record Item)
+
+ IF (Rec.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ CLEAR(BigPictureText);
+
+ TempBlob.INIT;
+
+ MediaGuid:=Rec.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Rec."Picture url":=PostImageToImgur(BigPictureText);
+
+ Rec.MODIFY;
+
+ MESSAGE('Sent to Imgur');
+
+ END</pre>
+<p>Properties:</p>
+<p><strong>ItemPictureOnActionImport</strong></p>
+<p><img class="aligncenter size-full wp-image-222" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/subp1.png" alt="" width="515" height="240" srcset="./../../../wp-content/uploads/2017/09/subp1.png 515w, ./../../../wp-content/uploads/2017/09/subp1-300x140.png 300w" sizes="(max-width: 515px) 100vw, 515px" /></p>
+<p><strong>ItemPictureOnActionTake</strong></p>
+<p><img class="aligncenter size-full wp-image-221" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sub-p2.png" alt="" width="505" height="210" srcset="./../../../wp-content/uploads/2017/09/sub-p2.png 505w, ./../../../wp-content/uploads/2017/09/sub-p2-300x125.png 300w" sizes="(max-width: 505px) 100vw, 505px" /></p>
+<p>&nbsp;</p>
+<p>Variables (same for both subscribers)</p>
+<p><img class="aligncenter size-full wp-image-220" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/sub-vars.png" alt="" width="1294" height="191" srcset="./../../../wp-content/uploads/2017/09/sub-vars.png 1294w, ./../../../wp-content/uploads/2017/09/sub-vars-300x44.png 300w, ./../../../wp-content/uploads/2017/09/sub-vars-768x113.png 768w, ./../../../wp-content/uploads/2017/09/sub-vars-1024x151.png 1024w" sizes="(max-width: 1294px) 100vw, 1294px" /></p>
+<ol start="6">
+<li>So we have handled new pictures that will be uploaded by users but what about the pictures that are already there.</li>
+</ol>
+<p>For that you can run a bulk function once for your DB.</p>
+<p>Code:<img class="aligncenter size-full wp-image-219" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/bulk.png" alt="" width="740" height="494" srcset="./../../../wp-content/uploads/2017/09/bulk.png 740w, ./../../../wp-content/uploads/2017/09/bulk-300x200.png 300w, ./../../../wp-content/uploads/2017/09/bulk-120x80.png 120w" sizes="(max-width: 740px) 100vw, 740px" /></p>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL BulkItemPictureUpload()
+
+IF Item.FINDFIRST THEN
+
+ REPEAT
+
+ IF (Item.Picture.COUNT &gt;= 1)
+
+ THEN BEGIN
+
+ TempBlob.INIT;
+
+ MediaGuid:=Item.Picture.ITEM(1);
+
+ TenantMedia.GET(MediaGuid);
+
+ TenantMedia.CALCFIELDS(Content);
+
+ TempBlob.Blob:=TenantMedia.Content;
+
+ BigPictureText.ADDTEXT(TempBlob.ToBase64String);
+
+ Item."Picture url":=PostImageToImgur(BigPictureText);
+
+ Item.MODIFY;
+
+ CLEAR(BigPictureText);
+
+ END
+
+ UNTIL
+
+ Item.NEXT=0;
+
+ MESSAGE('completed');
+
+</pre>
+<p>Now all your images are uploaded to imgur and can be shown in PowerApps</p>
+<p>&nbsp;</p>
+<ol start="7">
+<li>Open PowerApps web portal again. Refresh the data source so that Picture URL get populated.<img class="aligncenter size-full wp-image-223" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/refresh.png" alt="" width="436" height="425" srcset="./../../../wp-content/uploads/2017/09/refresh.png 436w, ./../../../wp-content/uploads/2017/09/refresh-300x292.png 300w" sizes="(max-width: 436px) 100vw, 436px" /></li>
+<li>Select an image and change data property to Picture_url</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-218" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/pa1.png" alt="" width="853" height="497" srcset="./../../../wp-content/uploads/2017/09/pa1.png 853w, ./../../../wp-content/uploads/2017/09/pa1-300x175.png 300w, ./../../../wp-content/uploads/2017/09/pa1-768x447.png 768w" sizes="(max-width: 853px) 100vw, 853px" /><img class="aligncenter size-full wp-image-217" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/pa2.png" alt="" width="853" height="484" srcset="./../../../wp-content/uploads/2017/09/pa2.png 853w, ./../../../wp-content/uploads/2017/09/pa2-300x170.png 300w, ./../../../wp-content/uploads/2017/09/pa2-768x436.png 768w" sizes="(max-width: 853px) 100vw, 853px" /></p>
+<ol start="9">
+<li>Pictures will be automatically populated.</li>
+<li>The App is created with Pictures from NAV.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-224" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/phone.png" alt="" width="349" height="693" srcset="./../../../wp-content/uploads/2017/09/phone.png 349w, ./../../../wp-content/uploads/2017/09/phone-151x300.png 151w" sizes="(max-width: 349px) 100vw, 349px" /></p>
+<p>In an upcoming blog, I will try and see if we can make this integration two way. Adding ability to edit item details in the app which will sync back to NAV.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/09/10/build-a-powerapp-add-images-part2/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Build a PowerApp &#8211; Data from Nav 2017 Part1</title>
+		<link>./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html</link>
+		<comments>./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/index.html#comments</comments>
+		<pubDate>Sun, 10 Sep 2017 16:47:03 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[powerapps]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=184</guid>
+		<description><![CDATA[&#160; PowerApps is a tool provided by Microsoft which lets you build business apps quickly using data from Microsoft and Non-Microsoft services. To get data from NAV 2017 into PowerApps we will need to set up a connector. Pre-Requisites Microsoft]]></description>
+				<content:encoded><![CDATA[<p>&nbsp;</p>
+<p>PowerApps is a tool provided by Microsoft which lets you build business apps quickly using data from Microsoft and Non-Microsoft services. To get data from NAV 2017 into PowerApps we will need to set up a connector.</p>
+<p><strong>Pre-Requisites</strong></p>
+<ol>
+<li>Microsoft Office 365 account with PowerApps plan or trial enabled</li>
+<li>Dynamics NAV 2017 with NavUserPassword enabled since windows authentication is not supported. Please follow this <a href="https://saurav-nav.blogspot.in/2015/11/microsoft-dynamics-nav-2016-how-to.html">awesome blog</a> by Saurav Dhyani if you need help setting it up.</li>
+<li>Public IP on NAV server so that the connector can connect and fetch data from tables.</li>
+<li>Basic NAV knowledge</li>
+</ol>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Create a new user in NAV. This can be done by searching for ‘Users’</li>
+</ol>
+<p><img class="aligncenter wp-image-236 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/0efc7d50e4a94883beb416389e6b0d6d.png" alt="" width="800" height="307" srcset="./../../../wp-content/uploads/2017/09/0efc7d50e4a94883beb416389e6b0d6d.png 800w, ./../../../wp-content/uploads/2017/09/0efc7d50e4a94883beb416389e6b0d6d-300x115.png 300w, ./../../../wp-content/uploads/2017/09/0efc7d50e4a94883beb416389e6b0d6d-768x295.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ol start="2">
+<li>Click on New and enter User Name and then generate a webservice key. This key will be used by connector as password.</li>
+</ol>
+<p><img class="aligncenter wp-image-240 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/1ad4592505284601b3b19025fea8e355.png" alt="" width="627" height="566" srcset="./../../../wp-content/uploads/2017/09/1ad4592505284601b3b19025fea8e355.png 627w, ./../../../wp-content/uploads/2017/09/1ad4592505284601b3b19025fea8e355-300x271.png 300w" sizes="(max-width: 627px) 100vw, 627px" /></p>
+<p>Note your username and webservice key as they will be need in further steps.</p>
+<ol start="3">
+<li>Go to WebServices page and Click on new. Select object type as Page , and number as 31. Enter itemlist in Service Name and then click on Publish.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-196" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/webservice-e1505060547623.png" alt="" width="688" height="538" srcset="./../../../wp-content/uploads/2017/09/webservice-e1505060547623.png 688w, ./../../../wp-content/uploads/2017/09/webservice-e1505060547623-300x235.png 300w" sizes="(max-width: 688px) 100vw, 688px" /></p>
+<p>&nbsp;</p>
+<ol start="4">
+<li>Click on Reload. Copy the OdataV4 URL from this page.</li>
+</ol>
+<p>It should be of the form</p>
+<p>http://&lt;server/ IP&gt;:&lt;OdataPort&gt;/&lt;your instance name&gt;/ODataV4/Company(&#8216;CRONUS%20Canada%2C%20Inc.&#8217;)/itemlist</p>
+<ol start="5">
+<li>Next step is to Open powerapps web portal by going to <a href="https://web.powerapps.com/">https://web.powerapps.com/</a></li>
+</ol>
+<p>You may have to login to your Account.</p>
+<p><img class="aligncenter size-full wp-image-187" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/blog.png" alt="" width="977" height="702" srcset="./../../../wp-content/uploads/2017/09/blog.png 977w, ./../../../wp-content/uploads/2017/09/blog-300x216.png 300w, ./../../../wp-content/uploads/2017/09/blog-768x552.png 768w" sizes="(max-width: 977px) 100vw, 977px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ol start="6">
+<li>Click on Connections on the left pane and Click on NEW CONNECTION on top right<img class="aligncenter wp-image-237 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5.png" alt="" width="800" height="220" srcset="./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5.png 800w, ./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5-300x83.png 300w, ./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5-768x211.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></li>
+<li>Select Dynamics NAV from the list and click on + button next to it.<img class="aligncenter size-full wp-image-192" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/new-app.png" alt="" width="967" height="698" srcset="./../../../wp-content/uploads/2017/09/new-app.png 967w, ./../../../wp-content/uploads/2017/09/new-app-300x217.png 300w, ./../../../wp-content/uploads/2017/09/new-app-768x554.png 768w" sizes="(max-width: 967px) 100vw, 967px" /></li>
+<li>This will open a form. Enter your generic odatav4 url. Don’t add company or service name part of the URL.</li>
+</ol>
+<p>For Example: http://&lt;server/ IP&gt;:&lt;OdataPort&gt;/&lt;your instance name&gt;/ODataV4/</p>
+<p>Enter Username of the user you created and Webservice key in Password field.</p>
+<p>Enter your Nav Company name.</p>
+<p><img class="aligncenter size-full wp-image-193" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/new-connection.png" alt="" width="625" height="528" srcset="./../../../wp-content/uploads/2017/09/new-connection.png 625w, ./../../../wp-content/uploads/2017/09/new-connection-300x253.png 300w" sizes="(max-width: 625px) 100vw, 625px" /></p>
+<p>Click on Create.</p>
+<ol start="9">
+<li>Click on + New App button on bottom left.</li>
+</ol>
+<p>&nbsp;</p>
+<ol start="10">
+<li>Click on the Right Arrow in Start with your data icons.</li>
+</ol>
+<p><img class="aligncenter wp-image-238 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/695d98f5ce914031afe22981a12b1984.png" alt="" width="800" height="262" srcset="./../../../wp-content/uploads/2017/09/695d98f5ce914031afe22981a12b1984.png 800w, ./../../../wp-content/uploads/2017/09/695d98f5ce914031afe22981a12b1984-300x98.png 300w, ./../../../wp-content/uploads/2017/09/695d98f5ce914031afe22981a12b1984-768x252.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></p>
+<ol start="11">
+<li>Select Dynamics NAV. Select Default.<img class="aligncenter wp-image-237 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5.png" alt="" width="800" height="220" srcset="./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5.png 800w, ./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5-300x83.png 300w, ./../../../wp-content/uploads/2017/09/b76fb63bd4dc45d6b8d13cde4adbdac5-768x211.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></li>
+<li>Select itemlist and click on connect on the choose table list.<img class="aligncenter size-full wp-image-188" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/Chose-table.png" alt="" width="804" height="591" srcset="./../../../wp-content/uploads/2017/09/Chose-table.png 804w, ./../../../wp-content/uploads/2017/09/Chose-table-300x221.png 300w, ./../../../wp-content/uploads/2017/09/Chose-table-768x565.png 768w" sizes="(max-width: 804px) 100vw, 804px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="13">
+<li>This will start building the app. Basically PowerApps will try and build a app based on the itemlist webservice.<img class="aligncenter size-full wp-image-189" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/getting-things-ready.png" alt="" width="665" height="281" srcset="./../../../wp-content/uploads/2017/09/getting-things-ready.png 665w, ./../../../wp-content/uploads/2017/09/getting-things-ready-300x127.png 300w" sizes="(max-width: 665px) 100vw, 665px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="14">
+<li>Once its ready the app can be customized.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-200" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/appscreen.png" alt="" width="1149" height="656" srcset="./../../../wp-content/uploads/2017/09/appscreen.png 1149w, ./../../../wp-content/uploads/2017/09/appscreen-300x171.png 300w, ./../../../wp-content/uploads/2017/09/appscreen-768x438.png 768w, ./../../../wp-content/uploads/2017/09/appscreen-1024x585.png 1024w, ./../../../wp-content/uploads/2017/09/appscreen-840x480.png 840w" sizes="(max-width: 1149px) 100vw, 1149px" /></p>
+<ol start="15">
+<li>At this point you can play around with different settings and options to customize the app.</li>
+</ol>
+<p>For Example I am going to change the layout of the BrowseScreen1 to include images. Layout can be found under Data Tab.</p>
+<p><img class="aligncenter size-full wp-image-190" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/layout.png" alt="" width="1109" height="571" srcset="./../../../wp-content/uploads/2017/09/layout.png 1109w, ./../../../wp-content/uploads/2017/09/layout-300x154.png 300w, ./../../../wp-content/uploads/2017/09/layout-768x395.png 768w, ./../../../wp-content/uploads/2017/09/layout-1024x527.png 1024w" sizes="(max-width: 1109px) 100vw, 1109px" /></p>
+<ol start="16">
+<li>Next , change the fields to be shown on this screen. This is done by changing the subtitle 2 to Description and Title 2 to No.</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-201" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/label.png" alt="" width="1112" height="480" srcset="./../../../wp-content/uploads/2017/09/label.png 1112w, ./../../../wp-content/uploads/2017/09/label-300x129.png 300w, ./../../../wp-content/uploads/2017/09/label-768x332.png 768w, ./../../../wp-content/uploads/2017/09/label-1024x442.png 1024w" sizes="(max-width: 1112px) 100vw, 1112px" /></p>
+<ol start="17">
+<li>Next we want that clicking on the image opens the details page of the Item. This is done by selecting the image and going to Advanced tabe. Then change the OnSelect property from false to Navigate(DetailScreen1, ScreenTransition.None)</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-202" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/nextscreen.png" alt="" width="1121" height="472" srcset="./../../../wp-content/uploads/2017/09/nextscreen.png 1121w, ./../../../wp-content/uploads/2017/09/nextscreen-300x126.png 300w, ./../../../wp-content/uploads/2017/09/nextscreen-768x323.png 768w, ./../../../wp-content/uploads/2017/09/nextscreen-1024x431.png 1024w" sizes="(max-width: 1121px) 100vw, 1121px" /></p>
+<ol start="18">
+<li>Click on Play to see how your App looks</li>
+</ol>
+<p><img class="aligncenter size-full wp-image-204" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/play.png" alt="" width="594" height="280" srcset="./../../../wp-content/uploads/2017/09/play.png 594w, ./../../../wp-content/uploads/2017/09/play-300x141.png 300w" sizes="(max-width: 594px) 100vw, 594px" /></p>
+<ol start="19">
+<li>Pressing X on the top right brings back to design window. Once you are ready with your app. GO to File and select SAVE. This will save your app and you can access or share it to your organization through office portal.<img class="aligncenter size-full wp-image-205" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/preview.png" alt="" width="1093" height="660" srcset="./../../../wp-content/uploads/2017/09/preview.png 1093w, ./../../../wp-content/uploads/2017/09/preview-300x181.png 300w, ./../../../wp-content/uploads/2017/09/preview-768x464.png 768w, ./../../../wp-content/uploads/2017/09/preview-1024x618.png 1024w" sizes="(max-width: 1093px) 100vw, 1093px" /></li>
+</ol>
+<p><img class="aligncenter size-full wp-image-185" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/09/save.png" alt="" width="1073" height="494" srcset="./../../../wp-content/uploads/2017/09/save.png 1073w, ./../../../wp-content/uploads/2017/09/save-300x138.png 300w, ./../../../wp-content/uploads/2017/09/save-768x354.png 768w, ./../../../wp-content/uploads/2017/09/save-1024x471.png 1024w" sizes="(max-width: 1073px) 100vw, 1073px" /></p>
+<p>As you can see the images are not yet pulled from NAV. This is because NAV saves images in a Media/Mediaset data type which is not recognized in powerapp. I have found a workaround which is will explain in the next blog post. Stay tuned.</p>
+<p><a href="./../../../2017/09/10/build-a-powerapp-add-images-part2/index.html">Link</a> to Part2</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/09/10/build-a-powerapp-using-data-from-nav-2017-part-1/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Multiple webclients on one Server</title>
+		<link>./../../../2017/08/27/multiple-webclients-on-one-server/index.html</link>
+		<comments>./../../../2017/08/27/multiple-webclients-on-one-server/index.html#respond</comments>
+		<pubDate>Sun, 27 Aug 2017 16:30:32 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+		<category><![CDATA[Webclient]]></category>
+
+		<guid isPermaLink="false">./../../../index.html?p=181</guid>
+		<description><![CDATA[While installing NAV, It automatically sets up a Webclient Instance as well But it doesn’t do the same when we create a new separate Instance. To have multiple webclients we need to set them up manually. Identify the instance for]]></description>
+				<content:encoded><![CDATA[<p>While installing NAV, It automatically sets up a Webclient Instance as well But it doesn’t do the same when we create a new separate Instance. To have multiple webclients we need to set them up manually.</p>
+<ol>
+<li>Identify the instance for which we need webclient.</li>
+<li>Open Powershell ISE as Adminstrator and run the following command</li>
+</ol>
+<pre class="prettyprint lang-javascript" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">New-NAVWebServerInstance -WebServerInstance &lt;name of webservice instance&gt; -Server localhost -ServerInstance &lt;NAV server Instance name&gt;</pre>
+<p>&nbsp;</p>
+<p>Replace &lt;name of webservice instance&gt; with the name you want. This is the name that you will need to type in browser to access the webclient</p>
+<p>Replace &lt;NAV server Instance name&gt; with the name of your nav server instance</p>
+<p><img class="aligncenter wp-image-175 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/1-e1503827358231.png" alt="" width="1179" height="340" srcset="./../../../wp-content/uploads/2017/08/1-e1503827358231.png 1179w, ./../../../wp-content/uploads/2017/08/1-e1503827358231-300x87.png 300w, ./../../../wp-content/uploads/2017/08/1-e1503827358231-768x221.png 768w, ./../../../wp-content/uploads/2017/08/1-e1503827358231-1024x295.png 1024w" sizes="(max-width: 1179px) 100vw, 1179px" /></p>
+<p>&nbsp;</p>
+<ol start="3">
+<li>This creates a new webservice instance which can be checked at C:\inetpub\wwwroot</li>
+</ol>
+<p><img class="aligncenter wp-image-176 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/2-e1503827422158.png" alt="" width="849" height="375" srcset="./../../../wp-content/uploads/2017/08/2-e1503827422158.png 849w, ./../../../wp-content/uploads/2017/08/2-e1503827422158-300x133.png 300w, ./../../../wp-content/uploads/2017/08/2-e1503827422158-768x339.png 768w" sizes="(max-width: 849px) 100vw, 849px" /></p>
+<p>&nbsp;</p>
+<ol start="4">
+<li>Lets try to access the webclient now. We can use the url http://localhost:8080/&lt;name of webservice instance&gt; /webclient. Unfortunately you will be greeted by the following generic error screen.</li>
+</ol>
+<p><img class="aligncenter wp-image-177 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/3-e1503827475829.png" alt="" width="1057" height="358" srcset="./../../../wp-content/uploads/2017/08/3-e1503827475829.png 1057w, ./../../../wp-content/uploads/2017/08/3-e1503827475829-300x102.png 300w, ./../../../wp-content/uploads/2017/08/3-e1503827475829-768x260.png 768w, ./../../../wp-content/uploads/2017/08/3-e1503827475829-1024x347.png 1024w" sizes="(max-width: 1057px) 100vw, 1057px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ol start="5">
+<li>To fix this we need to make a couple of changes to the config file which can be found at</li>
+</ol>
+<p>C:\inetpub\wwwroot\&lt;name of webservice instance&gt;\web.config.</p>
+<p>We need to change the value of  &lt;add key=&#8221;ClientServicesPort&#8221; value=&#8221;XXXX&#8221; /&gt; to the correct client service port of your instance.</p>
+<p><img class="aligncenter wp-image-178 size-full" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/4-e1503827553238.png" alt="" width="803" height="414" srcset="./../../../wp-content/uploads/2017/08/4-e1503827553238.png 803w, ./../../../wp-content/uploads/2017/08/4-e1503827553238-300x155.png 300w, ./../../../wp-content/uploads/2017/08/4-e1503827553238-768x396.png 768w" sizes="(max-width: 803px) 100vw, 803px" /></p>
+<p>After this change the webclient should start working fine.</p>
+<p><img class="aligncenter size-full wp-image-179" src="https://ctrlshiftf4-jmail123.rhcloud.com/wp-content/uploads/2017/08/5-e1503827599891.png" alt="" width="1094" height="647" srcset="./../../../wp-content/uploads/2017/08/5-e1503827599891.png 1094w, ./../../../wp-content/uploads/2017/08/5-e1503827599891-300x177.png 300w, ./../../../wp-content/uploads/2017/08/5-e1503827599891-768x454.png 768w, ./../../../wp-content/uploads/2017/08/5-e1503827599891-1024x606.png 1024w" sizes="(max-width: 1094px) 100vw, 1094px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/08/27/multiple-webclients-on-one-server/feed/index.html</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>View code of Extension Objects in RTC</title>
+		<link>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/index.html</link>
+		<comments>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/index.html#comments</comments>
+		<pubDate>Tue, 18 Jul 2017 05:23:40 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=164</guid>
+		<description><![CDATA[If you have some experience working with NAV extensions, you would know that once an extension is installed for a tenant you cannot see the objects in Developer environment. NAV stores these objects in table 2000000150 (Nav App Object Metadata).]]></description>
+				<content:encoded><![CDATA[<p>If you have some experience working with NAV extensions, you would know that once an extension is installed for a tenant you cannot see the objects in Developer environment. NAV stores these objects in table 2000000150 (Nav App Object Metadata). Using the way from my previous blog, I was able to modify the page from that blog to also show objects of extensions. Check it out <a href="https://ctrlshiftf4.com/2017/07/02/display-cal-and-c-code-of-a-object-in-rtc/" target="_blank" rel="noopener noreferrer">here.</a></p>
+<p>&nbsp;</p>
+<p>You can download the objects for this demo from <a href="https://drive.google.com/open?id=0B65B-0VIQNG-dDBxU19hdGphY2s" target="_blank" rel="noopener noreferrer">here.</a>(Google Drive)</p>
+<p>&nbsp;</p>
+<p><strong>Usage and Screenshots</strong></p>
+<ol>
+<li>Import the objects and Open RTCcode1 (Page 50502)</li>
+</ol>
+<p>2.Select required Code Type and the object you want to see the code of from ‘NavAppObjectList’ subpage.</p>
+<p>3. Press GetCode Action</p>
+<p><img class="alignnone size-full wp-image-165" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/called-from.png" alt="" width="942" height="588" srcset="./../../../wp-content/uploads/2017/07/called-from.png 942w, ./../../../wp-content/uploads/2017/07/called-from-300x187.png 300w, ./../../../wp-content/uploads/2017/07/called-from-768x479.png 768w" sizes="(max-width: 942px) 100vw, 942px" /></p>
+<p>Code of that object will be displayed in ‘Code’ control</p>
+<p><img class="alignnone size-full wp-image-166" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/code.png" alt="" width="1031" height="547" srcset="./../../../wp-content/uploads/2017/07/code.png 1031w, ./../../../wp-content/uploads/2017/07/code-300x159.png 300w, ./../../../wp-content/uploads/2017/07/code-768x407.png 768w, ./../../../wp-content/uploads/2017/07/code-1024x543.png 1024w" sizes="(max-width: 1031px) 100vw, 1031px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/07/18/view-code-of-extension-objects-in-rtc/feed/index.html</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Display CAL and C# code of a object in RTC</title>
+		<link>./../../../2017/07/02/display-cal-and-c-code-of-a-object-in-rtc/index.html</link>
+		<comments>./../../../2017/07/02/display-cal-and-c-code-of-a-object-in-rtc/index.html#comments</comments>
+		<pubDate>Sun, 02 Jul 2017 10:57:34 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=141</guid>
+		<description><![CDATA[CAL, the language we use in Dynamics NAV objects. Most of us know that CAL is converted into C# at compile time. After this point, the CAL code doesn’t play any part. The converted C# code is then handled by]]></description>
+				<content:encoded><![CDATA[<p>CAL, the language we use in Dynamics NAV objects. Most of us know that CAL is converted into C# at compile time. After this point, the CAL code doesn’t play any part. The converted C# code is then handled by DotNet Framework when we run the object and the appropriate result is displayed.</p>
+<p>NAV save this code in table 2000000071 Object Metadata. In there you can find two blob fields User Code, and User AL Code.</p>
+<p>User AL Code contains the C/Al code of the object whereas User Code contains the C# code of the same object which is generated when the object is compiled.</p>
+<p>We can see both the Code Blobs in RTC. This would also allow us to see code of objects which are not in our License range.</p>
+<p>I created a simple NAV Page to see this code in RTC. You can download it from <a href="https://drive.google.com/open?id=0B65B-0VIQNG-V2dCVmE1Tjl2cEE">here</a> (Tested in Nav 2017) and use it. Follow the steps below if you want to create it on your own.</p>
+<p>&nbsp;</p>
+<p>Steps.</p>
+<ol>
+<li>Create a new page in your object range</li>
+<li>Define these global variables as shown below.</li>
+</ol>
+<p><img class="size-full wp-image-145 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/Globalvars.png" alt="" width="1332" height="395" srcset="./../../../wp-content/uploads/2017/07/Globalvars.png 1332w, ./../../../wp-content/uploads/2017/07/Globalvars-300x89.png 300w, ./../../../wp-content/uploads/2017/07/Globalvars-768x228.png 768w, ./../../../wp-content/uploads/2017/07/Globalvars-1024x304.png 1024w" sizes="(max-width: 1332px) 100vw, 1332px" /></p>
+<ol start="3">
+<li>Then design the ‘Object’ group and ‘Code’ group as shown below.<img class="size-full wp-image-146 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/PageGroups.png" alt="" width="1350" height="262" srcset="./../../../wp-content/uploads/2017/07/PageGroups.png 1350w, ./../../../wp-content/uploads/2017/07/PageGroups-300x58.png 300w, ./../../../wp-content/uploads/2017/07/PageGroups-768x149.png 768w, ./../../../wp-content/uploads/2017/07/PageGroups-1024x199.png 1024w" sizes="(max-width: 1350px) 100vw, 1350px" /></li>
+<li>In the Code group add a new field and in the properties, Go to ‘ControlAddin’ property and add <u>Dynamics.Nav.Client.CodeViewer;PublicKeyToken=31bf3856ad364e35 </u>as shown below.<img class="size-full wp-image-149 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/controladdin-property.png" alt="" width="726" height="213" srcset="./../../../wp-content/uploads/2017/07/controladdin-property.png 726w, ./../../../wp-content/uploads/2017/07/controladdin-property-300x88.png 300w" sizes="(max-width: 726px) 100vw, 726px" /></li>
+</ol>
+<p>&nbsp;</p>
+<p>Note: This is the same control addin as used by the debugger. This provides syntax highlighting for the code.</p>
+<ol start="5">
+<li>Create a new function like below.</li>
+</ol>
+<p><img class="alignnone size-full wp-image-144" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/fucntionsyntax.png" alt="" width="794" height="419" srcset="./../../../wp-content/uploads/2017/07/fucntionsyntax.png 794w, ./../../../wp-content/uploads/2017/07/fucntionsyntax-300x158.png 300w, ./../../../wp-content/uploads/2017/07/fucntionsyntax-768x405.png 768w" sizes="(max-width: 794px) 100vw, 794px" /></p>
+<p>Syntax:</p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL GetCode()
+IF ObjectMetadata.GET(TypeOption,ObjectID) THEN BEGIN
+  AllObj.GET(TypeOption,ObjectID);
+  ObjectName:=AllObj."Object Name";
+  IF CodeType=CodeType::CAL THEN BEGIN
+    ObjectMetadata.CALCFIELDS("User AL Code");
+    ObjectMetadata."User AL Code".CREATEINSTREAM(CodeStream);
+  END ELSE BEGIN
+    ObjectMetadata.CALCFIELDS("User Code");
+    ObjectMetadata."User Code".CREATEINSTREAM(CodeStream);
+  END;
+  Code.READ(CodeStream);
+  LineNo := 1;
+  CurrPage.CodeViewer.LoadCode(Code,LineNo,BreakpointCollection,TRUE);
+END 
+ELSE BEGIN
+  MESSAGE('Object Type "%1" and ID "%2" does not exist',TypeOption,ObjectID);
+  ObjectName:='';
+  CurrPage.CodeViewer.Clear;
+END
+</pre>
+<ol start="6">
+<li>Create a new action and call this function it.<img class="size-full wp-image-147 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/action.png" alt="" width="842" height="177" srcset="./../../../wp-content/uploads/2017/07/action.png 842w, ./../../../wp-content/uploads/2017/07/action-300x63.png 300w, ./../../../wp-content/uploads/2017/07/action-768x161.png 768w, ./../../../wp-content/uploads/2017/07/action-840x177.png 840w" sizes="(max-width: 842px) 100vw, 842px" /><img class="size-full wp-image-148 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/actioncode.png" alt="" width="544" height="95" srcset="./../../../wp-content/uploads/2017/07/actioncode.png 544w, ./../../../wp-content/uploads/2017/07/actioncode-300x52.png 300w" sizes="(max-width: 544px) 100vw, 544px" /></li>
+</ol>
+<p>That’s it. The page is created.</p>
+<p>Just select the type of object, Object ID , Code type and then go to actions and click on GetCode. You will be able to see the code of the object.<img class="size-full wp-image-142 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/finalpagecal.png" alt="" width="810" height="573" srcset="./../../../wp-content/uploads/2017/07/finalpagecal.png 810w, ./../../../wp-content/uploads/2017/07/finalpagecal-300x212.png 300w, ./../../../wp-content/uploads/2017/07/finalpagecal-768x543.png 768w" sizes="(max-width: 810px) 100vw, 810px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img class="aligncenter wp-image-143 size-full" src="https://ctrlshiftf4.com/wp-content/uploads/2017/07/finalpagedotnet.png" alt="" width="815" height="601" srcset="./../../../wp-content/uploads/2017/07/finalpagedotnet.png 815w, ./../../../wp-content/uploads/2017/07/finalpagedotnet-300x221.png 300w, ./../../../wp-content/uploads/2017/07/finalpagedotnet-768x566.png 768w" sizes="(max-width: 815px) 100vw, 815px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/07/02/display-cal-and-c-code-of-a-object-in-rtc/feed/index.html</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>OTP Authentication in Dynamics NAV</title>
+		<link>./../../../2017/06/10/otp-authentication-in-dynamics-nav/index.html</link>
+		<comments>./../../../2017/06/10/otp-authentication-in-dynamics-nav/index.html#comments</comments>
+		<pubDate>Sat, 10 Jun 2017 10:25:12 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=112</guid>
+		<description><![CDATA[In NAV, OTP authentication can add an extra layer of security to our Environments. The basic idea is that when every user tries to open a company, s/he will receive a OTP on their registered mobile number. They will have]]></description>
+				<content:encoded><![CDATA[<p>In NAV, OTP authentication can add an extra layer of security to our Environments. The basic idea is that when every user tries to open a company, s/he will receive a OTP on their registered mobile number. They will have to key in this number in NAV to gain access. This is usually known as two factor authentications.</p>
+<p>To do this in NAV you need a service to send SMS. There are a lot available on internet. In this demo, I am using SMS service from NEXMO. Do note that when choosing a service, it is crucial to check the limitations. For example, NEXMO can deliver SMS in India only between 9 am to 6 pm. Similar limitations exist for other regions as well.</p>
+<p>Once you choose a service you will have to go through their documentation. Most will provide Restful APIs which can be easily consumed in NAV. Lets try to use Nexmo for the time being</p>
+<p>Steps</p>
+<ol>
+<li>Create a new codeunit in your object range</li>
+<li>You will need a new function to initiliaze and send request to the API.</li>
+</ol>
+<p>&nbsp;</p>
+<p>Syntax</p>
+<p><img class="size-full wp-image-119 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/httpPost.png" alt="" width="899" height="564" srcset="./../../../wp-content/uploads/2017/06/httpPost.png 899w, ./../../../wp-content/uploads/2017/06/httpPost-300x188.png 300w, ./../../../wp-content/uploads/2017/06/httpPost-768x482.png 768w" sizes="(max-width: 899px) 100vw, 899px" /></p>
+<p>&nbsp;</p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">LOCAL HttpPostSMS()
+
+
+
+Status:=1;
+
+Answer := DIALOG.CONFIRM('Do you want to recieve OTP',FALSE);
+
+IF Answer= TRUE THEN BEGIN
+
+  HttpWebRequestMgt.Initialize(Url+GetParams);
+
+  HttpWebRequestMgt.DisableUI;
+
+  HttpWebRequestMgt.SetMethod('POST');
+
+  HttpWebRequestMgt.SetReturnType('application/json');
+
+
+
+  TempBlob.INIT;
+
+  TempBlob.Blob.CREATEINSTREAM(Instr);
+
+  IF HttpWebRequestMgt.GetResponse(Instr,HttpStatusCode,ResponseHeaders) THEN BEGIN
+
+    IF HttpStatusCode.ToString = HttpStatusCode.OK.ToString THEN BEGIN
+
+       Result := TempBlob.ReadAsText('',TEXTENCODING::UTF8);
+
+       JObject:= JObject.Parse(Result);
+
+       temp:=JObject.GetValue('messages').ToString;
+
+       temp :=DELCHR(temp,'=','[]');
+
+       JObject :=JObject.Parse(temp);
+
+       EVALUATE(Status,JObject.GetValue('status').ToString);
+
+    END ELSE MESSAGE('not 200');
+
+  END ELSE MESSAGE('no reponse at all');
+
+END ELSE ERROR ('Cannot open company without OTP');
+
+
+
+
+
+LOCAL GetParams() : Text
+
+Params := '?api_key=&lt;your key&gt;&amp;api_secret=&lt;your secret&gt;&amp;to=&lt;number to which sms has to go&gt;&amp;from=Jaspreet NAV&amp;text=%1';
+
+Params := STRSUBSTNO(Params,GetRandom);
+
+EXIT(Params);
+
+
+
+
+
+
+
+LOCAL GetRandom() : Text
+
+OTP := RANDOM(99999);
+
+RandomParam := SMStext;
+
+RandomParam:=STRSUBSTNO(RandomParam,COMPANYNAME,OTP);
+
+EXIT(RandomParam);</pre>
+<p>You will also need to define local variables and global variables</p>
+<p>Local</p>
+<p><img class="alignnone size-full wp-image-120" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/httppostvariables.png" alt="" width="1347" height="335" srcset="./../../../wp-content/uploads/2017/06/httppostvariables.png 1347w, ./../../../wp-content/uploads/2017/06/httppostvariables-300x75.png 300w, ./../../../wp-content/uploads/2017/06/httppostvariables-768x191.png 768w, ./../../../wp-content/uploads/2017/06/httppostvariables-1024x255.png 1024w" sizes="(max-width: 1347px) 100vw, 1347px" /></p>
+<p>Global</p>
+<p><img class="size-full wp-image-118 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/globalvars.png" alt="" width="1118" height="98" srcset="./../../../wp-content/uploads/2017/06/globalvars.png 1118w, ./../../../wp-content/uploads/2017/06/globalvars-300x26.png 300w, ./../../../wp-content/uploads/2017/06/globalvars-768x67.png 768w, ./../../../wp-content/uploads/2017/06/globalvars-1024x90.png 1024w" sizes="(max-width: 1118px) 100vw, 1118px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>This function would send a SMS to a hardcoded number (should come from user master in actual implementation). Next, we need to call this function Before a company opens. I will use OnBeforeOpenCompany event from Code unit 1 (ApplicationManagement). For versions where events are not available you can simply call the function in code unit 1.</p>
+<p>&nbsp;</p>
+<p>Syntax</p>
+<p><img class="size-full wp-image-122 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/OnBeforeopencompanu.png" alt="" width="683" height="404" srcset="./../../../wp-content/uploads/2017/06/OnBeforeopencompanu.png 683w, ./../../../wp-content/uploads/2017/06/OnBeforeopencompanu-300x177.png 300w" sizes="(max-width: 683px) 100vw, 683px" /></p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">HttpPostSMS;
+Count := 0;
+Success := FALSE;
+IF Status = 0 
+ THEN 
+ REPEAT
+   CLEAR(TwoFactorAuth);
+    IF TwoFactorAuth.RUNMODAL&lt;&gt;ACTION::OK THEN 
+      ERROR('Cancelled');
+    IF TwoFactorAuth.GetEnteredOTP = OTP THEN BEGIN
+      Success:=TRUE;
+    END
+    ELSE BEGIN
+      Count += 1;
+      MESSAGE('Wrong OTP');
+    END; 
+ UNTIL (Count = 3) OR Success;
+ IF NOT Success THEN ERROR('You have entered wrong otp too many times');</pre>
+<p>&nbsp;</p>
+<p>Variables need to be defined as well.</p>
+<p><img class="size-full wp-image-121 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/onbefore-vars.png" alt="" width="1257" height="165" srcset="./../../../wp-content/uploads/2017/06/onbefore-vars.png 1257w, ./../../../wp-content/uploads/2017/06/onbefore-vars-300x39.png 300w, ./../../../wp-content/uploads/2017/06/onbefore-vars-768x101.png 768w, ./../../../wp-content/uploads/2017/06/onbefore-vars-1024x134.png 1024w" sizes="(max-width: 1257px) 100vw, 1257px" /></p>
+<p>You also need to create a new page and declare a single global variable. Then set that variable as a field.</p>
+<p><img class="alignnone size-full wp-image-124" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/page.png" alt="" width="1300" height="185" srcset="./../../../wp-content/uploads/2017/06/page.png 1300w, ./../../../wp-content/uploads/2017/06/page-300x43.png 300w, ./../../../wp-content/uploads/2017/06/page-768x109.png 768w, ./../../../wp-content/uploads/2017/06/page-1024x146.png 1024w" sizes="(max-width: 1300px) 100vw, 1300px" /></p>
+<p>Global variables of page</p>
+<p><img class="size-full wp-image-123 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/page-global.png" alt="" width="333" height="182" srcset="./../../../wp-content/uploads/2017/06/page-global.png 333w, ./../../../wp-content/uploads/2017/06/page-global-300x164.png 300w" sizes="(max-width: 333px) 100vw, 333px" /></p>
+<p>We also need a function in page to transfer the entered OTP to our code unit</p>
+<p><img class="size-full wp-image-117 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/funcinpage.png" alt="" width="351" height="160" srcset="./../../../wp-content/uploads/2017/06/funcinpage.png 351w, ./../../../wp-content/uploads/2017/06/funcinpage-300x137.png 300w" sizes="(max-width: 351px) 100vw, 351px" /></p>
+<p>Once everything is done, When a user tries to login s/he will get a OTP on their phone. They will see a dialog in NAV and must enter the OTP. They get three tries to do so.</p>
+<p><img class="size-full wp-image-116 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/finalimage.png" alt="" width="478" height="285" srcset="./../../../wp-content/uploads/2017/06/finalimage.png 478w, ./../../../wp-content/uploads/2017/06/finalimage-300x179.png 300w" sizes="(max-width: 478px) 100vw, 478px" /></p>
+<p><img class="wp-image-125 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/06/Smssc-e1497088659182.png" alt="" width="453" height="357" srcset="./../../../wp-content/uploads/2017/06/Smssc-e1497088659182.png 1080w, ./../../../wp-content/uploads/2017/06/Smssc-e1497088659182-300x237.png 300w, ./../../../wp-content/uploads/2017/06/Smssc-e1497088659182-768x607.png 768w, ./../../../wp-content/uploads/2017/06/Smssc-e1497088659182-1024x810.png 1024w" sizes="(max-width: 453px) 100vw, 453px" /></p>
+<p>Future Scope:</p>
+<p>In actual implementation users phone number should come from the master. Also there can be a option where the end user can either choose SMS or Email to receive the OTP for authentication.</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/06/10/otp-authentication-in-dynamics-nav/feed/index.html</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Post to a rest api in Dynamics NAV</title>
+		<link>./../../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/index.html</link>
+		<comments>./../../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/index.html#comments</comments>
+		<pubDate>Mon, 29 May 2017 04:24:56 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=103</guid>
+		<description><![CDATA[Post is usually used when we want to submit some parameter to the server. The paramaters unlike rest are not put in the link itself but are sent in ‘Body’. In Nav , We can post using either Codeunit 1297]]></description>
+				<content:encoded><![CDATA[<p>Post is usually used when we want to submit some parameter to the server.</p>
+<p>The paramaters unlike rest are not put in the link itself but are sent in ‘Body’.</p>
+<p>In Nav , We can post using either Codeunit 1297 Http Web Request Mgt. or using System.HttpClient Control add-in among other methods.</p>
+<p>Let’s go over the syntax when using CU 1297. I will be posting to a test api hosted by <a href="https://reqres.in/">https://reqres.in/</a> for demo. Documentation for the api can be found there. We will be using api/users for the demo</p>
+<p><img class="size-full wp-image-109 alignnone" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/reqres-documentation.png" alt="" width="1064" height="584" srcset="./../../../wp-content/uploads/2017/05/reqres-documentation.png 1064w, ./../../../wp-content/uploads/2017/05/reqres-documentation-300x165.png 300w, ./../../../wp-content/uploads/2017/05/reqres-documentation-768x422.png 768w, ./../../../wp-content/uploads/2017/05/reqres-documentation-1024x562.png 1024w" sizes="(max-width: 1064px) 100vw, 1064px" /></p>
+<p>First create a new codeunit in your range.</p>
+<p>Syntax in Nav</p>
+<p>&nbsp;</p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">PostUrl := 'https://reqres.in/api/users';
+
+HttpWebRequestMgt.Initialize(PostUrl);
+
+HttpWebRequestMgt.DisableUI;
+
+HttpWebRequestMgt.SetMethod('POST');
+
+HttpWebRequestMgt.SetContentType('application/json');
+
+HttpWebRequestMgt.SetReturnType('application/json');
+
+HttpWebRequestMgt.AddBodyAsText(body);
+
+
+TempBlob.INIT;
+
+TempBlob.Blob.CREATEINSTREAM(Instr);
+
+IF HttpWebRequestMgt.GetResponse(Instr,HttpStatusCode,ResponseHeaders) THEN BEGIN
+
+ MESSAGE('httpstatuscode : '+HttpStatusCode.ToString);
+
+ MESSAGE(ResponseHeaders.ToString);
+
+ ApiResult := TempBlob.ReadAsText('',TEXTENCODING::UTF8);
+
+ MESSAGE(ApiResult);
+
+ JObject:=JObject.Parse(ApiResult);
+
+ MESSAGE(JObject.GetValue('job').ToString);
+
+END ELSE MESSAGE('2'+RegistrationError);
+
+
+
+</pre>
+<p><img class="alignnone size-full wp-image-104" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/cu-syntax.png" alt="" width="858" height="437" srcset="./../../../wp-content/uploads/2017/05/cu-syntax.png 858w, ./../../../wp-content/uploads/2017/05/cu-syntax-300x153.png 300w, ./../../../wp-content/uploads/2017/05/cu-syntax-768x391.png 768w" sizes="(max-width: 858px) 100vw, 858px" /></p>
+<p>You will need to define these variables.</p>
+<p><img class="aligncenter wp-image-105 size-full" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/cu-variables.png" alt="" width="1311" height="341" srcset="./../../../wp-content/uploads/2017/05/cu-variables.png 1311w, ./../../../wp-content/uploads/2017/05/cu-variables-300x78.png 300w, ./../../../wp-content/uploads/2017/05/cu-variables-768x200.png 768w, ./../../../wp-content/uploads/2017/05/cu-variables-1024x266.png 1024w" sizes="(max-width: 1311px) 100vw, 1311px" /></p>
+<p>You need text constants as well. Note that body can be a variable too . The codeunit can also accept a blob type in case your data is large. Just use HttpWebRequestMgt.AddBodyBlob(nameofblob); instead of HttpWebRequestMgt.AddBodyAsText(body);</p>
+<p><img class="size-full wp-image-108 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/text-constants.png" alt="" width="563" height="172" srcset="./../../../wp-content/uploads/2017/05/text-constants.png 563w, ./../../../wp-content/uploads/2017/05/text-constants-300x92.png 300w" sizes="(max-width: 563px) 100vw, 563px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The output from api is stored in tempblob which can then be read in a text string.</p>
+<p><img class="size-full wp-image-106 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/outputpostrest.png" alt="" width="677" height="283" srcset="./../../../wp-content/uploads/2017/05/outputpostrest.png 677w, ./../../../wp-content/uploads/2017/05/outputpostrest-300x125.png 300w" sizes="(max-width: 677px) 100vw, 677px" /></p>
+<p>Refer to  <a href="https://ctrlshiftf4.com/2017/05/17/consume-openweather-rest-api-in-dynamics-nav/">https://ctrlshiftf4.com/2017/05/17/consume-openweather-rest-api-in-dynamics-nav/</a> as i have explained how to parse data from Rest Api there in detail.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/05/29/post-to-a-rest-api-in-dynamics-nav/feed/index.html</wfw:commentRss>
+		<slash:comments>13</slash:comments>
+		</item>
+		<item>
+		<title>Connect Dynamics NAV table with an External SQL Database</title>
+		<link>./../../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html</link>
+		<comments>./../../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comments</comments>
+		<pubDate>Mon, 22 May 2017 05:05:45 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[SQL]]></category>
+		<category><![CDATA[SQL Server]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[ExternalSql]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89</guid>
+		<description><![CDATA[Let’s talk about Table type property of NAV tables. There’s a very interesting option in here, ExternalSQL. This option can help us sync a table in Nav with a  table in SQL granted they have a same structure. Let’s see]]></description>
+				<content:encoded><![CDATA[<p>Let’s talk about Table type property of NAV tables. There’s a very interesting option in here, ExternalSQL. This option can help us sync a table in Nav with a  table in SQL granted they have a same structure.</p>
+<p>Let’s see how we can set this up…</p>
+<p><strong>Pre-Requisites</strong></p>
+<ol>
+<li>A copy of Nav 2017 ( might work on 16 as well)</li>
+<li>Development License</li>
+<li>Sql server ( Can be on-Premise or hosted , Just need the connection string and credentials)</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Steps</strong></p>
+<ol>
+<li>Identify the table you want to connect with a nav table. Here I am using a simple demotable with just 4 fields<img class="size-full wp-image-95 alignnone" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/sql-table-design.png" alt="" width="1218" height="598" srcset="./../../../wp-content/uploads/2017/05/sql-table-design.png 1218w, ./../../../wp-content/uploads/2017/05/sql-table-design-300x147.png 300w, ./../../../wp-content/uploads/2017/05/sql-table-design-768x377.png 768w, ./../../../wp-content/uploads/2017/05/sql-table-design-1024x503.png 1024w" sizes="(max-width: 1218px) 100vw, 1218px" /></li>
+<li>Create the table in Nav.<img class="size-full wp-image-92 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/Navtable-design.png" alt="" width="696" height="235" srcset="./../../../wp-content/uploads/2017/05/Navtable-design.png 696w, ./../../../wp-content/uploads/2017/05/Navtable-design-300x101.png 300w" sizes="(max-width: 696px) 100vw, 696px" /></li>
+<li>Now go to table properties and Change the following properties as in Screenshot. The ExternalName should contain the name of the table in external database you want this table to sync with.<img class="size-full wp-image-94 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/navtableproperties.png" alt="" width="535" height="395" srcset="./../../../wp-content/uploads/2017/05/navtableproperties.png 535w, ./../../../wp-content/uploads/2017/05/navtableproperties-300x221.png 300w" sizes="(max-width: 535px) 100vw, 535px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="4">
+<li>You can also go to individual field property and set ExternalName property in case your nav field name differs from External sql one<img class="size-full wp-image-90 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/fieldproperty.png" alt="" width="502" height="663" srcset="./../../../wp-content/uploads/2017/05/fieldproperty.png 502w, ./../../../wp-content/uploads/2017/05/fieldproperty-227x300.png 227w" sizes="(max-width: 502px) 100vw, 502px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="5">
+<li>That’s all for the table. Now create a new codeunit in your range.</li>
+<li>Create a new function in it for SQL connection.</li>
+<li><img class="size-full wp-image-96 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/sqlconCU-.png" alt="" width="982" height="425" srcset="./../../../wp-content/uploads/2017/05/sqlconCU-.png 982w, ./../../../wp-content/uploads/2017/05/sqlconCU--300x130.png 300w, ./../../../wp-content/uploads/2017/05/sqlconCU--768x332.png 768w" sizes="(max-width: 982px) 100vw, 982px" />Syntax</li>
+</ol>
+<p>&nbsp;</p>
+<ol start="8">
+<li>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">IF HASTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL,DatabaseName)
+
+  THEN
+
+    UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL,DatabaseName);
+
+
+
+REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL,DatabaseName,DatabaseConnectionString);
+
+SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL,DatabaseName);&lt;span id="mce_marker" data-mce-type="bookmark" data-mce-fragment="1"&gt;​&lt;/span&gt;</pre>
+<p>You will need identify external database name here. You also need to define DatabaseConnectionString. It should be of the form</li>
+</ol>
+<p>&nbsp;</p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">Server=&lt;server&gt;;Database=&lt;database&gt;;User ID=&lt;userid&gt;;Password=&lt;password&gt;;</pre>
+<p>&nbsp;</p>
+<ol start="9">
+<li>Next create a page for the nav table.</li>
+</ol>
+<p><img class="size-full wp-image-91 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/navpagedesign.png" alt="" width="1317" height="285" srcset="./../../../wp-content/uploads/2017/05/navpagedesign.png 1317w, ./../../../wp-content/uploads/2017/05/navpagedesign-300x65.png 300w, ./../../../wp-content/uploads/2017/05/navpagedesign-768x166.png 768w, ./../../../wp-content/uploads/2017/05/navpagedesign-1024x222.png 1024w" sizes="(max-width: 1317px) 100vw, 1317px" /></p>
+<ol start="10">
+<li>Then Add code to run our connection codeunit in OnInit()</li>
+</ol>
+<p><img class="size-full wp-image-93 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/navtablecode.png" alt="" width="692" height="251" srcset="./../../../wp-content/uploads/2017/05/navtablecode.png 692w, ./../../../wp-content/uploads/2017/05/navtablecode-300x109.png 300w" sizes="(max-width: 692px) 100vw, 692px" /></p>
+<p>&nbsp;</p>
+<p>That’s all. Now if you create any record in Nav it gets updated to SQL table and vice versa.<img class="size-full wp-image-99 alignnone" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/tablescompare.png" alt="" width="1038" height="464" srcset="./../../../wp-content/uploads/2017/05/tablescompare.png 1038w, ./../../../wp-content/uploads/2017/05/tablescompare-300x134.png 300w, ./../../../wp-content/uploads/2017/05/tablescompare-768x343.png 768w, ./../../../wp-content/uploads/2017/05/tablescompare-1024x458.png 1024w" sizes="(max-width: 1038px) 100vw, 1038px" /></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/feed/index.html</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+	</channel>
+</rss>

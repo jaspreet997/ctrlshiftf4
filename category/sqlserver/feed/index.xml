@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>SQL Server &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>SQL Server &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Connect Dynamics NAV table with an External SQL Database</title>
+		<link>./../../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html</link>
+		<comments>./../../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/index.html#comments</comments>
+		<pubDate>Mon, 22 May 2017 05:05:45 +0000</pubDate>
+		<dc:creator><![CDATA[jaspreet]]></dc:creator>
+				<category><![CDATA[Dynamics 365]]></category>
+		<category><![CDATA[Dynamics NAV 2017]]></category>
+		<category><![CDATA[SQL]]></category>
+		<category><![CDATA[SQL Server]]></category>
+		<category><![CDATA[Dynamics 365 for financials]]></category>
+		<category><![CDATA[Dynamics NAV]]></category>
+		<category><![CDATA[ExternalSql]]></category>
+		<category><![CDATA[NAV 2017]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=89</guid>
+		<description><![CDATA[Let’s talk about Table type property of NAV tables. There’s a very interesting option in here, ExternalSQL. This option can help us sync a table in Nav with a  table in SQL granted they have a same structure. Let’s see]]></description>
+				<content:encoded><![CDATA[<p>Let’s talk about Table type property of NAV tables. There’s a very interesting option in here, ExternalSQL. This option can help us sync a table in Nav with a  table in SQL granted they have a same structure.</p>
+<p>Let’s see how we can set this up…</p>
+<p><strong>Pre-Requisites</strong></p>
+<ol>
+<li>A copy of Nav 2017 ( might work on 16 as well)</li>
+<li>Development License</li>
+<li>Sql server ( Can be on-Premise or hosted , Just need the connection string and credentials)</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Steps</strong></p>
+<ol>
+<li>Identify the table you want to connect with a nav table. Here I am using a simple demotable with just 4 fields<img class="size-full wp-image-95 alignnone" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/sql-table-design.png" alt="" width="1218" height="598" srcset="./../../../wp-content/uploads/2017/05/sql-table-design.png 1218w, ./../../../wp-content/uploads/2017/05/sql-table-design-300x147.png 300w, ./../../../wp-content/uploads/2017/05/sql-table-design-768x377.png 768w, ./../../../wp-content/uploads/2017/05/sql-table-design-1024x503.png 1024w" sizes="(max-width: 1218px) 100vw, 1218px" /></li>
+<li>Create the table in Nav.<img class="size-full wp-image-92 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/Navtable-design.png" alt="" width="696" height="235" srcset="./../../../wp-content/uploads/2017/05/Navtable-design.png 696w, ./../../../wp-content/uploads/2017/05/Navtable-design-300x101.png 300w" sizes="(max-width: 696px) 100vw, 696px" /></li>
+<li>Now go to table properties and Change the following properties as in Screenshot. The ExternalName should contain the name of the table in external database you want this table to sync with.<img class="size-full wp-image-94 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/navtableproperties.png" alt="" width="535" height="395" srcset="./../../../wp-content/uploads/2017/05/navtableproperties.png 535w, ./../../../wp-content/uploads/2017/05/navtableproperties-300x221.png 300w" sizes="(max-width: 535px) 100vw, 535px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="4">
+<li>You can also go to individual field property and set ExternalName property in case your nav field name differs from External sql one<img class="size-full wp-image-90 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/fieldproperty.png" alt="" width="502" height="663" srcset="./../../../wp-content/uploads/2017/05/fieldproperty.png 502w, ./../../../wp-content/uploads/2017/05/fieldproperty-227x300.png 227w" sizes="(max-width: 502px) 100vw, 502px" /></li>
+</ol>
+<p>&nbsp;</p>
+<ol start="5">
+<li>That’s all for the table. Now create a new codeunit in your range.</li>
+<li>Create a new function in it for SQL connection.</li>
+<li><img class="size-full wp-image-96 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/sqlconCU-.png" alt="" width="982" height="425" srcset="./../../../wp-content/uploads/2017/05/sqlconCU-.png 982w, ./../../../wp-content/uploads/2017/05/sqlconCU--300x130.png 300w, ./../../../wp-content/uploads/2017/05/sqlconCU--768x332.png 768w" sizes="(max-width: 982px) 100vw, 982px" />Syntax</li>
+</ol>
+<p>&nbsp;</p>
+<ol start="8">
+<li>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">IF HASTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL,DatabaseName)
+
+  THEN
+
+    UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL,DatabaseName);
+
+
+
+REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL,DatabaseName,DatabaseConnectionString);
+
+SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL,DatabaseName);&lt;span id="mce_marker" data-mce-type="bookmark" data-mce-fragment="1"&gt;​&lt;/span&gt;</pre>
+<p>You will need identify external database name here. You also need to define DatabaseConnectionString. It should be of the form</li>
+</ol>
+<p>&nbsp;</p>
+<pre class="prettyprint lang-csharp" data-start-line="1" data-visibility="visible" data-highlight="" data-caption="">Server=&lt;server&gt;;Database=&lt;database&gt;;User ID=&lt;userid&gt;;Password=&lt;password&gt;;</pre>
+<p>&nbsp;</p>
+<ol start="9">
+<li>Next create a page for the nav table.</li>
+</ol>
+<p><img class="size-full wp-image-91 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/navpagedesign.png" alt="" width="1317" height="285" srcset="./../../../wp-content/uploads/2017/05/navpagedesign.png 1317w, ./../../../wp-content/uploads/2017/05/navpagedesign-300x65.png 300w, ./../../../wp-content/uploads/2017/05/navpagedesign-768x166.png 768w, ./../../../wp-content/uploads/2017/05/navpagedesign-1024x222.png 1024w" sizes="(max-width: 1317px) 100vw, 1317px" /></p>
+<ol start="10">
+<li>Then Add code to run our connection codeunit in OnInit()</li>
+</ol>
+<p><img class="size-full wp-image-93 aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/navtablecode.png" alt="" width="692" height="251" srcset="./../../../wp-content/uploads/2017/05/navtablecode.png 692w, ./../../../wp-content/uploads/2017/05/navtablecode-300x109.png 300w" sizes="(max-width: 692px) 100vw, 692px" /></p>
+<p>&nbsp;</p>
+<p>That’s all. Now if you create any record in Nav it gets updated to SQL table and vice versa.<img class="size-full wp-image-99 alignnone" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/tablescompare.png" alt="" width="1038" height="464" srcset="./../../../wp-content/uploads/2017/05/tablescompare.png 1038w, ./../../../wp-content/uploads/2017/05/tablescompare-300x134.png 300w, ./../../../wp-content/uploads/2017/05/tablescompare-768x343.png 768w, ./../../../wp-content/uploads/2017/05/tablescompare-1024x458.png 1024w" sizes="(max-width: 1038px) 100vw, 1038px" /></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/05/22/connect-dynamics-nav-table-with-an-external-sql-database/feed/index.html</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+		<item>
+		<title>SQL Server Performance Tuning &#8211; Overview</title>
+		<link>./../../../2017/05/02/sql-server-performance-tuning-overview/index.html</link>
+		<comments>./../../../2017/05/02/sql-server-performance-tuning-overview/index.html#comments</comments>
+		<pubDate>Tue, 02 May 2017 11:07:41 +0000</pubDate>
+		<dc:creator><![CDATA[Achal Mehan]]></dc:creator>
+				<category><![CDATA[SQL]]></category>
+		<category><![CDATA[SQL Server]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=26</guid>
+		<description><![CDATA[While working with the large SQL Server Databases the most common issue that user(s) or administrator(s) face is the Performance issue, which eventually results in the sluggish response to the queries, thus delaying the application response time. Performance refers to]]></description>
+				<content:encoded><![CDATA[<p>While working with the large SQL Server Databases the most common issue that user(s) or administrator(s) face is the Performance issue, which eventually results in the sluggish response to the queries, thus delaying the application response time.</p>
+<p>Performance refers to the way system behaves in response to a particular query. Performance is measured in terms of system response time, throughput, and resource utilization. With the performance issues in Database, usually user(s) or administrator(s) faces delayed response with the application resulting in increased cost-to-company.</p>
+<p>Performance issue can be caused due to more than expected usage of available resources like CPU, memory, data-disk and network etc. It is also caused by SQL instance level performance counter(s) like buffer pool, access methods etc., SQL instance level DMV info like top <em>&#8216;n&#8217;</em> database(s), top <em>&#8216;n&#8217;</em> wait stats and top <em>&#8216;n&#8217;</em> queries.</p>
+<p>Apart from the above mentioned resources and counters, there are other factors which causes the irregularity in data and log file growth, thus resulting in degradation of performance for SQL Server.</p>
+<p>To rectify the above issues, Performance Tuning is an essential and key aspect to get the Database and SQL Server running in an optimized manner.</p>
+<p><img src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/050217_1115_SQLServerPe1.png" alt="" align="left" /></p>
+<p><img class="alignnone size-full wp-image-52" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/flakotorka_graf.jpg" alt="" width="347" height="346" srcset="./../../../wp-content/uploads/2017/05/flakotorka_graf.jpg 347w, ./../../../wp-content/uploads/2017/05/flakotorka_graf-150x150.jpg 150w, ./../../../wp-content/uploads/2017/05/flakotorka_graf-300x300.jpg 300w" sizes="(max-width: 347px) 100vw, 347px" /></p>
+<p><img class="aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/050217_1115_SQLServerPe2.png" alt="" align="left" /><span style="font-size: 14pt;"><strong><br />
+</strong></span></p>
+<p style="padding-left: 360px;"><img class="alignnone size-full wp-image-53" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/IC104987.gif" alt="" width="267" height="359" /><br />
+<span style="font-size: 14pt;"><strong><br />
+</strong></span></p>
+<p style="padding-left: 30px;"><span style="font-family: Times New Roman; font-size: 12pt;"><br />
+</span></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/05/02/sql-server-performance-tuning-overview/feed/index.html</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

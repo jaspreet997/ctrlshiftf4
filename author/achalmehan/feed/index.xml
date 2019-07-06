@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Achal Mehan &#8211; Jaspreet Singh</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>Dynamics NAV Tech blog </description>
+	<lastBuildDate>Tue, 13 Feb 2018 03:31:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.10</generator>
+
+<image>
+	<url>./../../../wp-content/uploads/2017/07/cropped-microsoft-dynamics-nav@2x-32x32.png</url>
+	<title>Achal Mehan &#8211; Jaspreet Singh</title>
+	<link>./../../../index.html</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>SQL Server Performance Tuning &#8211; Overview</title>
+		<link>./../../../2017/05/02/sql-server-performance-tuning-overview/index.html</link>
+		<comments>./../../../2017/05/02/sql-server-performance-tuning-overview/index.html#comments</comments>
+		<pubDate>Tue, 02 May 2017 11:07:41 +0000</pubDate>
+		<dc:creator><![CDATA[Achal Mehan]]></dc:creator>
+				<category><![CDATA[SQL]]></category>
+		<category><![CDATA[SQL Server]]></category>
+
+		<guid isPermaLink="false">https://ctrlshiftf4.com/?p=26</guid>
+		<description><![CDATA[While working with the large SQL Server Databases the most common issue that user(s) or administrator(s) face is the Performance issue, which eventually results in the sluggish response to the queries, thus delaying the application response time. Performance refers to]]></description>
+				<content:encoded><![CDATA[<p>While working with the large SQL Server Databases the most common issue that user(s) or administrator(s) face is the Performance issue, which eventually results in the sluggish response to the queries, thus delaying the application response time.</p>
+<p>Performance refers to the way system behaves in response to a particular query. Performance is measured in terms of system response time, throughput, and resource utilization. With the performance issues in Database, usually user(s) or administrator(s) faces delayed response with the application resulting in increased cost-to-company.</p>
+<p>Performance issue can be caused due to more than expected usage of available resources like CPU, memory, data-disk and network etc. It is also caused by SQL instance level performance counter(s) like buffer pool, access methods etc., SQL instance level DMV info like top <em>&#8216;n&#8217;</em> database(s), top <em>&#8216;n&#8217;</em> wait stats and top <em>&#8216;n&#8217;</em> queries.</p>
+<p>Apart from the above mentioned resources and counters, there are other factors which causes the irregularity in data and log file growth, thus resulting in degradation of performance for SQL Server.</p>
+<p>To rectify the above issues, Performance Tuning is an essential and key aspect to get the Database and SQL Server running in an optimized manner.</p>
+<p><img src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/050217_1115_SQLServerPe1.png" alt="" align="left" /></p>
+<p><img class="alignnone size-full wp-image-52" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/flakotorka_graf.jpg" alt="" width="347" height="346" srcset="./../../../wp-content/uploads/2017/05/flakotorka_graf.jpg 347w, ./../../../wp-content/uploads/2017/05/flakotorka_graf-150x150.jpg 150w, ./../../../wp-content/uploads/2017/05/flakotorka_graf-300x300.jpg 300w" sizes="(max-width: 347px) 100vw, 347px" /></p>
+<p><img class="aligncenter" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/050217_1115_SQLServerPe2.png" alt="" align="left" /><span style="font-size: 14pt;"><strong><br />
+</strong></span></p>
+<p style="padding-left: 360px;"><img class="alignnone size-full wp-image-53" src="https://ctrlshiftf4.com/wp-content/uploads/2017/05/IC104987.gif" alt="" width="267" height="359" /><br />
+<span style="font-size: 14pt;"><strong><br />
+</strong></span></p>
+<p style="padding-left: 30px;"><span style="font-family: Times New Roman; font-size: 12pt;"><br />
+</span></p>
+]]></content:encoded>
+			<wfw:commentRss>./../../../2017/05/02/sql-server-performance-tuning-overview/feed/index.html</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>
